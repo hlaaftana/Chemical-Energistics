@@ -1,0 +1,63 @@
+##### Chemical Energistics ENGLISH Language File
+
+
+
+### Items
+# Valuables
+item.ingotAluminum.name=Aluminum Ingot
+item.ingotTungsten.name=Tungsten Ingot
+item.ingotIridium.name=Iridium Ingot
+item.ingotUranium.name=Uranium Ingot
+item.ingotLithium.name=Lithium Ingot
+item.ingotSilicon.name=Silicon Ingot
+item.ingotIodine.name=Iodine Ingot
+item.ingotMercury.name=Mercury Ingot
+item.dustSulfur.name=Sulfur Dust
+item.dustAluminum.name=Aluminum Dust
+item.dustTungsten.name=Tungsten Dust
+item.dustSodium.name=Sodium Dust
+item.dustPhosphorus.name=Phosphorus Dust
+item.carbonFiber.name=Carbon Fiber
+
+# Capsules
+item.capsule.name=Empty Capsule
+item.gasCapsule.hydrogen.name=Hydrogen Gas Capsule
+item.gasCapsule.lithium.name=Lithium Gas Capsule
+item.gasCapsule.nitrogen.name=Nitrogen Gas Capsule
+item.gasCapsule.oxygen.name=Oxygen Gas Capsule
+item.gasCapsule.sodium.name=Sodium Gas Capsule
+item.gasCapsule.phosphorus.name=Phosphorus Gas Capsule
+item.gasCapsule.sulfur.name=Sulfur Gas Capsule
+item.gasCapsule.iodine.name=Iodine Gas Capsule
+item.gasCapsule.mercury.name=Mercury Gas Capsule
+item.gasCapsule.radon.name=Radon Gas Capsule
+item.liquidCapsule.lithium.name=Lithium Liquid Capsule
+item.liquidCapsule.sodium.name=Sodium Liquid Capsule
+item.liquidCapsule.aluminum.name=Aluminum Liquid Capsule
+item.liquidCapsule.silicon.name=Silicon Liquid Capsule
+item.liquidCapsule.phosphorus.name=Phosphorus Liquid Capsule
+item.liquidCapsule.sulfur.name=Sulfur Liquid Capsule
+item.liquidCapsule.iron.name=Iron Liquid Capsule
+item.liquidCapsule.copper.name=Copper Liquid Capsule
+item.liquidCapsule.silver.name=Silver Liquid Capsule
+item.liquidCapsule.tin.name=Tin Liquid Capsule
+item.liquidCapsule.iodine.name=Iodine Liquid Capsule
+item.liquidCapsule.gold.name=Gold Liquid Capsule
+item.liquidCapsule.mercury.name=Mercury Liquid Capsule
+item.liquidCapsule.lead.name=Lead Liquid Capsule
+item.liquidCapsule.uranium.name=Uranium Liquid Capsule
+
+
+
+### Blocks
+# Naturally Generating Blocks
+tile.oreAluminum.name=Aluminum Ore
+tile.oreSulfur.name=Sulfur Ore
+tile.oreTungsten.name=Tungsten Ore
+tile.oreIridium.name=Iridium Ore
+tile.oreUranium.name=Uranium Ore
+tile.basalt.name=Basalt
+
+# Machines
+tile.chemicalReactor.name=Chemical Reactor
+tile.pressurizedTank.name=Pressurized Tank
