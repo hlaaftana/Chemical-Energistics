@@ -3,7 +3,7 @@ package net.ce.helpers;
 public class EnergyHelper 
 {
 	// base energy
-	public static float crBaseEnergy = 20.0F;
+	public static float crBaseEnergy = 25.0F;
 		
 	// multipliers
 	public static float hydrogenGas = 2F;

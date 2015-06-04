@@ -1,4 +1,4 @@
-package net.ce.gui;
+package net.ce.gui.containers;
 
 import net.ce.machines.tiles.TileEntityPressurizedTank;
 import net.minecraft.entity.player.EntityPlayer;

@@ -1,7 +1,7 @@
 package net.ce.handlers;
 
-import net.ce.gui.ContainerPressurizedTank;
 import net.ce.gui.GuiPressurizedTank;
+import net.ce.gui.containers.ContainerPressurizedTank;
 import net.ce.helpers.LogHelper;
 import net.ce.machines.tiles.TileEntityPressurizedTank;
 import net.minecraft.entity.player.EntityPlayer;

@@ -1,6 +1,7 @@
 package net.ce.gui;
 
 import net.ce.Reference;
+import net.ce.gui.containers.ContainerPressurizedTank;
 import net.ce.machines.tiles.TileEntityPressurizedTank;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;

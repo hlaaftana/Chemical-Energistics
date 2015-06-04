@@ -10,7 +10,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 public class BlockChemicalReactor extends BlockContainer implements ITileEntityProvider
@@ -78,7 +77,7 @@ public class BlockChemicalReactor extends BlockContainer implements ITileEntityP
         if(stack.stackTagCompound != null) 
         {
         	TileEntityChemicalReactor tileEntity = (TileEntityChemicalReactor)world.getTileEntity(x, y, z);
-            tileEntity.setEnergyStored(stack.stackTagCompound.getInteger(EnergyStorage.NBT_ENERGY));
+            tileEntity.modifyEnergyStored(stack.stackTagCompound.getInteger(EnergyStorage.NBT_ENERGY));
         }
         
         super.onBlockPlacedBy(world, x, y, z, entity, stack);
