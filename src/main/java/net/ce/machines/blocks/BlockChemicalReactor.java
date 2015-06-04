@@ -19,7 +19,6 @@ public class BlockChemicalReactor extends BlockContainer implements ITileEntityP
 	protected final int[] maxEnergyTransfer;
 	protected final int[] capacity;
 	private static final String NAME = "chemicalReactor";
-	private IIcon[] icons;
 	
 	public BlockChemicalReactor(int[] maxEnergyGeneration, int[] capacity)
 	{

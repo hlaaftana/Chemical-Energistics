@@ -1,4 +1,4 @@
-package net.ce.handlers;
+package net.ce.helpers;
 
 public class EnergyHelper 
 {

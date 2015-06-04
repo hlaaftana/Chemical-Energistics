@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 public class ContainerChemicalReactor extends Container
 {
 	private TileEntityPressurizedTank chemicalReactor; 
-    private int slotID = 0;
+    //private int slotID = 0;
     
     public ContainerChemicalReactor(InventoryPlayer player, TileEntityPressurizedTank pressurizedTankTE)
     {

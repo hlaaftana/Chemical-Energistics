@@ -29,6 +29,12 @@ public class CEItems
 	public static Item gasCapsule = new ItemGasCapsule("gasCapsule");
 	public static Item liquidCapsule = new ItemLiquidCapsule("liquidCapsule");
 	
+	// Machinery Parts
+	public static Item ironPanel = new ItemCE("ironPanel");
+	public static Item aluminumPanel = new ItemCE("aluminumPanel");
+	public static Item thermalPanel = new ItemCE("thermalPanel");
+	public static Item kineticTurbine = new ItemCE("kineticTurbine");
+	
 	public static void registerItems()
 	{
 		// Valuables
@@ -51,5 +57,11 @@ public class CEItems
 		RegisterHelper.registerItem(capsule);
 		RegisterHelper.registerItem(gasCapsule);
 		RegisterHelper.registerItem(liquidCapsule);
+		
+		// Machinery Parts
+		RegisterHelper.registerItem(ironPanel);
+		RegisterHelper.registerItem(aluminumPanel);
+		RegisterHelper.registerItem(thermalPanel);
+		RegisterHelper.registerItem(kineticTurbine);
 	}
 }
