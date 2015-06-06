@@ -2,6 +2,7 @@ package net.ce.init;
 
 import net.ce.blocks.BlockCE;
 import net.ce.helpers.RegisterHelper;
+import net.ce.machines.blocks.BlockChemicalReactor;
 import net.ce.machines.blocks.BlockPressurizedTank;
 import net.minecraft.block.Block;
 
@@ -19,7 +20,7 @@ public class CEBlocks
 	public static Block machineFrame = new BlockCE("machineFrame", 1.5F, 3.0F, 2, 0F);
 	
 	// Machines
-	//public static Block chemicalReactor = new BlockChemicalReactor();
+	public static Block chemicalReactor = new BlockChemicalReactor(25, 64, 20000);
 	public static Block pressurizedTank = new BlockPressurizedTank();
 	
 	public static void registerBlocks()
@@ -36,7 +37,7 @@ public class CEBlocks
 		RegisterHelper.registerBlock(machineFrame);
 		
 		// Machines
-		//RegisterHelper.registerBlock(chemicalReactor);
+		RegisterHelper.registerBlock(chemicalReactor);
 		RegisterHelper.registerBlock(pressurizedTank);
 	}
 }

@@ -1,36 +1,34 @@
 package net.ce.gui.containers;
 
-import net.ce.machines.tiles.TileEntityPressurizedTank;
+import net.ce.machines.tiles.TileEntityChemicalReactor;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
 public class ContainerChemicalReactor extends Container
 {
-	private TileEntityPressurizedTank chemicalReactor; 
-    //private int slotID = 0;
+	private TileEntityChemicalReactor chemicalReactor; 
+    private int slotID = 0;
     
-    public ContainerChemicalReactor(InventoryPlayer player, TileEntityPressurizedTank pressurizedTankTE)
+    public ContainerChemicalReactor(EntityPlayer player, TileEntityChemicalReactor chemicalReactorTE)
     {
-        this.chemicalReactor = pressurizedTankTE;
+        this.chemicalReactor = chemicalReactorTE;
  
-        this.addSlotToContainer(new Slot(player, 0, 0, 0));
-        this.addSlotToContainer(new Slot(player, 0, 0, 0));
+        this.addSlotToContainer(new Slot(chemicalReactor, slotID, 79, 33));
         
         //Inventory
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 9; j++)
             {
-                addSlotToContainer(new Slot(player, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+                addSlotToContainer(new Slot(player.inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
             }
         }
         // Hotbar
         for (int i = 0; i < 9; i++)
         {
-            addSlotToContainer(new Slot(player, i, 8 + i * 18, 142));
+            addSlotToContainer(new Slot(player.inventory, i, 8 + i * 18, 142));
         }
     }
     
