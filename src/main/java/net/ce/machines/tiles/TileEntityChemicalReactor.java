@@ -1,5 +1,8 @@
 package net.ce.machines.tiles;
 
+import net.ce.helpers.EnergyHelper;
+import net.ce.helpers.LogHelper;
+import net.ce.init.CEItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -7,21 +10,24 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
+import cofh.api.energy.EnergyStorage;
 
 public class TileEntityChemicalReactor extends TileEntity implements IInventory
 {
 	/** Array holds the current ItemStack in slots */
 	private ItemStack[] chemicalReactorItemStacks = new ItemStack[1];
-	//private EnergyStorage storage = new EnergyStorage(20000, 100);
-	//private int maxEnergyGeneration;
-	//private float currentEnergyGeneration;
+	private EnergyStorage storage;
+	private int energyGen;
+	private int energyTransfer;
+	private int energyCapacity;
+	private int currentEnergy;
 	
-	/**
-	 * Is reactor producing energy?
-	 */
-	/*public boolean isActive()
+	public TileEntityChemicalReactor(int energyGen, int energyTransfer, int energyCapacity)
 	{
-		return currentEnergyGeneration > 0;
+		storage = new EnergyStorage(energyCapacity, energyTransfer);
+		this.energyGen = energyGen;
+		this.energyTransfer = energyTransfer;
+		this.energyCapacity = energyCapacity;
 	}
 	
 	@Override
@@ -29,29 +35,42 @@ public class TileEntityChemicalReactor extends TileEntity implements IInventory
 	{
 		super.updateEntity();
 		
+		LogHelper.info("updating Entity.");
+		
 		if (!worldObj.isRemote)
 		{
-			if (isActive())
+			generateEnergy();
+			LogHelper.info("generating energy");
+			
+			if (storage.getEnergyStored() > 0)
 			{
-				generateEnergy();
-				
-				if (storage.getEnergyStored() > 0)
-				{
-					transferEnergy();
-				}
+				transferEnergy();
 			}
 		}
 	}
 	
+	public int getEnergyGen()
+	{
+		int energyGen = 0;
+		
+		ItemStack stack = getStackInSlot(0);
+		LogHelper.info("Stack in slot:" + stack);
+		
+		energyGen = EnergyHelper.capsuleEnergyGen(stack);
+		
+		return energyGen;
+	}
+	
 	public void generateEnergy()
 	{
-		
+		currentEnergy = getEnergyGen();
+		storage.modifyEnergyStored(currentEnergy);
 	}
 	
 	public void transferEnergy()
 	{
 		
-	}*/
+	}
 	
 	/*
 	 * ISidedInventory implemented methods.

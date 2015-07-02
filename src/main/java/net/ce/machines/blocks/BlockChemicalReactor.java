@@ -20,20 +20,20 @@ import net.minecraft.world.World;
 
 public class BlockChemicalReactor extends BlockContainer implements ITileEntityProvider
 {
-	protected final int maxEnergyGeneration;
-	protected final int maxEnergyTransfer;
-	protected final int capacity;
+	protected int energyGen;
+	protected int energyTransfer;
+	protected int energyCapacity;
 	public Random rand = new Random();
 	private static final String NAME = "chemicalReactor";
 	
-	public BlockChemicalReactor(int maxEnergyGeneration, int maxEnergyTransfer, int capacity)
+	public BlockChemicalReactor(int energyGen, int energyTransfer, int energyCapacity)
 	{
 		super(Material.iron);
 		this.setHardness(3.5F);
 		this.setStepSound(soundTypeMetal);
-		this.maxEnergyGeneration = maxEnergyGeneration;
-		this.maxEnergyTransfer = maxEnergyTransfer;
-		this.capacity = capacity;
+		this.energyGen = energyGen;
+		this.energyTransfer = energyTransfer;
+		this.energyCapacity = energyCapacity;
 		this.setBlockName(Reference.MODID + ":" + NAME);
 		this.setCreativeTab(CETabs.tabCE);
 	}
@@ -56,7 +56,7 @@ public class BlockChemicalReactor extends BlockContainer implements ITileEntityP
     @Override
     public TileEntity createNewTileEntity(World world, int meta) 
     {
-        return new TileEntityChemicalReactor();
+        return new TileEntityChemicalReactor(energyGen, energyTransfer, energyCapacity);
     }
     
     @Override

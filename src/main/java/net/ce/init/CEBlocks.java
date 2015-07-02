@@ -20,7 +20,12 @@ public class CEBlocks
 	public static Block machineFrame = new BlockCE("machineFrame", 1.5F, 3.0F, 2, 0F);
 	
 	// Machines
-	public static Block chemicalReactor = new BlockChemicalReactor(25, 64, 20000);
+	public static Block chemicalReactor = new BlockChemicalReactor(25, 25, 20000);
+	/*public static Block catalyticReactor = new BlockCatalyticReactor();
+	public static Block elementDiffuser = new BlockElementDiffuser();
+	public static Block elementExtractor = new BlockElementExtractor();
+	public static Block elementFreezer = new BlockElementFreezer();
+	public static Block elementOven = new BlockElementOven();*/
 	public static Block pressurizedTank = new BlockPressurizedTank();
 	
 	public static void registerBlocks()
@@ -38,6 +43,11 @@ public class CEBlocks
 		
 		// Machines
 		RegisterHelper.registerBlock(chemicalReactor);
+		/*RegisterHelper.registerBlock(catalyticReactor);
+		RegisterHelper.registerBlock(elementDiffuser);
+		RegisterHelper.registerBlock(elementExtractor);
+		RegisterHelper.registerBlock(elementFreezer);
+		RegisterHelper.registerBlock(elementOven);*/
 		RegisterHelper.registerBlock(pressurizedTank);
 	}
 }
