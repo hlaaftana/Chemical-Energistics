@@ -2,7 +2,6 @@ package net.ce.machines.tiles;
 
 import net.ce.helpers.EnergyHelper;
 import net.ce.helpers.LogHelper;
-import net.ce.init.CEItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -10,15 +9,21 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.common.util.ForgeDirection;
 import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyProvider;
+import cofh.api.energy.IEnergyReceiver;
 
-public class TileEntityChemicalReactor extends TileEntity implements IInventory
+public class TileEntityChemicalReactor extends TileEntity implements IEnergyProvider, IInventory
 {
 	/** Array holds the current ItemStack in slots */
 	private ItemStack[] chemicalReactorItemStacks = new ItemStack[1];
 	private EnergyStorage storage;
+	@SuppressWarnings("unused")
 	private int energyGen;
+	@SuppressWarnings("unused")
 	private int energyTransfer;
+	@SuppressWarnings("unused")
 	private int energyCapacity;
 	private int currentEnergy;
 	
@@ -52,10 +57,7 @@ public class TileEntityChemicalReactor extends TileEntity implements IInventory
 	public int getEnergyGen()
 	{
 		int energyGen = 0;
-		
-		ItemStack stack = getStackInSlot(0);
-		LogHelper.info("Stack in slot:" + stack);
-		
+		ItemStack stack = getStackInSlot(0);		
 		energyGen = EnergyHelper.capsuleEnergyGen(stack);
 		
 		return energyGen;
@@ -69,7 +71,16 @@ public class TileEntityChemicalReactor extends TileEntity implements IInventory
 	
 	public void transferEnergy()
 	{
-		
+		for (ForgeDirection direction : ForgeDirection.VALID_DIRECTIONS) 
+		{
+            TileEntity tile = getWorldObj().getTileEntity(xCoord + direction.offsetX, yCoord + direction.offsetY, zCoord + direction.offsetZ);
+            
+            if(tile instanceof IEnergyReceiver) 
+            {
+                IEnergyReceiver receiver = (IEnergyReceiver)tile;
+                extractEnergy(direction.getOpposite(), receiver.receiveEnergy(direction.getOpposite(), storage.getMaxExtract(), false), false);
+            }
+        }
 	}
 	
 	/*
@@ -233,5 +244,29 @@ public class TileEntityChemicalReactor extends TileEntity implements IInventory
 	public boolean isItemValidForSlot(int index, ItemStack stack) 
 	{
 		return false;
+	}
+
+	@Override
+	public boolean canConnectEnergy(ForgeDirection from) 
+	{
+		return true;
+	}
+
+	@Override
+	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate) 
+	{
+		return 0;
+	}
+
+	@Override
+	public int getEnergyStored(ForgeDirection from) 
+	{
+		return storage.getEnergyStored();
+	}
+
+	@Override
+	public int getMaxEnergyStored(ForgeDirection from) 
+	{
+		return storage.getMaxEnergyStored();
 	}
 }
