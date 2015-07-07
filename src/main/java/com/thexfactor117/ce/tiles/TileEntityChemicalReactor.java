@@ -21,7 +21,6 @@ public class TileEntityChemicalReactor extends TileEntity implements IEnergyProv
 	private EnergyStorage storage = new EnergyStorage(20000);
 	private int currentEnergy;
 	private int oldEnergy;
-	private int reactTime = 20*10;
 	private boolean isActive = false;
 	
 	/**
@@ -36,49 +35,21 @@ public class TileEntityChemicalReactor extends TileEntity implements IEnergyProv
 		{
 			generateEnergy();
 			
-			if (reactTime > 0)
-			{
-				reactTime--;
-			}
-			
-			if (reactTime == 0)
-			{
-				decrStackSize(0, 1);
-				reactTime = 20*10;
-			}
-			
 			if (storage.getEnergyStored() > 0)
 			{
 				transferEnergy();
 			}
 		}
 	}
-	
-	/**
-	 * Returns the amount of power to be generated depending on
-	 * the ItemStack in the slot.
-	 */
-	public int getEnergyValue()
+
+	/*public int getEnergyValue()
 	{
 		int energyGen = 0;
 		ItemStack stack = getStackInSlot(0);		
 		energyGen = EnergyHelper.capsuleEnergyGen(stack);
 		
 		return energyGen;
-	}
-	
-	public void canGenerate()
-	{
-		if (!isActive)
-		{
-			ItemStack stack = getStackInSlot(0);
-			
-			if (stack != null)
-			{
-				isActive = true;
-			}
-		}
-	}
+	}*/
 	
 	/**
 	 * Generate energy.
