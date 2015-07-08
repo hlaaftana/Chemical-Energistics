@@ -6,169 +6,167 @@ import net.minecraft.item.ItemStack;
 
 public class EnergyHelper 
 {
+	// items
+	public static ItemStack hydrogenGas = new ItemStack(CEItems.gasCapsule, 1, 0);
+	public static ItemStack lithiumGas = new ItemStack(CEItems.gasCapsule, 1, 1);
+	public static ItemStack nitrogenGas = new ItemStack(CEItems.gasCapsule, 1, 2);
+	public static ItemStack oxygenGas = new ItemStack(CEItems.gasCapsule, 1, 3);
+	public static ItemStack sodiumGas = new ItemStack(CEItems.gasCapsule, 1, 4);
+	public static ItemStack phosphorusGas = new ItemStack(CEItems.gasCapsule, 1, 5);
+	public static ItemStack sulfurGas = new ItemStack(CEItems.gasCapsule, 1, 6);
+	public static ItemStack iodineGas = new ItemStack(CEItems.gasCapsule, 1, 7);
+	public static ItemStack mercuryGas = new ItemStack(CEItems.gasCapsule, 1, 8);
+	public static ItemStack radonGas = new ItemStack(CEItems.gasCapsule, 1, 9);
+	
+	public static ItemStack lithiumLiquid = new ItemStack(CEItems.liquidCapsule, 1, 0);
+	public static ItemStack sodiumLiquid = new ItemStack(CEItems.liquidCapsule, 1, 1);
+	public static ItemStack aluminumLiquid = new ItemStack(CEItems.liquidCapsule, 1, 2);
+	public static ItemStack siliconLiquid = new ItemStack(CEItems.liquidCapsule, 1, 3);
+	public static ItemStack phosphorusLiquid = new ItemStack(CEItems.liquidCapsule, 1, 4);
+	public static ItemStack sulfurLiquid = new ItemStack(CEItems.liquidCapsule, 1, 5);
+	public static ItemStack ironLiquid = new ItemStack(CEItems.liquidCapsule, 1, 6);
+	public static ItemStack copperLiquid = new ItemStack(CEItems.liquidCapsule, 1, 7);
+	public static ItemStack silverLiquid = new ItemStack(CEItems.liquidCapsule, 1, 8);
+	public static ItemStack tinLiquid = new ItemStack(CEItems.liquidCapsule, 1, 9);
+	public static ItemStack iodineLiquid = new ItemStack(CEItems.liquidCapsule, 1, 10);
+	public static ItemStack goldLiquid = new ItemStack(CEItems.liquidCapsule, 1, 11);
+	public static ItemStack mercuryLiquid = new ItemStack(CEItems.liquidCapsule, 1, 12);
+	public static ItemStack leadLiquid = new ItemStack(CEItems.liquidCapsule, 1, 13);
+	public static ItemStack uraniumLiquid = new ItemStack(CEItems.liquidCapsule, 1, 14);
+	
 	// base energy
 	public static int crBaseEnergy = 25;
-		
-	// multipliers
-	public static int hydrogenGas = 25 * 2;
-	public static int lithiumGas = 25 * 6;
-	public static int nitrogenGas = 25 * 3;
-	public static int oxygenGas = 25 * 2;
-	public static int sodiumGas = 25 * 4;
-	public static int phosphorusGas = 25 * 6;
-	public static int sulfurGas = 25 * 8;
-	public static int iodineGas = 25 * 8;
-	public static int mercuryGas = 25 * 10;
-	public static int radonGas = 25 * 4;
-		
-	public static int lithiumLiquid = 25 * 3;
-	public static int sodiumLiquid = 25 * 2;
-	public static int aluminumLiquid = 25 * 3;
-	public static int siliconLiquid = 25 * 2;
-	public static int phosphorusLiquid = 25 * 3;
-	public static int sulfurLiquid = 25 * 4;
-	public static int ironLiquid = 25 * 2;
-	public static int copperLiquid = 25 * 2;
-	public static int silverLiquid = 25 * 3;
-	public static int tinLiquid = 25 * 2;
-	public static int iodineLiquid = 25 * 4;
-	public static int goldLiquid = 25 * 3;
-	public static int mercuryLiquid = 25 * 5;
-	public static int leadLiquid = 25 * 3;
-	public static int uraniumLiquid = 25 * 7;
 	
 	/**
 	 * Instance checks for energy gen.
 	 */
 	public static int capsuleEnergyGen(ItemStack stack)
 	{				
-		LogHelper.info("checkCapsuleMultiplier...");
-		
 		if (stack != null)
 		{
-			if (stack.getItem() == CEItems.gasCapsule && stack.getItemDamage() == 0)
+			if (stack.isItemEqual(hydrogenGas))
 			{
-				return 25 * EnergyHelper.hydrogenGas;
+				return crBaseEnergy * 2;
 			}
 			
-			if (stack.getItem() == CEItems.gasCapsule && stack.getItemDamage() == 1)
+			if (stack.isItemEqual(lithiumGas))
 			{
-				return 25 * EnergyHelper.lithiumGas;
+				return crBaseEnergy * 6;
 			}
 			
-			if (stack.getItem() == CEItems.gasCapsule && stack.getItemDamage() == 2)
+			if (stack.isItemEqual(nitrogenGas))
 			{
-				return 25 * EnergyHelper.nitrogenGas;
+				return crBaseEnergy * 3;
 			}
 			
-			if (stack.getItem() == CEItems.gasCapsule && stack.getItemDamage() == 3)
+			if (stack.isItemEqual(oxygenGas))
 			{
-				return 25 * EnergyHelper.oxygenGas;
+				return crBaseEnergy * 2;
 			}
 			
-			if (stack.getItem() == CEItems.gasCapsule && stack.getItemDamage() == 4)
+			if (stack.isItemEqual(sodiumGas))
 			{
-				return 25 * EnergyHelper.sodiumGas;
+				return crBaseEnergy * 4;
 			}
 			
-			if (stack.getItem() == CEItems.gasCapsule && stack.getItemDamage() == 5)
+			if (stack.isItemEqual(phosphorusGas))
 			{
-				return 25 * EnergyHelper.phosphorusGas;
+				return crBaseEnergy * 6;
 			}
 			
-			if (stack.getItem() == CEItems.gasCapsule && stack.getItemDamage() == 6)
+			if (stack.isItemEqual(sulfurGas))
 			{
-				return 25 * EnergyHelper.sulfurGas;
+				return crBaseEnergy * 8;
 			}
 			
-			if (stack.getItem() == CEItems.gasCapsule && stack.getItemDamage() == 7)
+			if (stack.isItemEqual(iodineGas))
 			{
-				return 25 * EnergyHelper.iodineGas;
+				return crBaseEnergy * 8;
 			}
 			
-			if (stack.getItem() == CEItems.gasCapsule && stack.getItemDamage() == 8)
+			if (stack.isItemEqual(mercuryGas))
 			{
-				return 25 * EnergyHelper.mercuryGas;
+				return crBaseEnergy * 10;
 			}
 			
-			if (stack.getItem() == CEItems.gasCapsule && stack.getItemDamage() == 9)
+			if (stack.isItemEqual(radonGas))
 			{
-				return 25 * EnergyHelper.radonGas;
+				return crBaseEnergy * 4;
 			}
 			
-			if (stack.getItem() == CEItems.liquidCapsule && stack.getItemDamage() == 0)
+			if (stack.isItemEqual(lithiumLiquid))
 			{
-				return 25 * EnergyHelper.lithiumLiquid;
+				return crBaseEnergy * 3;
 			}
 			
-			if (stack.getItem() == CEItems.liquidCapsule && stack.getItemDamage() == 1)
+			if (stack.isItemEqual(sodiumLiquid))
 			{
-				return 25 * EnergyHelper.sodiumLiquid;
+				return crBaseEnergy * 2;
 			}
 			
-			if (stack.getItem() == CEItems.liquidCapsule && stack.getItemDamage() == 2)
+			if (stack.isItemEqual(aluminumLiquid))
 			{
-				return 25 * EnergyHelper.aluminumLiquid;
+				return crBaseEnergy * 3;
 			}
 			
-			if (stack.getItem() == CEItems.liquidCapsule && stack.getItemDamage() == 3)
+			if (stack.isItemEqual(siliconLiquid))
 			{
-				return 25 * EnergyHelper.siliconLiquid;
+				return crBaseEnergy * 2;
 			}
 			
-			if (stack.getItem() == CEItems.liquidCapsule && stack.getItemDamage() == 4)
+			if (stack.isItemEqual(phosphorusLiquid))
 			{
-				return 25 * EnergyHelper.phosphorusLiquid;
+				return crBaseEnergy * 3;
 			}
 			
-			if (stack.getItem() == CEItems.liquidCapsule && stack.getItemDamage() == 5)
+			if (stack.isItemEqual(sulfurLiquid))
 			{
-				return 25 * EnergyHelper.sulfurLiquid;
+				return crBaseEnergy * 4;
 			}
 			
-			if (stack.getItem() == CEItems.liquidCapsule && stack.getItemDamage() == 6)
+			if (stack.isItemEqual(ironLiquid))
 			{
-				return 25 * EnergyHelper.ironLiquid;
+				return crBaseEnergy * 2;
 			}
 			
-			if (stack.getItem() == CEItems.liquidCapsule && stack.getItemDamage() == 7)
+			if (stack.isItemEqual(copperLiquid))
 			{
-				return 25 * EnergyHelper.copperLiquid;
+				return crBaseEnergy * 2;
 			}
 			
-			if (stack.getItem() == CEItems.liquidCapsule && stack.getItemDamage() == 8)
+			if (stack.isItemEqual(silverLiquid))
 			{
-				return 25 * EnergyHelper.silverLiquid;
+				return crBaseEnergy * 3;
 			}
 			
-			if (stack.getItem() == CEItems.liquidCapsule && stack.getItemDamage() == 9)
+			if (stack.isItemEqual(tinLiquid))
 			{
-				return 25 * EnergyHelper.tinLiquid;
+				return crBaseEnergy * 2;
 			}
 			
-			if (stack.getItem() == CEItems.liquidCapsule && stack.getItemDamage() == 10)
+			if (stack.isItemEqual(iodineLiquid))
 			{
-				return 25 * EnergyHelper.iodineLiquid;
+				return crBaseEnergy * 4;
 			}
 			
-			if (stack.getItem() == CEItems.liquidCapsule && stack.getItemDamage() == 11)
+			if (stack.isItemEqual(goldLiquid))
 			{
-				return 25 * EnergyHelper.goldLiquid;
+				return crBaseEnergy * 3;
 			}
 			
-			if (stack.getItem() == CEItems.liquidCapsule && stack.getItemDamage() == 12)
+			if (stack.isItemEqual(mercuryLiquid))
 			{
-				return 25 * EnergyHelper.mercuryLiquid;
+				return crBaseEnergy * 5;
 			}
 			
-			if (stack.getItem() == CEItems.liquidCapsule && stack.getItemDamage() == 13)
+			if (stack.isItemEqual(leadLiquid))
 			{
-				return 25 * EnergyHelper.leadLiquid;
+				return crBaseEnergy * 3;
 			}
 			
-			if (stack.getItem() == CEItems.liquidCapsule && stack.getItemDamage() == 14)
+			if (stack.isItemEqual(uraniumLiquid))
 			{
-				return 25 * EnergyHelper.uraniumLiquid;
+				return crBaseEnergy * 7;
 			}
 		}
 		

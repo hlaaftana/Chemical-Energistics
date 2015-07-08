@@ -1,8 +1,6 @@
 package com.thexfactor117.ce.api;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -10,14 +8,12 @@ import net.minecraftforge.oredict.OreDictionary;
 public class ReactorRecipe 
 {
 	public final Object input;
-	public final ItemStack output;
 	public final int energyMultiplier;
 	public final int time;
 	
-	public ReactorRecipe(ItemStack output, Object input, int energyMultiplier, int time)
+	public ReactorRecipe(Object input, int energyMultiplier, int time)
 	{
 		this.input = input;
-		this.output = output;
 		this.energyMultiplier = energyMultiplier;
 		this.time = time;
 	}
@@ -33,7 +29,7 @@ public class ReactorRecipe
 	 */
 	public static void addRecipe(ItemStack output, Object input, int energyMultiplier, int time)
 	{
-		recipeList.add(new ReactorRecipe(output, input, 25 * energyMultiplier, time));
+		recipeList.add(new ReactorRecipe(input, 25 * energyMultiplier, time));
 	}
 	
 	/**
@@ -56,29 +52,5 @@ public class ReactorRecipe
 		}
 		
 		return null;
-	}
-	
-	/**
-	 * Removes the specified recipe.
-	 * @param stack
-	 * @return
-	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static List<ReactorRecipe> removeRecipes(ItemStack stack)
-	{
-		List<ReactorRecipe> list = new ArrayList();
-		Iterator<ReactorRecipe> it = recipeList.iterator();
-		
-		while(it.hasNext())
-		{
-			ReactorRecipe ir = it.next();
-			
-			if(OreDictionary.itemMatches(ir.output, stack, true))
-			{
-				list.add(ir);
-				it.remove();
-			}
-		}
-		return list;
 	}
 }

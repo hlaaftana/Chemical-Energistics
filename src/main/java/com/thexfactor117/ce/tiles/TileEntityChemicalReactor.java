@@ -1,7 +1,5 @@
 package com.thexfactor117.ce.tiles;
 
-import com.thexfactor117.ce.helpers.EnergyHelper;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -14,73 +12,100 @@ import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyProvider;
 import cofh.api.energy.IEnergyReceiver;
 
+import com.thexfactor117.ce.helpers.EnergyHelper;
+
 public class TileEntityChemicalReactor extends TileEntity implements IEnergyProvider, IInventory
 {
 	/** Array holds the current ItemStack in slots */
 	private ItemStack[] items = new ItemStack[1];
-	private EnergyStorage storage = new EnergyStorage(20000);
-	private int currentEnergy;
-	private int oldEnergy;
-	private boolean isActive = false;
+	public EnergyStorage storage = new EnergyStorage(20000, 64);
+	public boolean isActive = false;
+	public int process = 0;
+	public int processMax = 20*8;
 	
 	/**
-	 * Called every tick. Generate power, and transfer the power.
+	 * Called every tick. Generate and transfer energy if possible.
 	 */
 	@Override
 	public void updateEntity()
 	{
 		super.updateEntity();
-				
+		
 		if (!worldObj.isRemote)
 		{
-			generateEnergy();
+			if (items[0] != null && process < processMax && canGenerate())
+			{
+				process++;
+				generate();
+				
+				if (process == processMax)
+				{
+					this.decrStackSize(0, 1);
+					process = 0;
+				}
+			}
 			
 			if (storage.getEnergyStored() > 0)
 			{
-				transferEnergy();
+				transfer();
 			}
 		}
 	}
-
-	/*public int getEnergyValue()
-	{
-		int energyGen = 0;
-		ItemStack stack = getStackInSlot(0);		
-		energyGen = EnergyHelper.capsuleEnergyGen(stack);
-		
-		return energyGen;
-	}*/
 	
 	/**
-	 * Generate energy.
+	 * Gets the item's energy value in the slot.
+	 * @param stack
+	 * @return energy value
 	 */
-	public void generateEnergy()
+	public static int getEnergyValue(ItemStack stack)
 	{
-		if (isActive)
+		if (stack == null)
 		{
-			currentEnergy = getEnergyValue();
-			
-			if (currentEnergy != oldEnergy)
-			{
-				oldEnergy = currentEnergy;
-				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-				markDirty();
-			}
-			
-			storage.modifyEnergyStored(currentEnergy);
+			return 0;
+		}
+		
+		return EnergyHelper.capsuleEnergyGen(stack);
+	}
+	
+	/**
+	 * Returns true if the machine can generate RF.
+	 */
+	public boolean canGenerate()
+	{
+		return getEnergyValue(this.items[0]) > 0;
+	}
+	
+	/**
+	 * Generate Energy.
+	 */
+	public void generate()
+	{
+		int energy = getEnergyValue(items[0]);
+		
+		if (energy > 0)
+		{
+			this.isActive = true;
+			int energyStored = storage.getEnergyStored();
+			storage.modifyEnergyStored(energyStored + energy);
+			storage.setEnergyStored(energyStored + energy);
+			markDirty();
+		}
+		else
+		{
+			this.isActive = false;
 		}
 	}
 	
 	/**
-	 * Transfer energy.
+	 * Transfer Energy.
 	 */
-	public void transferEnergy()
+	public void transfer()
 	{
 		for (ForgeDirection direction : ForgeDirection.VALID_DIRECTIONS) 
 		{
             TileEntity tile = getWorldObj().getTileEntity(xCoord + direction.offsetX, yCoord + direction.offsetY, zCoord + direction.offsetZ);
             
-            if(tile instanceof IEnergyReceiver) 
+            if (tile instanceof IEnergyReceiver) 
             {
                 IEnergyReceiver receiver = (IEnergyReceiver)tile;
                 extractEnergy(direction.getOpposite(), receiver.receiveEnergy(direction.getOpposite(), storage.getMaxExtract(), false), false);
