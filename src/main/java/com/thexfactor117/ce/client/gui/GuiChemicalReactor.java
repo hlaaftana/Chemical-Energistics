@@ -1,7 +1,6 @@
 package com.thexfactor117.ce.client.gui;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -9,11 +8,14 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import cofh.lib.gui.GuiBase;
+import cofh.lib.gui.element.ElementEnergyStored;
+
 import com.thexfactor117.ce.Reference;
 import com.thexfactor117.ce.client.gui.containers.ContainerChemicalReactor;
 import com.thexfactor117.ce.tiles.TileEntityChemicalReactor;
 
-public class GuiChemicalReactor extends GuiContainer
+public class GuiChemicalReactor extends GuiBase
 {
 	private ResourceLocation texture = new ResourceLocation(Reference.MODID, "textures/gui/machines/chemicalReactor.png");
 	 
@@ -25,6 +27,14 @@ public class GuiChemicalReactor extends GuiContainer
     	super(new ContainerChemicalReactor(player, chemicalReactorTE));
     	inventory = player.inventory;
     	this.chemicalReactor = chemicalReactorTE;
+    }
+    
+    @Override
+    public void initGui()
+    {
+    	super.initGui();
+    	
+    	addElement(new ElementEnergyStored(this, 150, 18, this.chemicalReactor.getEnergyStored()));
     }
     
     @Override

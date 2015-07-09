@@ -11,8 +11,10 @@ import net.minecraftforge.common.util.ForgeDirection;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyProvider;
 import cofh.api.energy.IEnergyReceiver;
+import cofh.api.energy.IEnergyStorage;
 
 import com.thexfactor117.ce.helpers.EnergyHelper;
+import com.thexfactor117.ce.helpers.LogHelper;
 
 public class TileEntityChemicalReactor extends TileEntity implements IEnergyProvider, IInventory
 {
@@ -31,6 +33,8 @@ public class TileEntityChemicalReactor extends TileEntity implements IEnergyProv
 	{
 		super.updateEntity();
 		
+		LogHelper.info("Energy Stored: " + storage.getEnergyStored());
+		
 		if (!worldObj.isRemote)
 		{
 			if (items[0] != null && process < processMax && canGenerate())
@@ -47,7 +51,7 @@ public class TileEntityChemicalReactor extends TileEntity implements IEnergyProv
 			
 			if (storage.getEnergyStored() > 0)
 			{
-				transfer();
+				//transfer();
 			}
 		}
 	}
@@ -85,9 +89,7 @@ public class TileEntityChemicalReactor extends TileEntity implements IEnergyProv
 		if (energy > 0)
 		{
 			this.isActive = true;
-			int energyStored = storage.getEnergyStored();
-			storage.modifyEnergyStored(energyStored + energy);
-			storage.setEnergyStored(energyStored + energy);
+			storage.modifyEnergyStored(energy);
 			markDirty();
 		}
 		else
@@ -111,6 +113,11 @@ public class TileEntityChemicalReactor extends TileEntity implements IEnergyProv
                 extractEnergy(direction.getOpposite(), receiver.receiveEnergy(direction.getOpposite(), storage.getMaxExtract(), false), false);
             }
         }
+	}
+	
+	public IEnergyStorage getEnergyStored()
+	{
+		return this.storage;
 	}
 	
 	/*

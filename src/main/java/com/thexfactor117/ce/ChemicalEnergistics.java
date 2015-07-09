@@ -36,7 +36,6 @@ public class ChemicalEnergistics
 	public void init(FMLInitializationEvent event)
 	{
 		NetworkRegistry.INSTANCE.registerGuiHandler(ChemicalEnergistics.instance, new GuiHandler());
-		
 		proxy.registerTileEntities();
 	}
 	
