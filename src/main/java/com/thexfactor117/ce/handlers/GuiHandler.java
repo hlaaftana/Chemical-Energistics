@@ -1,9 +1,9 @@
 package com.thexfactor117.ce.handlers;
 
-import com.thexfactor117.ce.client.gui.GuiChemicalReactor;
-import com.thexfactor117.ce.client.gui.GuiPressurizedTank;
-import com.thexfactor117.ce.client.gui.containers.ContainerChemicalReactor;
-import com.thexfactor117.ce.client.gui.containers.ContainerPressurizedTank;
+import com.thexfactor117.ce.gui.client.GuiChemicalReactor;
+import com.thexfactor117.ce.gui.client.GuiPressurizedTank;
+import com.thexfactor117.ce.gui.containers.ContainerChemicalReactor;
+import com.thexfactor117.ce.gui.containers.ContainerPressurizedTank;
 import com.thexfactor117.ce.tiles.TileEntityChemicalReactor;
 import com.thexfactor117.ce.tiles.TileEntityPressurizedTank;
 

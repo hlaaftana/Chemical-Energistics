@@ -1,35 +1,42 @@
-package com.thexfactor117.ce.client.gui.containers;
+package com.thexfactor117.ce.gui.containers;
 
-import com.thexfactor117.ce.tiles.TileEntityChemicalReactor;
+import com.thexfactor117.ce.tiles.TileEntityPressurizedTank;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-public class ContainerChemicalReactor extends Container
+public class ContainerPressurizedTank extends Container
 {
-	private TileEntityChemicalReactor chemicalReactor; 
+	private TileEntityPressurizedTank pressurizedTank; 
     private int slotID = 0;
     
-    public ContainerChemicalReactor(EntityPlayer player, TileEntityChemicalReactor chemicalReactorTE)
+    public ContainerPressurizedTank(EntityPlayer player, TileEntityPressurizedTank pressurizedTankTE)
     {
-        this.chemicalReactor = chemicalReactorTE;
+        this.pressurizedTank = pressurizedTankTE;
  
-        this.addSlotToContainer(new Slot(chemicalReactor, slotID, 79, 33));
-        
+        //Storage
+        for (int i = 0; i < 6; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                addSlotToContainer(new Slot(pressurizedTank, slotID++, 8 + j * 18, 18 + i * 18));
+            }
+        }
+ 
         //Inventory
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 9; j++)
             {
-                addSlotToContainer(new Slot(player.inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+            	addSlotToContainer(new Slot(player.inventory, j + i * 9 + 9, 8 + j * 18, 140 + i * 18));
             }
         }
         // Hotbar
         for (int i = 0; i < 9; i++)
         {
-            addSlotToContainer(new Slot(player.inventory, i, 8 + i * 18, 142));
+            addSlotToContainer(new Slot(player.inventory, i, 8 + i * 18, 198));
         }
     }
     
@@ -72,6 +79,6 @@ public class ContainerChemicalReactor extends Container
     @Override
     public boolean canInteractWith(EntityPlayer player)
     {
-        return chemicalReactor.isUseableByPlayer(player);
+        return pressurizedTank.isUseableByPlayer(player);
     }
 }

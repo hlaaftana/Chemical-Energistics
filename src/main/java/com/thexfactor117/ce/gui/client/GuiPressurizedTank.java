@@ -1,4 +1,4 @@
-package com.thexfactor117.ce.client.gui;
+package com.thexfactor117.ce.gui.client;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import com.thexfactor117.ce.Reference;
-import com.thexfactor117.ce.client.gui.containers.ContainerPressurizedTank;
+import com.thexfactor117.ce.gui.containers.ContainerPressurizedTank;
 import com.thexfactor117.ce.tiles.TileEntityPressurizedTank;
 
 public class GuiPressurizedTank extends GuiContainer

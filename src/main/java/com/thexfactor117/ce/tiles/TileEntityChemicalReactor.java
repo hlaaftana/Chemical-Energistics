@@ -51,7 +51,7 @@ public class TileEntityChemicalReactor extends TileEntity implements IEnergyProv
 			
 			if (storage.getEnergyStored() > 0)
 			{
-				//transfer();
+				transfer();
 			}
 		}
 	}
@@ -102,7 +102,7 @@ public class TileEntityChemicalReactor extends TileEntity implements IEnergyProv
 	 * Transfer Energy.
 	 */
 	public void transfer()
-	{
+	{			
 		for (ForgeDirection direction : ForgeDirection.VALID_DIRECTIONS) 
 		{
             TileEntity tile = getWorldObj().getTileEntity(xCoord + direction.offsetX, yCoord + direction.offsetY, zCoord + direction.offsetZ);
@@ -110,7 +110,8 @@ public class TileEntityChemicalReactor extends TileEntity implements IEnergyProv
             if (tile instanceof IEnergyReceiver) 
             {
                 IEnergyReceiver receiver = (IEnergyReceiver)tile;
-                extractEnergy(direction.getOpposite(), receiver.receiveEnergy(direction.getOpposite(), storage.getMaxExtract(), false), false);
+                
+        		this.storage.modifyEnergyStored(-receiver.receiveEnergy(direction.getOpposite(), Math.min(this.storage.getMaxExtract(), this.storage.getEnergyStored()), false));
             }
         }
 	}
@@ -217,6 +218,8 @@ public class TileEntityChemicalReactor extends TileEntity implements IEnergyProv
 	{
 		super.readFromNBT(nbt);
 		
+		this.storage.readFromNBT(nbt);
+		
 		NBTTagList list = nbt.getTagList("Items", Constants.NBT.TAG_COMPOUND);
 		items = new ItemStack[getSizeInventory()];
 	 
@@ -236,6 +239,8 @@ public class TileEntityChemicalReactor extends TileEntity implements IEnergyProv
 	public void writeToNBT(NBTTagCompound nbt)
 	{
 		super.writeToNBT(nbt);
+		
+		this.storage.writeToNBT(nbt);
 		
 		NBTTagList list = new NBTTagList();
 	 

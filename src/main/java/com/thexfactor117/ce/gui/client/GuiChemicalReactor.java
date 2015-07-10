@@ -1,4 +1,4 @@
-package com.thexfactor117.ce.client.gui;
+package com.thexfactor117.ce.gui.client;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
@@ -12,7 +12,7 @@ import cofh.lib.gui.GuiBase;
 import cofh.lib.gui.element.ElementEnergyStored;
 
 import com.thexfactor117.ce.Reference;
-import com.thexfactor117.ce.client.gui.containers.ContainerChemicalReactor;
+import com.thexfactor117.ce.gui.containers.ContainerChemicalReactor;
 import com.thexfactor117.ce.tiles.TileEntityChemicalReactor;
 
 public class GuiChemicalReactor extends GuiBase
