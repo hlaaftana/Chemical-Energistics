@@ -1,10 +1,14 @@
 package com.thexfactor117.ce.tiles;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ContainerFurnace;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -218,7 +222,7 @@ public class TileEntityChemicalReactor extends TileEntity implements IEnergyProv
 	{
 		super.readFromNBT(nbt);
 		
-		this.storage.readFromNBT(nbt);
+		readFromSyncableNBT(nbt);
 		
 		NBTTagList list = nbt.getTagList("Items", Constants.NBT.TAG_COMPOUND);
 		items = new ItemStack[getSizeInventory()];
@@ -235,12 +239,17 @@ public class TileEntityChemicalReactor extends TileEntity implements IEnergyProv
 		} 
 	}
 	
+	public void readFromSyncableNBT(NBTTagCompound nbt)
+	{
+		this.storage.readFromNBT(nbt);
+	}
+	
 	@Override
 	public void writeToNBT(NBTTagCompound nbt)
 	{
 		super.writeToNBT(nbt);
 		
-		this.storage.writeToNBT(nbt);
+		writeToSyncableNBT(nbt);
 		
 		NBTTagList list = new NBTTagList();
 	 
@@ -256,6 +265,11 @@ public class TileEntityChemicalReactor extends TileEntity implements IEnergyProv
 		}
 		
 		nbt.setTag("Items", list);
+	}
+	
+	public void writeToSyncableNBT(NBTTagCompound nbt)
+	{
+		this.storage.writeToNBT(nbt);
 	}
 
 	@Override

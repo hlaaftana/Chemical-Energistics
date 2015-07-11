@@ -1,22 +1,23 @@
 package com.thexfactor117.ce.gui.containers;
 
-import com.thexfactor117.ce.tiles.TileEntityChemicalReactor;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
+import com.thexfactor117.ce.tiles.TileEntityChemicalReactor;
+
 public class ContainerChemicalReactor extends Container
 {
-	private TileEntityChemicalReactor chemicalReactor; 
-    private int slotID = 0;
+	private TileEntityChemicalReactor chemicalReactor;
+	private int energyStored;
     
-    public ContainerChemicalReactor(EntityPlayer player, TileEntityChemicalReactor chemicalReactorTE)
+    public ContainerChemicalReactor(EntityPlayer player, TileEntityChemicalReactor te)
     {
-        this.chemicalReactor = chemicalReactorTE;
+        this.chemicalReactor = te;
  
-        this.addSlotToContainer(new Slot(chemicalReactor, slotID, 79, 33));
+        this.addSlotToContainer(new Slot(chemicalReactor, 0, 79, 33));
         
         //Inventory
         for (int i = 0; i < 3; i++)
@@ -26,11 +27,41 @@ public class ContainerChemicalReactor extends Container
                 addSlotToContainer(new Slot(player.inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
             }
         }
+        
         // Hotbar
         for (int i = 0; i < 9; i++)
         {
             addSlotToContainer(new Slot(player.inventory, i, 8 + i * 18, 142));
         }
+    }
+    
+    @Override
+    public void addCraftingToCrafters(ICrafting crafting)
+    {
+    	super.addCraftingToCrafters(crafting);
+    	
+    	crafting.sendProgressBarUpdate(this, 0, this.chemicalReactor.storage.getEnergyStored());
+    }
+    
+    /**
+     * Looks for changes made in the container, sends them to every listener.
+     */
+    @Override
+    public void detectAndSendChanges()
+    {
+        super.detectAndSendChanges();
+
+        for (int i = 0; i < this.crafters.size(); ++i)
+        {
+            ICrafting crafting = (ICrafting)this.crafters.get(i);
+
+            if (this.energyStored != this.chemicalReactor.storage.getEnergyStored())
+            {
+                crafting.sendProgressBarUpdate(this, 0, this.chemicalReactor.storage.getEnergyStored());
+            }
+        }
+        
+        this.energyStored = this.chemicalReactor.storage.getEnergyStored();
     }
     
     @Override
