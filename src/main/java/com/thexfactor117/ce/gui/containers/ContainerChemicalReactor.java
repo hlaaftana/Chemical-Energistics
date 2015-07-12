@@ -6,14 +6,14 @@ import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import com.thexfactor117.ce.tiles.TileEntityChemicalReactor;
+import com.thexfactor117.ce.tiles.TileChemicalReactor;
 
 public class ContainerChemicalReactor extends Container
 {
-	private TileEntityChemicalReactor chemicalReactor;
+	private TileChemicalReactor chemicalReactor;
 	private int energyStored;
     
-    public ContainerChemicalReactor(EntityPlayer player, TileEntityChemicalReactor te)
+    public ContainerChemicalReactor(EntityPlayer player, TileChemicalReactor te)
     {
         this.chemicalReactor = te;
  

@@ -11,16 +11,16 @@ import org.lwjgl.opengl.GL11;
 
 import com.thexfactor117.ce.Reference;
 import com.thexfactor117.ce.gui.containers.ContainerPressurizedTank;
-import com.thexfactor117.ce.tiles.TileEntityPressurizedTank;
+import com.thexfactor117.ce.tiles.TilePressurizedTank;
 
 public class GuiPressurizedTank extends GuiContainer
 {
 	private ResourceLocation texture = new ResourceLocation(Reference.MODID, "textures/gui/machines/pressurizedTank.png");
 	 
     private InventoryPlayer inventory;
-    private TileEntityPressurizedTank pressurizedTank;
+    private TilePressurizedTank pressurizedTank;
     
-    public GuiPressurizedTank(EntityPlayer player, TileEntityPressurizedTank pressurizedTankTE)
+    public GuiPressurizedTank(EntityPlayer player, TilePressurizedTank pressurizedTankTE)
     {
     	super(new ContainerPressurizedTank(player, pressurizedTankTE));
     	inventory = player.inventory;

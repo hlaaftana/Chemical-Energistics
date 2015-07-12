@@ -6,7 +6,7 @@ import java.util.Random;
 import com.thexfactor117.ce.ChemicalEnergistics;
 import com.thexfactor117.ce.Reference;
 import com.thexfactor117.ce.init.CETabs;
-import com.thexfactor117.ce.tiles.TileEntityChemicalReactor;
+import com.thexfactor117.ce.tiles.TileChemicalReactor;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -51,7 +51,7 @@ public class BlockChemicalReactor extends BlockContainer implements ITileEntityP
     @Override
     public TileEntity createNewTileEntity(World world, int meta) 
     {
-        return new TileEntityChemicalReactor();
+        return new TileChemicalReactor();
     }
     
     @Override
@@ -75,7 +75,7 @@ public class BlockChemicalReactor extends BlockContainer implements ITileEntityP
 		
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
 		
-		if (tileEntity != null && tileEntity instanceof TileEntityChemicalReactor)
+		if (tileEntity != null && tileEntity instanceof TileChemicalReactor)
 		{
 			// number indicates which GUI to open
 			player.openGui(ChemicalEnergistics.instance, 1, world, x, y, z);
@@ -99,9 +99,9 @@ public class BlockChemicalReactor extends BlockContainer implements ITileEntityP
 		
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
 		
-		if (tileEntity != null && tileEntity instanceof TileEntityChemicalReactor)
+		if (tileEntity != null && tileEntity instanceof TileChemicalReactor)
 		{
-			TileEntityChemicalReactor chemicalReactor = (TileEntityChemicalReactor) tileEntity;
+			TileChemicalReactor chemicalReactor = (TileChemicalReactor) tileEntity;
 			
 			for (int i = 0; i < chemicalReactor.getSizeInventory(); i++)
 			{

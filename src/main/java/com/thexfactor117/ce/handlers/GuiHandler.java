@@ -4,8 +4,8 @@ import com.thexfactor117.ce.gui.client.GuiChemicalReactor;
 import com.thexfactor117.ce.gui.client.GuiPressurizedTank;
 import com.thexfactor117.ce.gui.containers.ContainerChemicalReactor;
 import com.thexfactor117.ce.gui.containers.ContainerPressurizedTank;
-import com.thexfactor117.ce.tiles.TileEntityChemicalReactor;
-import com.thexfactor117.ce.tiles.TileEntityPressurizedTank;
+import com.thexfactor117.ce.tiles.TileChemicalReactor;
+import com.thexfactor117.ce.tiles.TilePressurizedTank;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
@@ -17,13 +17,13 @@ public class GuiHandler implements IGuiHandler
 	{
 		if (ID == 0)
 		{
-			TileEntityPressurizedTank pressurizedTank = (TileEntityPressurizedTank) world.getTileEntity(x, y, z);
+			TilePressurizedTank pressurizedTank = (TilePressurizedTank) world.getTileEntity(x, y, z);
 			return new ContainerPressurizedTank(player, pressurizedTank);
 		}
 		
 		if (ID == 1)
 		{
-			TileEntityChemicalReactor chemicalReactor = (TileEntityChemicalReactor) world.getTileEntity(x, y, z);
+			TileChemicalReactor chemicalReactor = (TileChemicalReactor) world.getTileEntity(x, y, z);
 			return new ContainerChemicalReactor(player, chemicalReactor);
 		}
 		
@@ -34,13 +34,13 @@ public class GuiHandler implements IGuiHandler
 	{
 		if (ID == 0)
 		{
-			TileEntityPressurizedTank pressurizedTank = (TileEntityPressurizedTank) world.getTileEntity(x, y, z);
+			TilePressurizedTank pressurizedTank = (TilePressurizedTank) world.getTileEntity(x, y, z);
 			return new GuiPressurizedTank(player, pressurizedTank);
 		}
 		
 		if (ID == 1)
 		{
-			TileEntityChemicalReactor chemicalReactor = (TileEntityChemicalReactor) world.getTileEntity(x, y, z);
+			TileChemicalReactor chemicalReactor = (TileChemicalReactor) world.getTileEntity(x, y, z);
 			return new GuiChemicalReactor(player, chemicalReactor);
 		}
 		

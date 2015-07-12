@@ -1,6 +1,6 @@
 package com.thexfactor117.ce.gui.containers;
 
-import com.thexfactor117.ce.tiles.TileEntityPressurizedTank;
+import com.thexfactor117.ce.tiles.TilePressurizedTank;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
@@ -9,10 +9,10 @@ import net.minecraft.item.ItemStack;
 
 public class ContainerPressurizedTank extends Container
 {
-	private TileEntityPressurizedTank pressurizedTank; 
+	private TilePressurizedTank pressurizedTank; 
     private int slotID = 0;
     
-    public ContainerPressurizedTank(EntityPlayer player, TileEntityPressurizedTank pressurizedTankTE)
+    public ContainerPressurizedTank(EntityPlayer player, TilePressurizedTank pressurizedTankTE)
     {
         this.pressurizedTank = pressurizedTankTE;
  

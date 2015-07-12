@@ -6,7 +6,7 @@ import java.util.Random;
 import com.thexfactor117.ce.ChemicalEnergistics;
 import com.thexfactor117.ce.helpers.LogHelper;
 import com.thexfactor117.ce.init.CETabs;
-import com.thexfactor117.ce.tiles.TileEntityPressurizedTank;
+import com.thexfactor117.ce.tiles.TilePressurizedTank;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -44,7 +44,7 @@ public class BlockPressurizedTank extends BlockContainer
 		
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
 		
-		if (tileEntity != null && tileEntity instanceof TileEntityPressurizedTank)
+		if (tileEntity != null && tileEntity instanceof TilePressurizedTank)
 		{
 			// number indicates which GUI to open
 			player.openGui(ChemicalEnergistics.instance, 0, world, x, y, z);
@@ -69,9 +69,9 @@ public class BlockPressurizedTank extends BlockContainer
 		
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
 		
-		if (tileEntity != null && tileEntity instanceof TileEntityPressurizedTank)
+		if (tileEntity != null && tileEntity instanceof TilePressurizedTank)
 		{
-			TileEntityPressurizedTank pressurizedTank = (TileEntityPressurizedTank) tileEntity;
+			TilePressurizedTank pressurizedTank = (TilePressurizedTank) tileEntity;
 			
 			for (int i = 0; i < pressurizedTank.getSizeInventory(); i++)
 			{
@@ -94,6 +94,6 @@ public class BlockPressurizedTank extends BlockContainer
 	
 	public TileEntity createNewTileEntity(World world, int par2)
 	{
-		return new TileEntityPressurizedTank();
+		return new TilePressurizedTank();
 	}
 }

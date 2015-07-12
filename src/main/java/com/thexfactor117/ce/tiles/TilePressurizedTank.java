@@ -8,7 +8,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 
-public class TileEntityPressurizedTank extends TileEntity implements IInventory
+public class TilePressurizedTank extends TileEntity implements IInventory
 {
 	private ItemStack[] items = new ItemStack[54];
 	

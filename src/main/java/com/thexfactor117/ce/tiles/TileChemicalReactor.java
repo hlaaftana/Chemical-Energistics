@@ -1,7 +1,6 @@
 package com.thexfactor117.ce.tiles;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ContainerFurnace;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -15,12 +14,10 @@ import net.minecraftforge.common.util.ForgeDirection;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyProvider;
 import cofh.api.energy.IEnergyReceiver;
-import cofh.api.energy.IEnergyStorage;
 
 import com.thexfactor117.ce.helpers.EnergyHelper;
-import com.thexfactor117.ce.helpers.LogHelper;
 
-public class TileEntityChemicalReactor extends TileEntity implements IEnergyProvider, IInventory
+public class TileChemicalReactor extends TileEntity implements IEnergyProvider, IInventory
 {
 	/** Array holds the current ItemStack in slots */
 	private ItemStack[] items = new ItemStack[1];
@@ -36,9 +33,7 @@ public class TileEntityChemicalReactor extends TileEntity implements IEnergyProv
 	public void updateEntity()
 	{
 		super.updateEntity();
-		
-		LogHelper.info("Energy Stored: " + storage.getEnergyStored());
-		
+
 		if (!worldObj.isRemote)
 		{
 			if (items[0] != null && process < processMax && canGenerate())
@@ -80,7 +75,7 @@ public class TileEntityChemicalReactor extends TileEntity implements IEnergyProv
 	 */
 	public boolean canGenerate()
 	{
-		return getEnergyValue(this.items[0]) > 0;
+		return getEnergyValue(this.items[0]) > 0 && storage.getEnergyStored() < storage.getMaxEnergyStored();
 	}
 	
 	/**
@@ -94,6 +89,7 @@ public class TileEntityChemicalReactor extends TileEntity implements IEnergyProv
 		{
 			this.isActive = true;
 			storage.modifyEnergyStored(energy);
+			worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 			markDirty();
 		}
 		else
@@ -120,9 +116,87 @@ public class TileEntityChemicalReactor extends TileEntity implements IEnergyProv
         }
 	}
 	
-	public IEnergyStorage getEnergyStored()
+	@Override
+	public void readFromNBT(NBTTagCompound nbt)
 	{
-		return this.storage;
+		super.readFromNBT(nbt);
+		
+		this.readSyncableDataFromNBT(nbt);
+		
+		NBTTagList list = nbt.getTagList("Items", Constants.NBT.TAG_COMPOUND);
+		items = new ItemStack[getSizeInventory()];
+	 
+		for (int i = 0; i < list.tagCount(); ++i) 
+		{ 
+			NBTTagCompound comp = list.getCompoundTagAt(i); 
+			int j = comp.getByte("Slot") & 255;
+			
+			if (j >= 0 && j < items.length)
+			{
+				items[j] = ItemStack.loadItemStackFromNBT(comp);
+			}
+		} 
+	}
+	
+	@Override
+	public void writeToNBT(NBTTagCompound nbt)
+	{
+		super.writeToNBT(nbt);
+		
+		this.writeSyncableDataToNBT(nbt);
+		
+		NBTTagList list = new NBTTagList();
+	 
+		for (int i = 0; i < items.length; ++i)
+		{
+			if (items[i] != null)
+			{
+				NBTTagCompound comp = new NBTTagCompound();
+				comp.setByte("Slot", (byte) i);
+				items[i].writeToNBT(comp);
+				list.appendTag(comp);
+			}
+		}
+		
+		nbt.setTag("Items", list);
+	}
+	
+	/**
+	 * Reads syncable data.
+	 * @param nbt
+	 */
+	public void readSyncableDataFromNBT(NBTTagCompound nbt)
+	{
+		storage.readFromNBT(nbt);
+	}
+	
+	/**
+	 * Writes data that needs to be synced from the server to client.
+	 * @param nbt
+	 */
+	public void writeSyncableDataToNBT(NBTTagCompound nbt)
+	{
+		storage.writeToNBT(nbt);
+	}
+	
+	/**
+	 * Gathers data to be sent to the client.
+	 */
+	@Override
+	public Packet getDescriptionPacket()
+	{
+		NBTTagCompound syncData = new NBTTagCompound();
+		this.writeSyncableDataToNBT(syncData);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 1, syncData);
+	}
+	
+	/**
+	 * Retrieves data sent from the server.
+	 */
+	@Override
+	public void onDataPacket(NetworkManager network, S35PacketUpdateTileEntity packet)
+	{
+		this.readSyncableDataFromNBT(packet.func_148857_g());
 	}
 	
 	/*
@@ -215,61 +289,6 @@ public class TileEntityChemicalReactor extends TileEntity implements IEnergyProv
 	public boolean hasCustomInventoryName() 
 	{
 		return false;
-	}
-	
-	@Override
-	public void readFromNBT(NBTTagCompound nbt)
-	{
-		super.readFromNBT(nbt);
-		
-		readFromSyncableNBT(nbt);
-		
-		NBTTagList list = nbt.getTagList("Items", Constants.NBT.TAG_COMPOUND);
-		items = new ItemStack[getSizeInventory()];
-	 
-		for (int i = 0; i < list.tagCount(); ++i) 
-		{ 
-			NBTTagCompound comp = list.getCompoundTagAt(i); 
-			int j = comp.getByte("Slot") & 255;
-			
-			if (j >= 0 && j < items.length)
-			{
-				items[j] = ItemStack.loadItemStackFromNBT(comp);
-			}
-		} 
-	}
-	
-	public void readFromSyncableNBT(NBTTagCompound nbt)
-	{
-		this.storage.readFromNBT(nbt);
-	}
-	
-	@Override
-	public void writeToNBT(NBTTagCompound nbt)
-	{
-		super.writeToNBT(nbt);
-		
-		writeToSyncableNBT(nbt);
-		
-		NBTTagList list = new NBTTagList();
-	 
-		for (int i = 0; i < items.length; ++i)
-		{
-			if (items[i] != null)
-			{
-				NBTTagCompound comp = new NBTTagCompound();
-				comp.setByte("Slot", (byte) i);
-				items[i].writeToNBT(comp);
-				list.appendTag(comp);
-			}
-		}
-		
-		nbt.setTag("Items", list);
-	}
-	
-	public void writeToSyncableNBT(NBTTagCompound nbt)
-	{
-		this.storage.writeToNBT(nbt);
 	}
 
 	@Override
