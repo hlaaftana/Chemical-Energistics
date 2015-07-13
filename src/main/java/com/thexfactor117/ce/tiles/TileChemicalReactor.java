@@ -21,10 +21,10 @@ public class TileChemicalReactor extends TileEntity implements IEnergyProvider, 
 {
 	/** Array holds the current ItemStack in slots */
 	private ItemStack[] items = new ItemStack[1];
-	public EnergyStorage storage = new EnergyStorage(20000, 64);
+	public EnergyStorage storage = new EnergyStorage(48000, 64);
 	public boolean isActive = false;
 	public int process = 0;
-	public int processMax = 20*8;
+	public int processMax = 20*5;
 	
 	/**
 	 * Called every tick. Generate and transfer energy if possible.
@@ -103,17 +103,20 @@ public class TileChemicalReactor extends TileEntity implements IEnergyProvider, 
 	 */
 	public void transfer()
 	{			
-		for (ForgeDirection direction : ForgeDirection.VALID_DIRECTIONS) 
+		if (storage.getEnergyStored() <= 0)
 		{
-            TileEntity tile = getWorldObj().getTileEntity(xCoord + direction.offsetX, yCoord + direction.offsetY, zCoord + direction.offsetZ);
-            
-            if (tile instanceof IEnergyReceiver) 
-            {
-                IEnergyReceiver receiver = (IEnergyReceiver)tile;
-                
-        		this.storage.modifyEnergyStored(-receiver.receiveEnergy(direction.getOpposite(), Math.min(this.storage.getMaxExtract(), this.storage.getEnergyStored()), false));
-            }
-        }
+			for (ForgeDirection direction : ForgeDirection.VALID_DIRECTIONS) 
+			{
+	            TileEntity tile = getWorldObj().getTileEntity(xCoord + direction.offsetX, yCoord + direction.offsetY, zCoord + direction.offsetZ);
+	            
+	            if (tile instanceof IEnergyReceiver) 
+	            {
+	                IEnergyReceiver receiver = (IEnergyReceiver)tile;
+	                
+	        		this.storage.modifyEnergyStored(-receiver.receiveEnergy(direction.getOpposite(), Math.min(this.storage.getMaxExtract(), this.storage.getEnergyStored()), false));
+	            }
+	        }
+		}
 	}
 	
 	@Override

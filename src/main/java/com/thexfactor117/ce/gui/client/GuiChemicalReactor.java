@@ -56,11 +56,16 @@ public class GuiChemicalReactor extends GuiContainer
     @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2)
     {
+    	super.drawGuiContainerForegroundLayer(par1, par2);
+    	
     	int x = 138; // energy background x-start
     	int y = 18; // energy background y-start
     	
     	fontRendererObj.drawString(I18n.format(tile.getInventoryName()), (xSize / 2) - (fontRendererObj.getStringWidth(I18n.format(tile.getInventoryName())) / 2), 6, 4210752, false);
         fontRendererObj.drawString(I18n.format(inventory.getInventoryName()), 8, 70, 4210752);
+        
+        Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         this.drawBar(x, y, tile.storage.getMaxEnergyStored(), tile.storage.getEnergyStored());
     }
     
@@ -77,7 +82,7 @@ public class GuiChemicalReactor extends GuiContainer
     protected final void drawBar(int x, int y, int max, int current)
     {
     	int barWidth = 16;
-    	int barHeight = 47;
+    	int barHeight = 48;
     	int size = (int)(current * (long)barHeight / max);
     	Minecraft.getMinecraft().renderEngine.bindTexture(texture);
     	drawTexturedModalRect(x, y, 179, size, barWidth, barHeight);
