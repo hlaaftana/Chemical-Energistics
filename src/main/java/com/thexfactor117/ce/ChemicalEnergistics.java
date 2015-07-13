@@ -1,5 +1,6 @@
 package com.thexfactor117.ce;
 
+import com.thexfactor117.ce.crafting.CERecipes;
 import com.thexfactor117.ce.handlers.GuiHandler;
 import com.thexfactor117.ce.helpers.LogHelper;
 import com.thexfactor117.ce.init.CEBlocks;
@@ -17,7 +18,6 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 /**
  * To-do List:
  * Alpha 1.0.0
- * - Pressurized Chest
  * - Element Diffuser
  * - Element Extractor
  * - Crafting Recipes
@@ -57,6 +57,8 @@ public class ChemicalEnergistics
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event)
 	{
+		CERecipes.registerRecipes();
+		
 		NetworkRegistry.INSTANCE.registerGuiHandler(ChemicalEnergistics.instance, new GuiHandler());
 		proxy.registerTileEntities();
 	}

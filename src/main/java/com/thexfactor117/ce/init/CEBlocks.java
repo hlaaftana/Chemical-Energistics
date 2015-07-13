@@ -1,11 +1,10 @@
 package com.thexfactor117.ce.init;
 
+import net.minecraft.block.Block;
+
 import com.thexfactor117.ce.blocks.BlockCE;
 import com.thexfactor117.ce.blocks.BlockChemicalReactor;
-import com.thexfactor117.ce.blocks.BlockPressurizedTank;
 import com.thexfactor117.ce.helpers.RegisterHelper;
-
-import net.minecraft.block.Block;
 
 public class CEBlocks 
 {
@@ -27,7 +26,6 @@ public class CEBlocks
 	public static Block elementExtractor = new BlockElementExtractor();
 	public static Block elementFreezer = new BlockElementFreezer();
 	public static Block elementOven = new BlockElementOven();*/
-	public static Block pressurizedTank = new BlockPressurizedTank();
 	
 	public static void registerBlocks()
 	{
@@ -49,6 +47,5 @@ public class CEBlocks
 		RegisterHelper.registerBlock(elementExtractor);
 		RegisterHelper.registerBlock(elementFreezer);
 		RegisterHelper.registerBlock(elementOven);*/
-		RegisterHelper.registerBlock(pressurizedTank);
 	}
 }

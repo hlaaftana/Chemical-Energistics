@@ -203,7 +203,7 @@ public class TileChemicalReactor extends TileEntity implements IEnergyProvider, 
 	}
 	
 	/*
-	 * ISidedInventory Interface (minus the NBT methods).
+	 * IInventory Interface
 	 */
 	@Override
 	public int getSizeInventory() 
