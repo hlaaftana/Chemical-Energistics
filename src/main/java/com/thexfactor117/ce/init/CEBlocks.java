@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 
 import com.thexfactor117.ce.blocks.BlockCE;
 import com.thexfactor117.ce.blocks.BlockChemicalReactor;
+import com.thexfactor117.ce.blocks.BlockElementDiffuser;
 import com.thexfactor117.ce.helpers.RegisterHelper;
 
 public class CEBlocks 
@@ -21,11 +22,11 @@ public class CEBlocks
 	
 	// Machines
 	public static Block chemicalReactor = new BlockChemicalReactor();
-	/*public static Block catalyticReactor = new BlockCatalyticReactor();
+	//public static Block catalyticReactor = new BlockCatalyticReactor();
 	public static Block elementDiffuser = new BlockElementDiffuser();
-	public static Block elementExtractor = new BlockElementExtractor();
-	public static Block elementFreezer = new BlockElementFreezer();
-	public static Block elementOven = new BlockElementOven();*/
+	//public static Block elementExtractor = new BlockElementExtractor();
+	//public static Block elementFreezer = new BlockElementFreezer();
+	//public static Block elementOven = new BlockElementOven();
 	
 	public static void registerBlocks()
 	{
@@ -42,10 +43,10 @@ public class CEBlocks
 		
 		// Machines
 		RegisterHelper.registerBlock(chemicalReactor);
-		/*RegisterHelper.registerBlock(catalyticReactor);
+		//RegisterHelper.registerBlock(catalyticReactor);
 		RegisterHelper.registerBlock(elementDiffuser);
-		RegisterHelper.registerBlock(elementExtractor);
-		RegisterHelper.registerBlock(elementFreezer);
-		RegisterHelper.registerBlock(elementOven);*/
+		//RegisterHelper.registerBlock(elementExtractor);
+		//RegisterHelper.registerBlock(elementFreezer);
+		//RegisterHelper.registerBlock(elementOven);
 	}
 }

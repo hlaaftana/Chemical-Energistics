@@ -35,7 +35,7 @@ public class EnergyHelper
 	public static ItemStack uraniumLiquid = new ItemStack(CEItems.liquidCapsule, 1, 14);
 	
 	// base energy
-	public static int crBaseEnergy = 25;
+	public static int crBaseEnergy = 10;
 	
 	/**
 	 * Instance checks for energy gen.

@@ -1,5 +1,7 @@
 package com.thexfactor117.ce.tiles;
 
+import com.thexfactor117.ce.init.CEItems;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -12,110 +14,105 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.ForgeDirection;
 import cofh.api.energy.EnergyStorage;
-import cofh.api.energy.IEnergyProvider;
 import cofh.api.energy.IEnergyReceiver;
 
-import com.thexfactor117.ce.helpers.EnergyHelper;
-
-public class TileChemicalReactor extends TileEntity implements IEnergyProvider, IInventory
+public class TileElementDiffuser extends TileEntity implements IEnergyReceiver, IInventory
 {
-	/** Array holds the current ItemStack in slots */
-	private ItemStack[] items = new ItemStack[1];
-	public EnergyStorage storage = new EnergyStorage(48000, 64);
+	private ItemStack[] items = new ItemStack[2];
+	public EnergyStorage storage = new EnergyStorage(100000, 64);
 	public boolean isActive = false;
 	public int process = 0;
-	public int processMax = 20*5;
+	public int processMax = 20*30;
+	public int energyUse = 30;
 	
 	/**
-	 * Called every tick. Generate and transfer energy if possible.
+	 * Called every tick. Consume energy, create new elements.
 	 */
 	@Override
 	public void updateEntity()
 	{
 		super.updateEntity();
-
+		
 		if (!worldObj.isRemote)
 		{
-			if (items[0] != null && process < processMax && canGenerate())
+			storage.receiveEnergy(64, true);
+			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+			markDirty();
+			
+			if (canProcess() && process < processMax)
 			{
 				process++;
-				generate();
+				this.storage.modifyEnergyStored(-this.getEnergyUse());
 				
 				if (process == processMax)
 				{
 					this.decrStackSize(0, 1);
+					this.setInventorySlotContents(1, getElementGenerated());
 					process = 0;
 				}
 			}
-			
-			transfer();
 		}
 	}
 	
 	/**
-	 * Gets the item's energy value in the slot.
-	 * @param stack
-	 * @return energy value
+	 * Returns true if the machine can run.
+	 * @return
 	 */
-	public static int getEnergyValue(ItemStack stack)
+	public boolean canProcess()
 	{
-		if (stack == null)
-		{
-			return 0;
-		}
+		ItemStack stack = this.getStackInSlot(0);
+		ItemStack capsuleStack = new ItemStack(CEItems.capsule);
 		
-		return EnergyHelper.capsuleEnergyGen(stack);
-	}
-	
-	/**
-	 * Returns true if the machine can generate RF.
-	 */
-	public boolean canGenerate()
-	{
-		return getEnergyValue(this.items[0]) > 0 && storage.getEnergyStored() < storage.getMaxEnergyStored();
-	}
-	
-	/**
-	 * Generate Energy.
-	 */
-	public void generate()
-	{
-		int energy = getEnergyValue(items[0]);
-		
-		if (energy > 0)
+		if (stack != null)
 		{
-			this.isActive = true;
-			storage.modifyEnergyStored(energy);
-			worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
-			markDirty();
-		}
-		else
-		{
-			this.isActive = false;
-		}
-	}
-	
-	/**
-	 * Transfer Energy.
-	 */
-	public void transfer()
-	{			
-		if (storage.getEnergyStored() > 0)
-		{
-			for (ForgeDirection direction : ForgeDirection.VALID_DIRECTIONS) 
+			if (stack.isItemEqual(capsuleStack) && storage.getEnergyStored() > 30)
 			{
-	            TileEntity tile = getWorldObj().getTileEntity(xCoord + direction.offsetX, yCoord + direction.offsetY, zCoord + direction.offsetZ);
-	            
-	            if (tile instanceof IEnergyReceiver) 
-	            {
-	                IEnergyReceiver receiver = (IEnergyReceiver)tile;
-	                
-	        		this.storage.modifyEnergyStored(-receiver.receiveEnergy(direction.getOpposite(), Math.min(this.storage.getMaxReceive(), this.storage.getEnergyStored()), false));
-	        		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-	        		markDirty();
-	            }
-	        }
+				isActive = true;
+				return true;
+			}
 		}
+		
+		isActive = false;
+		return false;
+	}
+	
+	/**
+	 * Returns an ItemStack based on the y-value of the tile.
+	 * @return - ItemStack to be generated
+	 */
+	public ItemStack getElementGenerated()
+	{
+		ItemStack hydrogen = new ItemStack(CEItems.gasCapsule, 1, 0);
+		ItemStack nitrogen = new ItemStack(CEItems.gasCapsule, 1, 2);
+		ItemStack oxygen = new ItemStack(CEItems.gasCapsule, 1, 3);
+		ItemStack radon = new ItemStack(CEItems.gasCapsule, 1, 9);
+		
+		if (this.yCoord < 50)
+		{
+			return radon;
+		}
+		
+		if (this.yCoord >= 50 && this.yCoord < 100)
+		{
+			return oxygen;
+		}
+		
+		if (this.yCoord >= 100 && this.yCoord < 150)
+		{
+			return nitrogen;
+		}
+		
+		if (this.yCoord >= 150)
+		{
+			return hydrogen;
+		}
+		
+		return null;
+	}
+	
+	public int getEnergyUse()
+	{
+		return Math.min(energyUse, storage.getEnergyStored());
 	}
 	
 	@Override
@@ -284,7 +281,7 @@ public class TileChemicalReactor extends TileEntity implements IEnergyProvider, 
 	@Override
 	public String getInventoryName() 
 	{
-		return "Chemical Reactor";
+		return "Element Diffuser";
 	}
 
 	@Override
@@ -324,18 +321,18 @@ public class TileChemicalReactor extends TileEntity implements IEnergyProvider, 
 	}
 
 	/*
-	 * IEnergyProvider Interface
+	 * IEnergyReceiver Interface
 	 */
 	@Override
 	public boolean canConnectEnergy(ForgeDirection from) 
 	{
 		return true;
 	}
-
+	
 	@Override
-	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate) 
+	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate) 
 	{
-		return 0;
+		return storage.receiveEnergy(maxReceive, simulate);
 	}
 
 	@Override
