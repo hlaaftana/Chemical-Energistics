@@ -282,7 +282,7 @@ public class TileChemicalReactor extends TileEntity implements IEnergyProvider, 
 	@Override
 	public String getInventoryName() 
 	{
-		return "container.chemicalReactor";
+		return "Chemical Reactor";
 	}
 
 	@Override

@@ -17,21 +17,21 @@ public class ContainerChemicalReactor extends Container
     {
         this.chemicalReactor = te;
  
-        this.addSlotToContainer(new Slot(chemicalReactor, 0, 79, 33));
+        this.addSlotToContainer(new Slot(chemicalReactor, 0, 81, 34));
         
         //Inventory
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 9; j++)
             {
-                addSlotToContainer(new Slot(player.inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+                addSlotToContainer(new Slot(player.inventory, j + i * 9 + 9, 8 + j * 18 + 1, 84 + i * 18));
             }
         }
         
         // Hotbar
         for (int i = 0; i < 9; i++)
         {
-            addSlotToContainer(new Slot(player.inventory, i, 8 + i * 18, 142));
+            addSlotToContainer(new Slot(player.inventory, i, 8 + i * 18 + 1, 142));
         }
     }
     

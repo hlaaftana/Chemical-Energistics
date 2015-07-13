@@ -20,7 +20,6 @@ import com.thexfactor117.ce.tiles.TileChemicalReactor;
 public class GuiChemicalReactor extends GuiContainer
 {
 	private ResourceLocation texture = new ResourceLocation(Reference.MODID, "textures/gui/machines/chemicalReactor.png");
-	private ResourceLocation energyBar = new ResourceLocation(Reference.MODID, "textures/gui/energyBar.png");
     private InventoryPlayer inventory;
 	private TileChemicalReactor tile;
     
@@ -29,12 +28,6 @@ public class GuiChemicalReactor extends GuiContainer
     	super(new ContainerChemicalReactor(player, tile));
     	this.inventory = player.inventory;
     	this.tile = tile;
-    }
-    
-    @Override
-    public void initGui()
-    {
-    	super.initGui();
     }
     
     @Override
@@ -63,38 +56,38 @@ public class GuiChemicalReactor extends GuiContainer
     @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2)
     {
+    	int x = 138; // energy background x-start
+    	int y = 18; // energy background y-start
+    	
     	fontRendererObj.drawString(I18n.format(tile.getInventoryName()), (xSize / 2) - (fontRendererObj.getStringWidth(I18n.format(tile.getInventoryName())) / 2), 6, 4210752, false);
-        fontRendererObj.drawString(I18n.format(inventory.getInventoryName()), 8, 128, 4210752);
-        this.drawBar(150, 75, tile.storage.getMaxEnergyStored(), tile.storage.getEnergyStored(), 0);
+        fontRendererObj.drawString(I18n.format(inventory.getInventoryName()), 8, 70, 4210752);
+        this.drawBar(x, y, tile.storage.getMaxEnergyStored(), tile.storage.getEnergyStored());
     }
     
     protected void drawToolTips(int mouseX, int mouseY)
     {
-    	if (isPointInRegion(140, 15, 8, 60, mouseX, mouseY))
+    	if (isPointInRegion(136, 17, 18, 49, mouseX, mouseY))
     	{
     		int energyStored = tile.storage.getEnergyStored();
     		int maxEnergyStored = tile.storage.getMaxEnergyStored();
-    		this.drawBarTooltip("EnergyBar", "RF", energyStored, maxEnergyStored, mouseX, mouseY);
+    		this.drawBarTooltip("RF", energyStored, maxEnergyStored, mouseX, mouseY);
     	}
     }
     
-    protected final void drawBar(int xOffset, int yOffset, int max, int current, int tOffset)
+    protected final void drawBar(int x, int y, int max, int current)
     {
-    	Minecraft.getMinecraft().renderEngine.bindTexture(energyBar);
-    	drawTexturedModalRect(xOffset, yOffset, 0, 0, 10, 50);
+    	int barWidth = 16;
+    	int barHeight = 47;
+    	int size = (int)(current * (long)barHeight / max);
+    	Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+    	drawTexturedModalRect(x, y, 179, size, barWidth, barHeight);
     }
     
-    protected void drawBarTooltip(String name, String unit, int value, int max, int x, int y)
+    protected void drawBarTooltip(String unit, int value, int max, int x, int y)
 	{
 		List<String> lines = new ArrayList<String>(2);
-		lines.add(name);
 		String m = String.valueOf(max);
 		String v = String.valueOf(value);
-		
-		while (v.length() < m.length())
-		{
-				v = " " + v;
-		}
 		
 		lines.add(v + " / " + m + " " + unit);
 		drawTooltip(lines, x, y);
