@@ -14,6 +14,28 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
+/**
+ * To-do List:
+ * Alpha 1.0.0
+ * - Pressurized Chest
+ * - Element Diffuser
+ * - Element Extractor
+ * - Crafting Recipes
+ * - Textures
+ * - Ore Generation
+ * 
+ * Alpha 2.0.0
+ * - Catalytic Reactor
+ * - Element Freezer
+ * - Element Oven
+ * - Battery Box
+ * - Catalysts
+ * 
+ * Alpha 3.0.0
+ * - Chemical Deconstructor
+ * - Chemical Bonder
+ * - Compounds
+ */
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.NAME)
 public class ChemicalEnergistics 
 {
