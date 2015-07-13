@@ -1,29 +1,30 @@
-package com.thexfactor117.ce.tiles;
+package com.thexfactor117.ce.tiles.machines;
 
-import com.thexfactor117.ce.init.CEItems;
-
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.ForgeDirection;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyReceiver;
 
-public class TileElementDiffuser extends TileEntity implements IEnergyReceiver, IInventory
+import com.thexfactor117.ce.init.CEItems;
+import com.thexfactor117.ce.tiles.base.TileMachine;
+
+public class TileElementDiffuser extends TileMachine implements IEnergyReceiver, IInventory
 {
-	private ItemStack[] items = new ItemStack[2];
 	public EnergyStorage storage = new EnergyStorage(100000, 64);
-	public boolean isActive = false;
 	public int process = 0;
 	public int processMax = 20*30;
 	public int energyUse = 30;
+	
+	public TileElementDiffuser()
+	{
+		super();
+		items = new ItemStack[2];
+	}
 	
 	/**
 	 * Called every tick. Consume energy, create new elements.
@@ -35,9 +36,12 @@ public class TileElementDiffuser extends TileEntity implements IEnergyReceiver, 
 		
 		if (!worldObj.isRemote)
 		{
-			storage.receiveEnergy(64, true);
-			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-			markDirty();
+			if (storage.getEnergyStored() != storage.getMaxEnergyStored())
+			{
+				storage.receiveEnergy(64, true);
+				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+				markDirty();
+			}
 			
 			if (canProcess() && process < processMax)
 			{
@@ -119,45 +123,14 @@ public class TileElementDiffuser extends TileEntity implements IEnergyReceiver, 
 	public void readFromNBT(NBTTagCompound nbt)
 	{
 		super.readFromNBT(nbt);
-		
-		this.readSyncableDataFromNBT(nbt);
-		
-		NBTTagList list = nbt.getTagList("Items", Constants.NBT.TAG_COMPOUND);
-		items = new ItemStack[getSizeInventory()];
-	 
-		for (int i = 0; i < list.tagCount(); ++i) 
-		{ 
-			NBTTagCompound comp = list.getCompoundTagAt(i); 
-			int j = comp.getByte("Slot") & 255;
-			
-			if (j >= 0 && j < items.length)
-			{
-				items[j] = ItemStack.loadItemStackFromNBT(comp);
-			}
-		} 
+		this.readSyncableDataFromNBT(nbt); 
 	}
 	
 	@Override
 	public void writeToNBT(NBTTagCompound nbt)
 	{
 		super.writeToNBT(nbt);
-		
 		this.writeSyncableDataToNBT(nbt);
-		
-		NBTTagList list = new NBTTagList();
-	 
-		for (int i = 0; i < items.length; ++i)
-		{
-			if (items[i] != null)
-			{
-				NBTTagCompound comp = new NBTTagCompound();
-				comp.setByte("Slot", (byte) i);
-				items[i].writeToNBT(comp);
-				list.appendTag(comp);
-			}
-		}
-		
-		nbt.setTag("Items", list);
 	}
 	
 	/**
@@ -202,122 +175,9 @@ public class TileElementDiffuser extends TileEntity implements IEnergyReceiver, 
 	 * IInventory Interface
 	 */
 	@Override
-	public int getSizeInventory() 
-	{
-		return items.length;
-	}
-
-	@Override
-	public ItemStack getStackInSlot(int index) 
-	{
-		return items[index];
-	}
-
-	@Override
-	public ItemStack decrStackSize(int index, int count) 
-	{
-		if (items[index] != null)
-        {
-            ItemStack itemstack;
-
-            if (items[index].stackSize <= count)
-            {
-                itemstack = items[index];
-                items[index] = null;
-                
-                return itemstack;
-            }
-            else
-            {
-                itemstack = items[index].splitStack(count);
-
-                if (items[index].stackSize == 0)
-                {
-                	items[index] = null;
-                }
-
-                return itemstack;
-            }
-        }
-        else
-        {
-            return null;
-        }
-	}
-
-	/**
-	 * Called to drop items as EntityItem's when closed.
-	 * Example would be a Crafting Table.
-	 */
-	@Override
-	public ItemStack getStackInSlotOnClosing(int index) 
-	{
-		if (items[index] != null)
-		{
-			ItemStack stack = items[index];
-			items[index] = null;
-			
-			return stack;
-		}
-		else
-		{
-			return null;
-		}
-	}
-
-	@Override
-	public void setInventorySlotContents(int index, ItemStack stack) 
-	{
-		items[index] = stack;
-		
-		if (stack != null && stack.stackSize > getInventoryStackLimit())
-		{
-				stack.stackSize = getInventoryStackLimit();
-		}
-	 
-		markDirty();
-	}
-
-	@Override
 	public String getInventoryName() 
 	{
 		return "Element Diffuser";
-	}
-
-	@Override
-	public boolean hasCustomInventoryName() 
-	{
-		return false;
-	}
-
-	@Override
-	public int getInventoryStackLimit() 
-	{
-		return 64;
-	}
-
-	@Override
-	public boolean isUseableByPlayer(EntityPlayer player) 
-	{
-		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false : player.getDistanceSq((double) xCoord + 0.5D, (double) yCoord + 0.5D, (double) zCoord + 0.5D) <= 64.0D;
-	}
-
-	@Override
-	public void openInventory() 
-	{
-		
-	}
-
-	@Override
-	public void closeInventory()
-	{
-		
-	}
-
-	@Override
-	public boolean isItemValidForSlot(int index, ItemStack stack) 
-	{
-		return false;
 	}
 
 	/*

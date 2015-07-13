@@ -16,14 +16,14 @@ import net.minecraft.world.World;
 import com.thexfactor117.ce.ChemicalEnergistics;
 import com.thexfactor117.ce.Reference;
 import com.thexfactor117.ce.init.CETabs;
-import com.thexfactor117.ce.tiles.machines.TileElementDiffuser;
+import com.thexfactor117.ce.tiles.machines.TileElementExtractor;
 
-public class BlockElementDiffuser extends Block implements ITileEntityProvider
+public class BlockElementExtractor extends Block implements ITileEntityProvider
 {
 	public Random rand = new Random();
-	private static final String NAME = "elementDiffuser";
+	private static final String NAME = "elementExtractor";
 	
-	public BlockElementDiffuser()
+	public BlockElementExtractor()
 	{
 		super(Material.iron);
 		this.setHardness(3.5F);
@@ -47,10 +47,10 @@ public class BlockElementDiffuser extends Block implements ITileEntityProvider
         return icons[pMeta];
     }*/
 
-    @Override
+	@Override
     public TileEntity createNewTileEntity(World world, int meta) 
     {
-        return new TileElementDiffuser();
+        return new TileElementExtractor();
     }
     
     @Override
@@ -74,10 +74,10 @@ public class BlockElementDiffuser extends Block implements ITileEntityProvider
 		
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
 		
-		if (tileEntity != null && tileEntity instanceof TileElementDiffuser)
+		if (tileEntity != null && tileEntity instanceof TileElementExtractor)
 		{
 			// number indicates which GUI to open
-			player.openGui(ChemicalEnergistics.instance, 1, world, x, y, z);
+			player.openGui(ChemicalEnergistics.instance, 2, world, x, y, z);
 			
 			return true;
 		}
@@ -98,9 +98,9 @@ public class BlockElementDiffuser extends Block implements ITileEntityProvider
 		
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
 		
-		if (tileEntity != null && tileEntity instanceof TileElementDiffuser)
+		if (tileEntity != null && tileEntity instanceof TileElementExtractor)
 		{
-			TileElementDiffuser tile = (TileElementDiffuser) tileEntity;
+			TileElementExtractor tile = (TileElementExtractor) tileEntity;
 			
 			for (int i = 0; i < tile.getSizeInventory(); i++)
 			{

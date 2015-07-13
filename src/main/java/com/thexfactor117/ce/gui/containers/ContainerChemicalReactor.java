@@ -6,7 +6,7 @@ import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import com.thexfactor117.ce.tiles.TileChemicalReactor;
+import com.thexfactor117.ce.tiles.machines.TileChemicalReactor;
 
 public class ContainerChemicalReactor extends Container
 {

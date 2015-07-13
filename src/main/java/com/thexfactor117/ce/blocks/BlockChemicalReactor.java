@@ -6,7 +6,7 @@ import java.util.Random;
 import com.thexfactor117.ce.ChemicalEnergistics;
 import com.thexfactor117.ce.Reference;
 import com.thexfactor117.ce.init.CETabs;
-import com.thexfactor117.ce.tiles.TileChemicalReactor;
+import com.thexfactor117.ce.tiles.machines.TileChemicalReactor;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;

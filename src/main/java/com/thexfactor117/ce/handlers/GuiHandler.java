@@ -7,8 +7,9 @@ import com.thexfactor117.ce.gui.client.GuiChemicalReactor;
 import com.thexfactor117.ce.gui.client.GuiElementDiffuser;
 import com.thexfactor117.ce.gui.containers.ContainerChemicalReactor;
 import com.thexfactor117.ce.gui.containers.ContainerElementDiffuser;
-import com.thexfactor117.ce.tiles.TileChemicalReactor;
-import com.thexfactor117.ce.tiles.TileElementDiffuser;
+import com.thexfactor117.ce.tiles.machines.TileChemicalReactor;
+import com.thexfactor117.ce.tiles.machines.TileElementDiffuser;
+import com.thexfactor117.ce.tiles.machines.TileElementExtractor;
 
 import cpw.mods.fml.common.network.IGuiHandler;
 
@@ -28,6 +29,12 @@ public class GuiHandler implements IGuiHandler
 			return new ContainerElementDiffuser(player, elementDiffuser);
 		}
 		
+		if (ID == 2)
+		{
+			TileElementExtractor elementExtractor = (TileElementDiffuser) world.getTileEntity(x, y, z);
+			return new ContainerElementExtractor(player, elementExtractor);
+		}
+		
 		return null;
 	}
 	
@@ -43,6 +50,12 @@ public class GuiHandler implements IGuiHandler
 		{
 			TileElementDiffuser elementDiffuser = (TileElementDiffuser) world.getTileEntity(x, y, z);
 			return new GuiElementDiffuser(player, elementDiffuser);
+		}
+		
+		if (ID == 2)
+		{
+			TileElementExtractor elementExtractor = (TileElementDiffuser) world.getTileEntity(x, y, z);
+			return new GuiElementExtractor(player, elementExtractor);
 		}
 		
 		return null;

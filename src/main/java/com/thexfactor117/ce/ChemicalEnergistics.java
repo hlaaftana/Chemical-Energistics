@@ -18,9 +18,10 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 /**
  * To-do List:
  * Alpha 1.0.0
- * - Element Diffuser
- * - Element Extractor
- * - Crafting Recipes
+ * - Chemical Reactor (complete)
+ * - Element Diffuser (complete)
+ * - Element Extractor (working)
+ * - Crafting Recipes (working)
  * - Textures
  * - Ore Generation
  * 

@@ -15,7 +15,7 @@ import org.lwjgl.opengl.GL12;
 
 import com.thexfactor117.ce.Reference;
 import com.thexfactor117.ce.gui.containers.ContainerElementDiffuser;
-import com.thexfactor117.ce.tiles.TileElementDiffuser;
+import com.thexfactor117.ce.tiles.machines.TileElementDiffuser;
 
 public class GuiElementDiffuser extends GuiContainer
 {

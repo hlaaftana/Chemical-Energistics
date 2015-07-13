@@ -15,7 +15,7 @@ import org.lwjgl.opengl.GL12;
 
 import com.thexfactor117.ce.Reference;
 import com.thexfactor117.ce.gui.containers.ContainerChemicalReactor;
-import com.thexfactor117.ce.tiles.TileChemicalReactor;
+import com.thexfactor117.ce.tiles.machines.TileChemicalReactor;
 
 public class GuiChemicalReactor extends GuiContainer
 {
