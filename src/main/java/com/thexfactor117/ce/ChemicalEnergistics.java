@@ -6,6 +6,7 @@ import com.thexfactor117.ce.helpers.LogHelper;
 import com.thexfactor117.ce.init.CEBlocks;
 import com.thexfactor117.ce.init.CEItems;
 import com.thexfactor117.ce.proxies.CommonProxy;
+import com.thexfactor117.ce.world.CEWorldGeneration;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Instance;
@@ -14,6 +15,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * To-do List:
@@ -23,7 +25,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
  * - Element Extractor (complete)
  * - Crafting Recipes (in-progress)
  * - Textures (20%)
- * - Ore Generation
+ * - Ore Generation (complete)
  * 
  * Alpha 2.0.0
  * - Catalytic Reactor
@@ -46,6 +48,8 @@ public class ChemicalEnergistics
 	@Instance(Reference.MODID)
 	public static ChemicalEnergistics instance;
 	
+	public CEWorldGeneration worldGen = new CEWorldGeneration();
+	
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
@@ -53,6 +57,8 @@ public class ChemicalEnergistics
 		
 		CEBlocks.registerBlocks();
 		CEItems.registerItems();
+		
+		GameRegistry.registerWorldGenerator(worldGen, 100);
 	}
 	
 	@Mod.EventHandler

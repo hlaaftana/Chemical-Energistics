@@ -28,11 +28,11 @@ public class CEWorldGeneration implements IWorldGenerator
 	
 	private void generateSurface(World world, Random random, int x, int z)
 	{
-		addOreSpawn(CEBlocks.oreAluminum, world, random, x, z, 16, 16, 2 + random.nextInt(3), 10, 0, 64);
-		addOreSpawn(CEBlocks.oreSulfur, world, random, x, z, 16, 16, 2 + random.nextInt(3), 10, 0, 64);
-		addOreSpawn(CEBlocks.oreTungsten, world, random, x, z, 16, 16, 2 + random.nextInt(3), 10, 0, 64);
-		addOreSpawn(CEBlocks.oreIridium, world, random, x, z, 16, 16, 2 + random.nextInt(3), 10, 0, 64);
-		addOreSpawn(CEBlocks.oreUranium, world, random, x, z, 16, 16, 2 + random.nextInt(3), 10, 0, 64);
+		addOreSpawn(CEBlocks.oreAluminum, world, random, x, z, 16, 16, 2 + random.nextInt(4), 8, 0, 64);
+		addOreSpawn(CEBlocks.oreSulfur, world, random, x, z, 16, 16, 1 + random.nextInt(3), 6, 0, 48);
+		addOreSpawn(CEBlocks.oreTungsten, world, random, x, z, 16, 16, 1 + random.nextInt(2), 5, 0, 32);
+		addOreSpawn(CEBlocks.oreIridium, world, random, x, z, 16, 16, 1, 2, 0, 64);
+		addOreSpawn(CEBlocks.oreUranium, world, random, x, z, 16, 16, 1 + random.nextInt(1), 4, 0, 16);
 	}
 	
 	private void generateNether(World world, Random random, int x, int z) {}
