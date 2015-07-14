@@ -22,7 +22,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
  * - Element Diffuser (complete)
  * - Element Extractor (complete)
  * - Crafting Recipes (in-progress)
- * - Textures
+ * - Textures (20%)
  * - Ore Generation
  * 
  * Alpha 2.0.0
