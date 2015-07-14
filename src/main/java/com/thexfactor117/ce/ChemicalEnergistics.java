@@ -20,8 +20,8 @@ import cpw.mods.fml.common.network.NetworkRegistry;
  * Alpha 1.0.0
  * - Chemical Reactor (complete)
  * - Element Diffuser (complete)
- * - Element Extractor (working)
- * - Crafting Recipes (working)
+ * - Element Extractor (complete)
+ * - Crafting Recipes (in-progress)
  * - Textures
  * - Ore Generation
  * 

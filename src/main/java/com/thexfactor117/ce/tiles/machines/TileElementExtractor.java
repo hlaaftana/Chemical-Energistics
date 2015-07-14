@@ -10,13 +10,14 @@ import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyReceiver;
 
 import com.thexfactor117.ce.api.crafting.ElementExtractorRecipes;
+import com.thexfactor117.ce.helpers.LogHelper;
 import com.thexfactor117.ce.tiles.base.TileMachine;
 
 public class TileElementExtractor extends TileMachine implements IEnergyReceiver
 {
 	public EnergyStorage storage = new EnergyStorage(100000, 64);
 	public int process = 0;
-	public int processMax = 20*30;
+	public int processMax = 20*2;
 	public int energyUse = 30;
 	
 	public TileElementExtractor()
@@ -25,6 +26,9 @@ public class TileElementExtractor extends TileMachine implements IEnergyReceiver
 		items = new ItemStack[2];
 	}
 	
+	/**
+	 * Called every tick. Consume energy, extract items.
+	 */
 	@Override
 	public void updateEntity()
 	{
@@ -58,26 +62,31 @@ public class TileElementExtractor extends TileMachine implements IEnergyReceiver
 	 * @return
 	 */
 	public boolean canProcess()
-	{
-		if (items[0] != null)
+	{	
+		if (this.items[0] != null)
 		{
 			if (storage.getEnergyStored() > 30)
 			{
+				LogHelper.info("Test 1.");
 				ItemStack extractStack = ElementExtractorRecipes.extract().getExtractionResult(this.items[0]);
 				
-				if (extractStack == null || this.items[1] == null || !this.items[1].isItemEqual(extractStack))
-				{
-					return false;
-				}
+				if (extractStack == null) return false;
+				if (this.items[1] == null) return true;
+				if (!this.items[1].isItemEqual(extractStack)) return false;
 				
+				LogHelper.info("Test 3.");
 				int result = this.items[1].stackSize + extractStack.stackSize;
-				return result <= this.getInventoryStackLimit() && result <= this.items[2].getMaxStackSize();
+				return result <= this.getInventoryStackLimit() && result <= this.items[1].getMaxStackSize();
 			}
 		}
 		
 		return false;
 	}
 	
+	/**
+	 * Checks if input item can be extracted into something else. If so,
+	 * extract the item.
+	 */
 	public void extractItem()
 	{
 		if (this.canProcess())
@@ -94,14 +103,13 @@ public class TileElementExtractor extends TileMachine implements IEnergyReceiver
 			}
 			
 			this.decrStackSize(0, 1);
-			
-			if (this.items[0].stackSize <= 0)
-			{
-				this.items[0] = null;
-			}
 		}
 	}
 	
+	/**
+	 * Energy to be used per tick.
+	 * @return - RF/t
+	 */
 	public int getEnergyUse()
 	{
 		return Math.min(energyUse, storage.getEnergyStored());

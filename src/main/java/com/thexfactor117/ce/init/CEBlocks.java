@@ -44,7 +44,7 @@ public class CEBlocks
 		RegisterHelper.registerBlock(chemicalReactor);
 		//RegisterHelper.registerBlock(catalyticReactor);
 		RegisterHelper.registerBlock(elementDiffuser);
-		//RegisterHelper.registerBlock(elementExtractor);
+		RegisterHelper.registerBlock(elementExtractor);
 		//RegisterHelper.registerBlock(elementFreezer);
 		//RegisterHelper.registerBlock(elementOven);
 	}

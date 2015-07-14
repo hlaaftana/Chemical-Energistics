@@ -5,8 +5,10 @@ import net.minecraft.world.World;
 
 import com.thexfactor117.ce.gui.client.GuiChemicalReactor;
 import com.thexfactor117.ce.gui.client.GuiElementDiffuser;
+import com.thexfactor117.ce.gui.client.GuiElementExtractor;
 import com.thexfactor117.ce.gui.containers.ContainerChemicalReactor;
 import com.thexfactor117.ce.gui.containers.ContainerElementDiffuser;
+import com.thexfactor117.ce.gui.containers.ContainerElementExtractor;
 import com.thexfactor117.ce.tiles.machines.TileChemicalReactor;
 import com.thexfactor117.ce.tiles.machines.TileElementDiffuser;
 import com.thexfactor117.ce.tiles.machines.TileElementExtractor;
@@ -31,7 +33,7 @@ public class GuiHandler implements IGuiHandler
 		
 		if (ID == 2)
 		{
-			TileElementExtractor elementExtractor = (TileElementDiffuser) world.getTileEntity(x, y, z);
+			TileElementExtractor elementExtractor = (TileElementExtractor) world.getTileEntity(x, y, z);
 			return new ContainerElementExtractor(player, elementExtractor);
 		}
 		
@@ -54,7 +56,7 @@ public class GuiHandler implements IGuiHandler
 		
 		if (ID == 2)
 		{
-			TileElementExtractor elementExtractor = (TileElementDiffuser) world.getTileEntity(x, y, z);
+			TileElementExtractor elementExtractor = (TileElementExtractor) world.getTileEntity(x, y, z);
 			return new GuiElementExtractor(player, elementExtractor);
 		}
 		
