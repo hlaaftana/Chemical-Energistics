@@ -15,7 +15,7 @@ import com.thexfactor117.ce.tiles.base.TileMachine;
 
 public class TileElementDiffuser extends TileMachine implements IEnergyReceiver, IInventory
 {
-	public EnergyStorage storage = new EnergyStorage(100000, 64);
+	public EnergyStorage storage = new EnergyStorage(20000, 64);
 	public int process = 0;
 	public int processMax = 20*30;
 	public int energyUse = 30;

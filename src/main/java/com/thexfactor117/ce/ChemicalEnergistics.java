@@ -1,6 +1,7 @@
 package com.thexfactor117.ce;
 
 import com.thexfactor117.ce.crafting.CERecipes;
+import com.thexfactor117.ce.handlers.ConfigHandler;
 import com.thexfactor117.ce.handlers.GuiHandler;
 import com.thexfactor117.ce.helpers.LogHelper;
 import com.thexfactor117.ce.init.CEBlocks;
@@ -39,7 +40,13 @@ import cpw.mods.fml.common.registry.GameRegistry;
  * - Chemical Bonder
  * - Compounds
  */
-@Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.NAME)
+
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
+@Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION)
 public class ChemicalEnergistics 
 {
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY, serverSide = Reference.COMMON_PROXY)
@@ -54,6 +61,7 @@ public class ChemicalEnergistics
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		LogHelper.info("Initializing Chemical Energistics - creating items, warming up machines, readying the explosives...");
+		ConfigHandler.registerConfig(event.getModConfigurationDirectory());
 		
 		CEBlocks.registerBlocks();
 		CEItems.registerItems();

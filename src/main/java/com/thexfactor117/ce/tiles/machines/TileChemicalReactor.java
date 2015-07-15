@@ -16,7 +16,7 @@ import com.thexfactor117.ce.tiles.base.TileMachine;
 
 public class TileChemicalReactor extends TileMachine implements IEnergyProvider
 {
-	public EnergyStorage storage = new EnergyStorage(48000, 64);
+	public EnergyStorage storage = new EnergyStorage(50000, 64);
 	public int process = 0;
 	public int processMax = 20*5;
 	

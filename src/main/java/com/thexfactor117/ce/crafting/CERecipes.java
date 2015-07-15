@@ -43,13 +43,15 @@ public class CERecipes
 		GameRegistry.addSmelting(CEBlocks.oreTungsten, new ItemStack(CEItems.ingotTungsten), 0.8F);
 		
 		// Recipes
-		GameRegistry.addShapedRecipe(new ItemStack(CEItems.capsule), new Object[] { " A ", "A A", " A ", 'A', Items.iron_ingot });
+		GameRegistry.addShapedRecipe(new ItemStack(CEItems.capsule), new Object[] { " A ", "ABA", " A ", 'A', Items.iron_ingot, 'B', Blocks.glass });
 		GameRegistry.addShapedRecipe(new ItemStack(CEItems.ironPanel, 2), new Object[] { "AAA", 'A', Items.iron_ingot });
 		GameRegistry.addShapedRecipe(new ItemStack(CEItems.aluminumPanel, 2), new Object[] { "AAA", 'A', CEItems.ingotAluminum });
 		//GameRegistry.addShapedRecipe(new ItemStack(CEItems.thermalPanel), new Object[] { "AAA", 'A', CEItems.alloyThermal });
-		GameRegistry.addShapedRecipe(new ItemStack(CEItems.kineticTurbine), new Object[] { "ABA", " A ", "ABA", 'A', Items.iron_ingot, 'B', Blocks.redstone_block });
-		GameRegistry.addShapedRecipe(new ItemStack(CEBlocks.machineFrame), new Object[] { "ABA", "B B", "ABA", 'A', CEItems.aluminumPanel, 'B', CEItems.ironPanel });
+		GameRegistry.addShapedRecipe(new ItemStack(CEItems.kineticTurbine), new Object[] { " A ", "ABA", " A ", 'A', CEItems.aluminumPanel, 'B', CEItems.ingotTungsten });
+		GameRegistry.addShapedRecipe(new ItemStack(CEBlocks.machineFrame), new Object[] { "ABA", "BCB", "ABA", 'A', CEItems.aluminumPanel, 'B', CEItems.ironPanel, 'C', Blocks.glass });
 		
-		GameRegistry.addShapedRecipe(new ItemStack(CEBlocks.chemicalReactor), new Object[] { "ABA", "ACA", "ABA", 'A', CEItems.ironPanel, 'B', CEItems.capsule, 'C', CEBlocks.machineFrame });
+		GameRegistry.addShapedRecipe(new ItemStack(CEBlocks.chemicalReactor), new Object[] { "ABA", "ECE", "ADA", 'A', CEItems.ironPanel, 'B', CEItems.capsule, 'C', CEBlocks.machineFrame, 'D', CEItems.kineticTurbine, 'E', Blocks.glass });
+		GameRegistry.addShapedRecipe(new ItemStack(CEBlocks.elementDiffuser), new Object[] { "ABA", "ACA", "ADA", 'A', CEItems.ironPanel, 'B', CEItems.capsule, 'C', CEBlocks.machineFrame, 'D', CEItems.kineticTurbine });
+		GameRegistry.addShapedRecipe(new ItemStack(CEBlocks.elementExtractor), new Object[] { "ABA", "ACA", "ADA", 'A', CEItems.ironPanel, 'B', CEItems.capsule, 'C', CEBlocks.machineFrame, 'D', Blocks.piston });
 	}
 }

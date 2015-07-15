@@ -13,6 +13,16 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Use the methods provided in this class to add recipes to the Element Extractor. Example
+ * implementation can be found at {@link TileElementExtractor}.
+ * 
+ * Most of this code is taken from Minecraft's FurnaceRecipes class. Use that as a reference if
+ * needed.
+ * 
+ * @author TheXFactor117
+ * 
+ */
 public class ElementExtractorRecipes 
 {
 	private static final ElementExtractorRecipes BASE = new ElementExtractorRecipes();
@@ -33,14 +43,27 @@ public class ElementExtractorRecipes
 		this.addExtractorRecipe(Blocks.sand, new ItemStack(CEItems.ingotSilicon, 2));
 		this.addExtractorRecipe(Blocks.gravel, new ItemStack(CEItems.ingotSilicon, 2));
 		this.addExtractorRecipe(Blocks.clay, new ItemStack(CEItems.ingotSilicon, 4));
-		this.addExtractorRecipe(Items.water_bucket, new ItemStack(CEItems.ingotIodine));
+		this.addExtractorRecipe(Items.water_bucket, new ItemStack(CEItems.dustSodium));
+		this.addExtractorRecipe(Items.bone, new ItemStack(CEItems.dustPhosphorus));
 	}
 	
+	/**
+	 * Use this method for adding Block input recipes.
+	 * 
+	 * @param input
+	 * @param output
+	 */
 	public void addExtractorRecipe(Block input, ItemStack output)
 	{
 		this.addExtractorRecipe(Item.getItemFromBlock(input), output);
 	}
 	
+	/**
+	 * Use this method for adding Item input recipes.
+	 * 
+	 * @param input
+	 * @param output
+	 */
 	public void addExtractorRecipe(Item input, ItemStack output)
 	{
 		this.addExtractorRecipe(new ItemStack(input, 1, 32767), output);
@@ -52,6 +75,12 @@ public class ElementExtractorRecipes
 		this.extractList.put(input, output);
 	}
 	
+	/**
+	 * Returns the ItemStack result of the item being processed.
+	 * 
+	 * @param stack
+	 * @return Output of the parameter.
+	 */
 	@SuppressWarnings("rawtypes")
 	public ItemStack getExtractionResult(ItemStack stack)
 	{
