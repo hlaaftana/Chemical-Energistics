@@ -57,16 +57,19 @@ public class GuiElementExtractor extends GuiContainer
     protected void drawGuiContainerForegroundLayer(int par1, int par2)
     {
     	super.drawGuiContainerForegroundLayer(par1, par2);
-    	
-    	int x = 138; // energy background x-start
-    	int y = 18; // energy background y-start
-    	
     	fontRendererObj.drawString(I18n.format(tile.getInventoryName()), (xSize / 2) - (fontRendererObj.getStringWidth(I18n.format(tile.getInventoryName())) / 2), 6, 4210752, false);
         fontRendererObj.drawString(I18n.format(inventory.getInventoryName()), 8, 70, 4210752);
         
+        int energyX = 137; // energy background x-start
+    	int energyY = 19; // energy background y-start
+    	int progressX = 84;
+    	int progressY = 35;
+    	int progressSize = tile.process * 7 / tile.processMax;
+        
         Minecraft.getMinecraft().renderEngine.bindTexture(texture);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.drawBar(x, y, tile.storage.getMaxEnergyStored(), tile.storage.getEnergyStored());
+        this.drawBar(energyX, energyY, tile.storage.getMaxEnergyStored(), tile.storage.getEnergyStored());
+        drawTexturedModalRect(progressX, progressY, progressSize, 12, 7, 13);
     }
 	
 	protected void drawToolTips(int mouseX, int mouseY)
@@ -78,7 +81,7 @@ public class GuiElementExtractor extends GuiContainer
     		this.drawBarTooltip("RF", energyStored, maxEnergyStored, mouseX, mouseY);
     	}
     }
-    
+	
     protected final void drawBar(int x, int y, int max, int current)
     {
     	int barWidth = 16;

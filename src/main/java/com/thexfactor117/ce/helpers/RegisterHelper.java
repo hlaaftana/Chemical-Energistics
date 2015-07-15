@@ -23,7 +23,4 @@ public class RegisterHelper
 	{
 		GameRegistry.registerItem(item, item.getUnlocalizedName().substring(5));
 	}
-	
-	
-	// Regsitration with CE is still being worked out for an efficient way.
 }

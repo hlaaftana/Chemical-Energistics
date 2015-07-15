@@ -136,6 +136,8 @@ public class TileElementExtractor extends TileMachine implements IEnergyReceiver
 	public void readSyncableDataFromNBT(NBTTagCompound nbt)
 	{
 		storage.readFromNBT(nbt);
+		nbt.getInteger("Process");
+		nbt.getInteger("ProcessMax");
 	}
 	
 	/**
@@ -145,6 +147,8 @@ public class TileElementExtractor extends TileMachine implements IEnergyReceiver
 	public void writeSyncableDataToNBT(NBTTagCompound nbt)
 	{
 		storage.writeToNBT(nbt);
+		nbt.setInteger("Process", process);
+		nbt.setInteger("ProcessMax", processMax);
 	}
 	
 	/**

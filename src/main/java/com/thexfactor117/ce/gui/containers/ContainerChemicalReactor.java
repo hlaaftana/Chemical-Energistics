@@ -15,7 +15,7 @@ public class ContainerChemicalReactor extends Container
     
     public ContainerChemicalReactor(EntityPlayer player, TileChemicalReactor te)
     {
-        this.chemicalReactor = te;
+    	this.chemicalReactor = te;
  
         this.addSlotToContainer(new Slot(chemicalReactor, 0, 81, 34));
         

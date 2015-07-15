@@ -21,12 +21,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 /**
  * To-do List:
  * Alpha 1.0.0
- * - Chemical Reactor (complete)
- * - Element Diffuser (complete)
- * - Element Extractor (complete)
- * - Crafting Recipes (in-progress)
+ * - Progress bars for each machine.
+ * - Crafting Recipes.
  * - Textures (20%)
- * - Ore Generation (complete)
  * 
  * Alpha 2.0.0
  * - Catalytic Reactor
