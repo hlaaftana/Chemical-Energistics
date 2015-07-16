@@ -2,6 +2,7 @@ package com.thexfactor117.ce.items;
 
 import java.util.List;
 
+import com.thexfactor117.ce.Reference;
 import com.thexfactor117.ce.init.CETabs;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -20,8 +21,10 @@ public class ItemGasCapsule extends Item
 	public ItemGasCapsule(String name)
 	{
 		super();
+		this.setMaxDamage(0);
 		this.setHasSubtypes(true);
 		this.setUnlocalizedName(name);
+		this.setTextureName(Reference.MODID + ":" + name);
 		this.setCreativeTab(CETabs.tabCE);
 	}
 	
@@ -29,7 +32,7 @@ public class ItemGasCapsule extends Item
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister iconRegister)
     {
-        int i = 0;
+		int i = 0;
 
         for (final String name : ItemGasCapsule.GASES)
         {
