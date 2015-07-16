@@ -60,16 +60,16 @@ public class GuiElementExtractor extends GuiContainer
     	fontRendererObj.drawString(I18n.format(tile.getInventoryName()), (xSize / 2) - (fontRendererObj.getStringWidth(I18n.format(tile.getInventoryName())) / 2), 6, 4210752, false);
         fontRendererObj.drawString(I18n.format(inventory.getInventoryName()), 8, 70, 4210752);
         
-        int energyX = 137; // energy background x-start
-    	int energyY = 19; // energy background y-start
-    	int progressX = 84;
-    	int progressY = 35;
-    	int progressSize = tile.process * 7 / tile.processMax;
+        int energyX = 138; // energy background x-start
+    	int energyY = 18; // energy background y-start
+    	//int progressX = 84;
+    	//int progressY = 35;
+    	//int progressSize = tile.process * 7 / tile.processMax;
         
         Minecraft.getMinecraft().renderEngine.bindTexture(texture);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         this.drawBar(energyX, energyY, tile.storage.getMaxEnergyStored(), tile.storage.getEnergyStored());
-        drawTexturedModalRect(progressX, progressY, progressSize, 12, 7, 13);
+        //drawTexturedModalRect(progressX, progressY, progressSize, 12, 7, 13);
     }
 	
 	protected void drawToolTips(int mouseX, int mouseY)
@@ -86,7 +86,7 @@ public class GuiElementExtractor extends GuiContainer
     {
     	int barWidth = 16;
     	int barHeight = 48;
-    	int size = (int)(current * (long)barHeight / max);
+    	int size = current * barHeight / max;
     	Minecraft.getMinecraft().renderEngine.bindTexture(texture);
     	drawTexturedModalRect(x, y, 179, size, barWidth, barHeight);
     }

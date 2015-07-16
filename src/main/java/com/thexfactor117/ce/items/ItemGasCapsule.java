@@ -20,7 +20,6 @@ public class ItemGasCapsule extends Item
 	public ItemGasCapsule(String name)
 	{
 		super();
-		this.setMaxDamage(0);
 		this.setHasSubtypes(true);
 		this.setUnlocalizedName(name);
 		this.setCreativeTab(CETabs.tabCE);

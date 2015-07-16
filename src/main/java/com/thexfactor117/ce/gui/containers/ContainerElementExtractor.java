@@ -17,8 +17,8 @@ public class ContainerElementExtractor extends Container
     {
         this.elementExtractor = te;
  
-        this.addSlotToContainer(new Slot(elementExtractor, 0, 63, 34));
-        this.addSlotToContainer(new Slot(elementExtractor, 1, 97, 34));
+        this.addSlotToContainer(new Slot(elementExtractor, 0, 62, 34));
+        this.addSlotToContainer(new Slot(elementExtractor, 1, 98, 34));
         
         //Inventory
         for (int i = 0; i < 3; i++)
