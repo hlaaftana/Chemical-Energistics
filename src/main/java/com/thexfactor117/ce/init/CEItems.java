@@ -1,11 +1,9 @@
 package com.thexfactor117.ce.init;
 
-import com.thexfactor117.ce.helpers.RegisterHelper;
-import com.thexfactor117.ce.items.ItemCE;
-import com.thexfactor117.ce.items.ItemGasCapsule;
-import com.thexfactor117.ce.items.ItemLiquidCapsule;
-
 import net.minecraft.item.Item;
+
+import com.thexfactor117.ce.helpers.RegisterHelper;
+import com.thexfactor117.ce.items.*;
 
 public class CEItems 
 {
@@ -35,6 +33,9 @@ public class CEItems
 	public static Item thermalPanel = new ItemCE("thermalPanel");
 	public static Item kineticTurbine = new ItemCE("kineticTurbine");
 	
+	// Tools
+	public static Item ironHammer = new ItemIronHammer("ironHammer");
+	
 	public static void registerItems()
 	{
 		// Valuables
@@ -62,5 +63,8 @@ public class CEItems
 		RegisterHelper.registerItem(aluminumPanel);
 		RegisterHelper.registerItem(thermalPanel);
 		RegisterHelper.registerItem(kineticTurbine);
+		
+		// Tools
+		RegisterHelper.registerItem(ironHammer);
 	}
 }
