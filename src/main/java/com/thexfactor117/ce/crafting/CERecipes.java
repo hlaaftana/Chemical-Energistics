@@ -17,11 +17,9 @@ public class CERecipes
 		// OreDictionary
 		OreDictionary.registerOre("oreAluminum", new ItemStack(CEBlocks.oreAluminum));
 		OreDictionary.registerOre("oreSulfur", new ItemStack(CEBlocks.oreSulfur));
-		OreDictionary.registerOre("oreTungsten", new ItemStack(CEBlocks.oreTungsten));
 		OreDictionary.registerOre("oreIridium", new ItemStack(CEBlocks.oreIridium));
 		OreDictionary.registerOre("oreUranium", new ItemStack(CEBlocks.oreUranium));
 		OreDictionary.registerOre("ingotAluminum", new ItemStack(CEItems.ingotAluminum));
-		OreDictionary.registerOre("ingotTungsten", new ItemStack(CEItems.ingotTungsten));
 		OreDictionary.registerOre("ingotIridium", new ItemStack(CEItems.ingotIridium));
 		OreDictionary.registerOre("ingotUranium", new ItemStack(CEItems.ingotUranium));
 		OreDictionary.registerOre("ingotLithium", new ItemStack(CEItems.ingotLithium));
@@ -31,7 +29,6 @@ public class CERecipes
 		OreDictionary.registerOre("ingotQuicksilver", new ItemStack(CEItems.ingotMercury));
 		OreDictionary.registerOre("dustSulfur", new ItemStack(CEItems.dustSulfur));
 		OreDictionary.registerOre("dustAluminum", new ItemStack(CEItems.dustAluminum));
-		OreDictionary.registerOre("dustTungsten", new ItemStack(CEItems.dustTungsten));
 		OreDictionary.registerOre("dustSodium", new ItemStack(CEItems.dustSodium));
 		OreDictionary.registerOre("dustPhosphorus", new ItemStack(CEItems.dustPhosphorus));
 		OreDictionary.registerOre("plateIron", new ItemStack(CEItems.ironPanel));
@@ -40,14 +37,13 @@ public class CERecipes
 		
 		// Smelting
 		GameRegistry.addSmelting(CEBlocks.oreAluminum, new ItemStack(CEItems.ingotAluminum), 0.8F);
-		GameRegistry.addSmelting(CEBlocks.oreTungsten, new ItemStack(CEItems.ingotTungsten), 0.8F);
 		
 		// Recipes
 		GameRegistry.addShapedRecipe(new ItemStack(CEItems.capsule), new Object[] { " A ", "ABA", " A ", 'A', Items.iron_ingot, 'B', Blocks.glass });
 		GameRegistry.addShapedRecipe(new ItemStack(CEItems.ironPanel, 2), new Object[] { "AAA", 'A', Items.iron_ingot });
 		GameRegistry.addShapedRecipe(new ItemStack(CEItems.aluminumPanel, 2), new Object[] { "AAA", 'A', CEItems.ingotAluminum });
 		//GameRegistry.addShapedRecipe(new ItemStack(CEItems.thermalPanel), new Object[] { "AAA", 'A', CEItems.alloyThermal });
-		GameRegistry.addShapedRecipe(new ItemStack(CEItems.kineticTurbine), new Object[] { " A ", "ABA", " A ", 'A', CEItems.aluminumPanel, 'B', CEItems.ingotTungsten });
+		GameRegistry.addShapedRecipe(new ItemStack(CEItems.kineticTurbine), new Object[] { " A ", "ABA", " A ", 'A', CEItems.aluminumPanel, 'B', Blocks.iron_block });
 		GameRegistry.addShapedRecipe(new ItemStack(CEBlocks.machineFrame), new Object[] { "ABA", "BCB", "ABA", 'A', CEItems.aluminumPanel, 'B', CEItems.ironPanel, 'C', Blocks.glass });
 		
 		GameRegistry.addShapedRecipe(new ItemStack(CEBlocks.chemicalReactor), new Object[] { "ABA", "ECE", "ADA", 'A', CEItems.ironPanel, 'B', CEItems.capsule, 'C', CEBlocks.machineFrame, 'D', CEItems.kineticTurbine, 'E', Blocks.glass });

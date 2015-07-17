@@ -21,7 +21,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 /**
  * To-do List:
  * Alpha 1.0.0
- * - Crafting Recipes.
+ * - Crafting Recipes
  * - Textures (25%)
  * 
  * Alpha 2.0.0

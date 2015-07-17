@@ -11,7 +11,6 @@ public class CEItems
 {
 	// Valuables
 	public static Item ingotAluminum = new ItemCE("ingotAluminum");
-	public static Item ingotTungsten = new ItemCE("ingotTungsten");
 	public static Item ingotIridium = new ItemCE("ingotIridium");
 	public static Item ingotUranium = new ItemCE("ingotUranium");
 	public static Item ingotLithium = new ItemCE("ingotLithium");
@@ -40,7 +39,6 @@ public class CEItems
 	{
 		// Valuables
 		RegisterHelper.registerItem(ingotAluminum);
-		RegisterHelper.registerItem(ingotTungsten);
 		RegisterHelper.registerItem(ingotIridium);
 		RegisterHelper.registerItem(ingotUranium);
 		RegisterHelper.registerItem(ingotLithium);
