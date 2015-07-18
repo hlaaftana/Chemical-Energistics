@@ -1,7 +1,10 @@
 package com.thexfactor117.ce;
 
+import net.minecraftforge.common.MinecraftForge;
+
 import com.thexfactor117.ce.crafting.CERecipes;
 import com.thexfactor117.ce.handlers.ConfigHandler;
+import com.thexfactor117.ce.handlers.CraftingHandler;
 import com.thexfactor117.ce.handlers.GuiHandler;
 import com.thexfactor117.ce.helpers.LogHelper;
 import com.thexfactor117.ce.init.CEBlocks;
@@ -69,9 +72,11 @@ public class ChemicalEnergistics
 	public void init(FMLInitializationEvent event)
 	{
 		CERecipes.registerRecipes();
+		CERecipes.registerItemsToOreDict();
+		proxy.registerTileEntities();
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(ChemicalEnergistics.instance, new GuiHandler());
-		proxy.registerTileEntities();
+		MinecraftForge.EVENT_BUS.register(new CraftingHandler());
 	}
 	
 	@Mod.EventHandler
