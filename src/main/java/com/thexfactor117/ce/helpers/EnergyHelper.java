@@ -40,7 +40,7 @@ public class EnergyHelper
 	/**
 	 * Instance checks for energy gen.
 	 */
-	public static int capsuleEnergyGen(ItemStack stack)
+	public static int getCapsuleEnergyGen(ItemStack stack)
 	{				
 		if (stack != null)
 		{
@@ -51,17 +51,17 @@ public class EnergyHelper
 			
 			if (stack.isItemEqual(lithiumGas))
 			{
-				return crBaseEnergy * 6;
+				return crBaseEnergy * 7;
 			}
 			
 			if (stack.isItemEqual(nitrogenGas))
 			{
-				return crBaseEnergy * 3;
+				return crBaseEnergy * 4;
 			}
 			
 			if (stack.isItemEqual(oxygenGas))
 			{
-				return crBaseEnergy * 2;
+				return crBaseEnergy * 1;
 			}
 			
 			if (stack.isItemEqual(sodiumGas))
@@ -71,27 +71,27 @@ public class EnergyHelper
 			
 			if (stack.isItemEqual(phosphorusGas))
 			{
-				return crBaseEnergy * 6;
+				return crBaseEnergy * 8;
 			}
 			
 			if (stack.isItemEqual(sulfurGas))
 			{
-				return crBaseEnergy * 8;
+				return crBaseEnergy * 7;
 			}
 			
 			if (stack.isItemEqual(iodineGas))
 			{
-				return crBaseEnergy * 8;
+				return crBaseEnergy * 9;
 			}
 			
 			if (stack.isItemEqual(mercuryGas))
 			{
-				return crBaseEnergy * 10;
+				return crBaseEnergy * 8;
 			}
 			
 			if (stack.isItemEqual(radonGas))
 			{
-				return crBaseEnergy * 4;
+				return crBaseEnergy * 10;
 			}
 			
 			if (stack.isItemEqual(lithiumLiquid))
@@ -106,17 +106,17 @@ public class EnergyHelper
 			
 			if (stack.isItemEqual(aluminumLiquid))
 			{
-				return crBaseEnergy * 3;
+				return crBaseEnergy * 2;
 			}
 			
 			if (stack.isItemEqual(siliconLiquid))
 			{
-				return crBaseEnergy * 2;
+				return crBaseEnergy * 1;
 			}
 			
 			if (stack.isItemEqual(phosphorusLiquid))
 			{
-				return crBaseEnergy * 3;
+				return crBaseEnergy * 4;
 			}
 			
 			if (stack.isItemEqual(sulfurLiquid))
@@ -126,17 +126,17 @@ public class EnergyHelper
 			
 			if (stack.isItemEqual(ironLiquid))
 			{
-				return crBaseEnergy * 2;
+				return crBaseEnergy * 1;
 			}
 			
 			if (stack.isItemEqual(copperLiquid))
 			{
-				return crBaseEnergy * 2;
+				return crBaseEnergy * 1;
 			}
 			
 			if (stack.isItemEqual(silverLiquid))
 			{
-				return crBaseEnergy * 3;
+				return crBaseEnergy * 2;
 			}
 			
 			if (stack.isItemEqual(tinLiquid))
@@ -146,7 +146,7 @@ public class EnergyHelper
 			
 			if (stack.isItemEqual(iodineLiquid))
 			{
-				return crBaseEnergy * 4;
+				return crBaseEnergy * 2;
 			}
 			
 			if (stack.isItemEqual(goldLiquid))
@@ -161,12 +161,12 @@ public class EnergyHelper
 			
 			if (stack.isItemEqual(leadLiquid))
 			{
-				return crBaseEnergy * 3;
+				return crBaseEnergy * 2;
 			}
 			
 			if (stack.isItemEqual(uraniumLiquid))
 			{
-				return crBaseEnergy * 7;
+				return crBaseEnergy * 9;
 			}
 		}
 		

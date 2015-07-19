@@ -64,7 +64,7 @@ public class TileChemicalReactor extends TileMachine implements IEnergyProvider
 			return 0;
 		}
 		
-		return EnergyHelper.capsuleEnergyGen(stack);
+		return EnergyHelper.getCapsuleEnergyGen(stack);
 	}
 	
 	/**
