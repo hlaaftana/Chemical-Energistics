@@ -3,11 +3,6 @@ package com.thexfactor117.ce.blocks;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.thexfactor117.ce.ChemicalEnergistics;
-import com.thexfactor117.ce.Reference;
-import com.thexfactor117.ce.init.CETabs;
-import com.thexfactor117.ce.tiles.machines.TileChemicalReactor;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
@@ -19,6 +14,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+import com.thexfactor117.ce.ChemicalEnergistics;
+import com.thexfactor117.ce.init.CETabs;
+import com.thexfactor117.ce.tiles.machines.TileChemicalReactor;
+
 public class BlockChemicalReactor extends BlockContainer implements ITileEntityProvider
 {
 	public Random rand = new Random();
@@ -29,7 +28,7 @@ public class BlockChemicalReactor extends BlockContainer implements ITileEntityP
 		super(Material.iron);
 		this.setHardness(3.5F);
 		this.setStepSound(soundTypeMetal);
-		this.setBlockName(Reference.MODID + ":" + NAME);
+		this.setBlockName(NAME);
 		this.setCreativeTab(CETabs.tabCE);
 	}
 	
@@ -51,7 +50,7 @@ public class BlockChemicalReactor extends BlockContainer implements ITileEntityP
     @Override
     public TileEntity createNewTileEntity(World world, int meta) 
     {
-        return new TileChemicalReactor();
+        return new TileChemicalReactor("Chemical Reactor");
     }
     
     @Override

@@ -14,7 +14,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import com.thexfactor117.ce.ChemicalEnergistics;
-import com.thexfactor117.ce.Reference;
 import com.thexfactor117.ce.init.CETabs;
 import com.thexfactor117.ce.tiles.machines.TileElementDiffuser;
 
@@ -28,7 +27,7 @@ public class BlockElementDiffuser extends Block implements ITileEntityProvider
 		super(Material.iron);
 		this.setHardness(3.5F);
 		this.setStepSound(soundTypeMetal);
-		this.setBlockName(Reference.MODID + ":" + NAME);
+		this.setBlockName(NAME);
 		this.setCreativeTab(CETabs.tabCE);
 	}
 	
@@ -50,7 +49,7 @@ public class BlockElementDiffuser extends Block implements ITileEntityProvider
     @Override
     public TileEntity createNewTileEntity(World world, int meta) 
     {
-        return new TileElementDiffuser();
+        return new TileElementDiffuser("Element Diffuser");
     }
     
     @Override

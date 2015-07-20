@@ -12,18 +12,19 @@ import cofh.api.energy.IEnergyProvider;
 import cofh.api.energy.IEnergyReceiver;
 
 import com.thexfactor117.ce.helpers.EnergyHelper;
+import com.thexfactor117.ce.init.CEItems;
 import com.thexfactor117.ce.tiles.base.TileMachine;
 
-public class TileChemicalReactor extends TileMachine implements IEnergyProvider
+public class TileCatalyticReactor extends TileMachine implements IEnergyProvider
 {
-	public EnergyStorage storage = new EnergyStorage(50000, 64);
+	public EnergyStorage storage = new EnergyStorage(100000, 128);
 	public int process = 0;
-	public int processMax = 20*5;
+	public int processMax = 25*2;
 	
-	public TileChemicalReactor(String name)
+	public TileCatalyticReactor(String name)
 	{
 		super();
-		items = new ItemStack[1];
+		this.items = new ItemStack[2];
 		this.name = name;
 	}
 	
@@ -34,17 +35,17 @@ public class TileChemicalReactor extends TileMachine implements IEnergyProvider
 	public void updateEntity()
 	{
 		super.updateEntity();
-
+		
 		if (!worldObj.isRemote)
 		{
-			if (items[0] != null && process < processMax && canGenerate())
+			if (items[1] != null && process < processMax && canGenerate())
 			{
 				process++;
 				generate();
 				
 				if (process == processMax)
 				{
-					this.decrStackSize(0, 1);
+					this.decrStackSize(1, 1);
 					process = 0;
 				}
 			}
@@ -58,11 +59,23 @@ public class TileChemicalReactor extends TileMachine implements IEnergyProvider
 	 * @param stack
 	 * @return energy value
 	 */
-	public static int getEnergyValue(ItemStack stack)
+	public int getEnergyValue(ItemStack stack)
 	{
 		if (stack == null)
 		{
 			return 0;
+		}
+		
+		if (this.items[0] == null)
+		{
+			return EnergyHelper.getCapsuleEnergyGen(stack);
+		}
+		
+		ItemStack catalyst = new ItemStack(CEItems.carbonFiber);
+		
+		if (this.items[0].isItemEqual(catalyst))
+		{
+			return EnergyHelper.getCapsuleEnergyGen(stack) * 2;
 		}
 		
 		return EnergyHelper.getCapsuleEnergyGen(stack);
@@ -73,7 +86,7 @@ public class TileChemicalReactor extends TileMachine implements IEnergyProvider
 	 */
 	public boolean canGenerate()
 	{
-		return getEnergyValue(this.items[0]) > 0 && storage.getEnergyStored() < storage.getMaxEnergyStored();
+		return getEnergyValue(this.items[1]) > 0 && storage.getEnergyStored() < storage.getMaxEnergyStored();
 	}
 	
 	/**
@@ -81,7 +94,7 @@ public class TileChemicalReactor extends TileMachine implements IEnergyProvider
 	 */
 	public void generate()
 	{
-		int energy = getEnergyValue(items[0]);
+		int energy = getEnergyValue(items[1]);
 		
 		if (energy > 0)
 		{
@@ -119,6 +132,9 @@ public class TileChemicalReactor extends TileMachine implements IEnergyProvider
 		}
 	}
 	
+	/*
+	 * NBT Data and Packets
+	 */
 	@Override
 	public void readFromNBT(NBTTagCompound nbt)
 	{

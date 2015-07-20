@@ -10,6 +10,7 @@ import net.minecraftforge.common.util.Constants;
 
 public class TileMachine extends TileEntity implements IInventory
 {
+	protected String name;
 	protected ItemStack[] items;
 	protected boolean isActive = false;
 	

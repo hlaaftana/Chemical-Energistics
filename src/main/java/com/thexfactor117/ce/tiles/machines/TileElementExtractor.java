@@ -20,10 +20,11 @@ public class TileElementExtractor extends TileMachine implements IEnergyReceiver
 	public int processMax = 20*2;
 	public int energyUse = 30;
 	
-	public TileElementExtractor()
+	public TileElementExtractor(String name)
 	{
 		super();
 		items = new ItemStack[2];
+		this.name = name;
 	}
 	
 	/**
@@ -177,7 +178,7 @@ public class TileElementExtractor extends TileMachine implements IEnergyReceiver
 	@Override
 	public String getInventoryName() 
 	{
-		return "Element Extractor";
+		return name;
 	}
 	
 	/*

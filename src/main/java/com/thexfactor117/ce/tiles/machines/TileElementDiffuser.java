@@ -20,10 +20,11 @@ public class TileElementDiffuser extends TileMachine implements IEnergyReceiver,
 	public int processMax = 20*30;
 	public int energyUse = 30;
 	
-	public TileElementDiffuser()
+	public TileElementDiffuser(String name)
 	{
 		super();
 		items = new ItemStack[2];
+		this.name = name;
 	}
 	
 	/**
@@ -177,7 +178,7 @@ public class TileElementDiffuser extends TileMachine implements IEnergyReceiver,
 	@Override
 	public String getInventoryName() 
 	{
-		return "Element Diffuser";
+		return name;
 	}
 
 	/*

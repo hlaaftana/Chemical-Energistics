@@ -11,7 +11,6 @@
 ### Valuables
 
 item.ingotAluminum.name=Aluminum Ingot
-item.ingotTungsten.name=Tungsten Ingot
 item.ingotIridium.name=Iridium Ingot
 item.ingotUranium.name=Uranium Ingot
 item.ingotLithium.name=Lithium Ingot
@@ -20,10 +19,18 @@ item.ingotIodine.name=Iodine Ingot
 item.ingotMercury.name=Mercury Ingot
 item.dustSulfur.name=Sulfur Dust
 item.dustAluminum.name=Aluminum Dust
-item.dustTungsten.name=Tungsten Dust
 item.dustSodium.name=Sodium Dust
 item.dustPhosphorus.name=Phosphorus Dust
 item.carbonFiber.name=Carbon Fiber
+
+
+### Machinery Parts
+
+item.ironPanel.name=Iron Panel
+item.aluminumPanel.name=Aluminum Panel
+item.thermalPanel.name=Thermal Panel
+item.steelPanel.name=Steel Panel
+item.kineticTurbine.name=Kinetic Turbine
 
 
 ### Capsules
@@ -65,12 +72,13 @@ item.liquidCapsule.uranium.name=Uranium Liquid Capsule
 
 tile.oreAluminum.name=Aluminum Ore
 tile.oreSulfur.name=Sulfur Ore
-tile.oreTungsten.name=Tungsten Ore
 tile.oreIridium.name=Iridium Ore
 tile.oreUranium.name=Uranium Ore
 
 
 ### Machines
+
+tile.machineFrame.name=Machine Frame
 tile.chemicalReactor.name=Chemical Reactor
 tile.pressurizedTank.name=Pressurized Tank
 
