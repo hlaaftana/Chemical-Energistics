@@ -1,9 +1,15 @@
-##### Chemical Energistics ENGLISH Language File
+######################################################
+##### Chemical Energistics ENGLISH Language File #####
+######################################################
 
 
 
-### Items
-# Valuables
+#############
+### Items ###
+#############
+
+### Valuables
+
 item.ingotAluminum.name=Aluminum Ingot
 item.ingotTungsten.name=Tungsten Ingot
 item.ingotIridium.name=Iridium Ingot
@@ -19,7 +25,9 @@ item.dustSodium.name=Sodium Dust
 item.dustPhosphorus.name=Phosphorus Dust
 item.carbonFiber.name=Carbon Fiber
 
-# Capsules
+
+### Capsules
+
 item.capsule.name=Empty Capsule
 item.gasCapsule.hydrogen.name=Hydrogen Gas Capsule
 item.gasCapsule.lithium.name=Lithium Gas Capsule
@@ -49,15 +57,28 @@ item.liquidCapsule.uranium.name=Uranium Liquid Capsule
 
 
 
-### Blocks
-# Naturally Generating Blocks
+##############
+### Blocks ###
+##############
+
+### Naturally Generating Blocks
+
 tile.oreAluminum.name=Aluminum Ore
 tile.oreSulfur.name=Sulfur Ore
 tile.oreTungsten.name=Tungsten Ore
 tile.oreIridium.name=Iridium Ore
 tile.oreUranium.name=Uranium Ore
-tile.basalt.name=Basalt
 
-# Machines
+
+### Machines
 tile.chemicalReactor.name=Chemical Reactor
 tile.pressurizedTank.name=Pressurized Tank
+
+
+
+###################################
+### Item Groups (Creative Tabs) ###
+###################################
+
+itemGroup.tabCE=Chemical Energistics
+itemGroup.tabCETest=Chemical Energistics Test Features

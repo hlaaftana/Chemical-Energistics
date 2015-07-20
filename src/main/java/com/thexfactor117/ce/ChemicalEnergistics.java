@@ -47,7 +47,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
  */
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION)
 public class ChemicalEnergistics 
-{
+{	
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY, serverSide = Reference.COMMON_PROXY)
 	public static CommonProxy proxy;
 	
