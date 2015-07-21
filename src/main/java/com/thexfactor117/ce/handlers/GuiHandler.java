@@ -3,12 +3,15 @@ package com.thexfactor117.ce.handlers;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
+import com.thexfactor117.ce.gui.client.GuiCatalyticReactor;
 import com.thexfactor117.ce.gui.client.GuiChemicalReactor;
 import com.thexfactor117.ce.gui.client.GuiElementDiffuser;
 import com.thexfactor117.ce.gui.client.GuiElementExtractor;
+import com.thexfactor117.ce.gui.containers.ContainerCatalyticReactor;
 import com.thexfactor117.ce.gui.containers.ContainerChemicalReactor;
 import com.thexfactor117.ce.gui.containers.ContainerElementDiffuser;
 import com.thexfactor117.ce.gui.containers.ContainerElementExtractor;
+import com.thexfactor117.ce.tiles.machines.TileCatalyticReactor;
 import com.thexfactor117.ce.tiles.machines.TileChemicalReactor;
 import com.thexfactor117.ce.tiles.machines.TileElementDiffuser;
 import com.thexfactor117.ce.tiles.machines.TileElementExtractor;
@@ -37,6 +40,12 @@ public class GuiHandler implements IGuiHandler
 			return new ContainerElementExtractor(player, elementExtractor);
 		}
 		
+		if (ID == 3)
+		{
+			TileCatalyticReactor elementExtractor = (TileCatalyticReactor) world.getTileEntity(x, y, z);
+			return new ContainerCatalyticReactor(player, elementExtractor);
+		}
+		
 		return null;
 	}
 	
@@ -58,6 +67,12 @@ public class GuiHandler implements IGuiHandler
 		{
 			TileElementExtractor elementExtractor = (TileElementExtractor) world.getTileEntity(x, y, z);
 			return new GuiElementExtractor(player, elementExtractor);
+		}
+		
+		if (ID == 3)
+		{
+			TileCatalyticReactor elementExtractor = (TileCatalyticReactor) world.getTileEntity(x, y, z);
+			return new GuiCatalyticReactor(player, elementExtractor);
 		}
 		
 		return null;

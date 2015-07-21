@@ -47,6 +47,8 @@ public class TileCatalyticReactor extends TileMachine implements IEnergyProvider
 				{
 					this.decrStackSize(1, 1);
 					process = 0;
+					
+					//TODO Add a system to decrease item damage on catalysts.
 				}
 			}
 			
@@ -71,7 +73,7 @@ public class TileCatalyticReactor extends TileMachine implements IEnergyProvider
 			return EnergyHelper.getCapsuleEnergyGen(stack);
 		}
 		
-		ItemStack catalyst = new ItemStack(CEItems.carbonFiber);
+		ItemStack catalyst = new ItemStack(CEItems.aluminaCatalyst);
 		
 		if (this.items[0].isItemEqual(catalyst))
 		{

@@ -34,8 +34,9 @@ public class CEItems
 	public static Item steelPanel = new ItemCE("steelPanel");
 	public static Item kineticTurbine = new ItemCE("kineticTurbine");
 	
-	// Tools
+	// Miscellaneous Items
 	public static Item ironHammer = new ItemIronHammer("ironHammer");
+	public static Item aluminaCatalyst = new ItemAluminaCatalyst("aluminaCatalyst");
 	
 	public static void registerItems()
 	{
@@ -66,7 +67,8 @@ public class CEItems
 		RegisterHelper.registerItem(steelPanel);
 		RegisterHelper.registerItem(kineticTurbine);
 		
-		// Tools
+		// Miscellaneous Items
 		RegisterHelper.registerItem(ironHammer);
+		RegisterHelper.registerItem(aluminaCatalyst);
 	}
 }

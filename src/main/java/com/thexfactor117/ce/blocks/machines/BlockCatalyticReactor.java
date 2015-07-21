@@ -1,10 +1,9 @@
-package com.thexfactor117.ce.blocks;
+package com.thexfactor117.ce.blocks.machines;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -16,14 +15,14 @@ import net.minecraft.world.World;
 
 import com.thexfactor117.ce.ChemicalEnergistics;
 import com.thexfactor117.ce.init.CETabs;
-import com.thexfactor117.ce.tiles.machines.TileChemicalReactor;
+import com.thexfactor117.ce.tiles.machines.TileCatalyticReactor;
 
-public class BlockChemicalReactor extends BlockContainer implements ITileEntityProvider
+public class BlockCatalyticReactor extends Block implements ITileEntityProvider
 {
 	public Random rand = new Random();
-	private static final String NAME = "chemicalReactor";
+	private static final String NAME = "catalyticReactor";
 	
-	public BlockChemicalReactor()
+	public BlockCatalyticReactor()
 	{
 		super(Material.iron);
 		this.setHardness(3.5F);
@@ -50,7 +49,7 @@ public class BlockChemicalReactor extends BlockContainer implements ITileEntityP
     @Override
     public TileEntity createNewTileEntity(World world, int meta) 
     {
-        return new TileChemicalReactor("Chemical Reactor");
+        return new TileCatalyticReactor("Catalytic Reactor");
     }
     
     @Override
@@ -74,10 +73,10 @@ public class BlockChemicalReactor extends BlockContainer implements ITileEntityP
 		
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
 		
-		if (tileEntity != null && tileEntity instanceof TileChemicalReactor)
+		if (tileEntity != null && tileEntity instanceof TileCatalyticReactor)
 		{
 			// number indicates which GUI to open
-			player.openGui(ChemicalEnergistics.instance, 0, world, x, y, z);
+			player.openGui(ChemicalEnergistics.instance, 3, world, x, y, z);
 			
 			return true;
 		}
@@ -98,13 +97,13 @@ public class BlockChemicalReactor extends BlockContainer implements ITileEntityP
 		
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
 		
-		if (tileEntity != null && tileEntity instanceof TileChemicalReactor)
+		if (tileEntity != null && tileEntity instanceof TileCatalyticReactor)
 		{
-			TileChemicalReactor chemicalReactor = (TileChemicalReactor) tileEntity;
+			TileCatalyticReactor catalyticReactor = (TileCatalyticReactor) tileEntity;
 			
-			for (int i = 0; i < chemicalReactor.getSizeInventory(); i++)
+			for (int i = 0; i < catalyticReactor.getSizeInventory(); i++)
 			{
-				ItemStack stack = chemicalReactor.getStackInSlot(i);
+				ItemStack stack = catalyticReactor.getStackInSlot(i);
 				
 				if (stack != null)
 				{

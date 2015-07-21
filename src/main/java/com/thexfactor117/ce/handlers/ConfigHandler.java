@@ -27,7 +27,6 @@ public class ConfigHandler
 		// worldgen
 		generateAluminum = config.get(WORLD_GEN, "generateAluminum", true, "Should Aluminum Ore generate?").getBoolean();
 		generateSulfur = config.get(WORLD_GEN, "generateSulfur", true, "Should Sulfur Ore generate?").getBoolean();
-		generateTungsten = config.get(WORLD_GEN, "generateTungsten", true, "Should Tungsten Ore generate?").getBoolean();
 		generateUranium = config.get(WORLD_GEN, "generateUranium", true, "Should Uranium Ore generate?").getBoolean();
 		generateIridium = config.get(WORLD_GEN, "generateIridium", true, "Should Iridium Ore generate").getBoolean();
 		

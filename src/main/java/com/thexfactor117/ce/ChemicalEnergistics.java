@@ -24,15 +24,16 @@ import cpw.mods.fml.common.registry.GameRegistry;
 /**
  * To-do List:
  * Alpha 1.0.0
+ * - Catalytic Reactor
+ * - Basic Catalysts
  * - Crafting Recipes
  * - Textures (25%)
  * 
  * Alpha 2.0.0
- * - Catalytic Reactor
  * - Element Freezer
  * - Element Oven
  * - Battery Box
- * - Catalysts
+ * - Advanced Catalysts
  * 
  * Alpha 3.0.0
  * - Chemical Deconstructor

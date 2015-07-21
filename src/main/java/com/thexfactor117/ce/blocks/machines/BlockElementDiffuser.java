@@ -1,4 +1,4 @@
-package com.thexfactor117.ce.blocks;
+package com.thexfactor117.ce.blocks.machines;
 
 import java.util.ArrayList;
 import java.util.Random;
