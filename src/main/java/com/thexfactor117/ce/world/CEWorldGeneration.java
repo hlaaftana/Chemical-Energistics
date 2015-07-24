@@ -29,25 +29,25 @@ public class CEWorldGeneration implements IWorldGenerator
 	}
 	
 	private void generateSurface(World world, Random random, int x, int z)
-	{
+	{	
 		if (ConfigHandler.generateAluminum)
 		{
-			addOreSpawn(CEBlocks.oreAluminum, world, random, x, z, 16, 16, 2 + random.nextInt(4), 18, 0, 64);
+			addOreSpawn(CEBlocks.oreAluminum, world, random, x, z, 16, 16, 2 + random.nextInt(6), 25, 0, 64);
 		}
 		
 		if (ConfigHandler.generateSulfur)
 		{
-			addOreSpawn(CEBlocks.oreSulfur, world, random, x, z, 16, 16, 1 + random.nextInt(3), 14, 0, 48);
+			addOreSpawn(CEBlocks.oreSulfur, world, random, x, z, 16, 16, 2 + random.nextInt(4), 20, 0, 48);
 		}
 		
 		if (ConfigHandler.generateUranium)
 		{
-			addOreSpawn(CEBlocks.oreUranium, world, random, x, z, 16, 16, 1 + random.nextInt(1), 10, 0, 16);
+			addOreSpawn(CEBlocks.oreUranium, world, random, x, z, 16, 16, 2 + random.nextInt(2), 15, 0, 16);
 		}
 		
 		if (ConfigHandler.generateIridium)
 		{
-			addOreSpawn(CEBlocks.oreIridium, world, random, x, z, 16, 16, 1, 6, 0, 64);
+			addOreSpawn(CEBlocks.oreIridium, world, random, x, z, 16, 16, 1, 10, 0, 64);
 		}
 	}
 	

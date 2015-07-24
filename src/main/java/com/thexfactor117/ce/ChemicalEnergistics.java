@@ -66,7 +66,7 @@ public class ChemicalEnergistics
 		CEBlocks.registerBlocks();
 		CEItems.registerItems();
 		
-		GameRegistry.registerWorldGenerator(worldGen, 100);
+		GameRegistry.registerWorldGenerator(worldGen, 0);
 	}
 	
 	@Mod.EventHandler
