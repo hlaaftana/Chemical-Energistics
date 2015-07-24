@@ -20,6 +20,7 @@ public class TileCatalyticReactor extends TileMachine implements IEnergyProvider
 	public EnergyStorage storage = new EnergyStorage(100000, 128);
 	public int process = 0;
 	public int processMax = 25*2;
+	public int catalystDamage = 0;
 	
 	public TileCatalyticReactor(String name)
 	{
@@ -45,10 +46,21 @@ public class TileCatalyticReactor extends TileMachine implements IEnergyProvider
 				
 				if (process == processMax)
 				{
+					ItemStack catalyst = new ItemStack(CEItems.aluminaCatalyst);
 					this.decrStackSize(1, 1);
-					process = 0;
 					
-					//TODO Add a system to decrease item damage on catalysts.
+					if (this.items[0] != null && this.items[0].isItemEqual(catalyst))
+					{
+						catalystDamage++;
+					}
+					
+					if (catalystDamage == 64)
+					{
+						this.decrStackSize(0, 1);
+						catalystDamage = 0;
+					}
+					
+					process = 0;
 				}
 			}
 			
@@ -68,7 +80,7 @@ public class TileCatalyticReactor extends TileMachine implements IEnergyProvider
 			return 0;
 		}
 		
-		if (this.items[0] == null)
+		if (this.items[0] == null || this.items[0].getItem() != CEItems.aluminaCatalyst)
 		{
 			return EnergyHelper.getCapsuleEnergyGen(stack);
 		}
