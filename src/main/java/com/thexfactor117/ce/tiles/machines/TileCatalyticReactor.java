@@ -25,6 +25,7 @@ public class TileCatalyticReactor extends TileMachine implements IEnergyProvider
 	public TileCatalyticReactor(String name)
 	{
 		super();
+		/** Slot 0 = Catalyst. Slot 1 = Element */
 		this.items = new ItemStack[2];
 		this.name = name;
 	}

@@ -19,7 +19,7 @@ import com.thexfactor117.ce.tiles.machines.TileCatalyticReactor;
 
 public class GuiCatalyticReactor extends GuiContainer
 {
-	private ResourceLocation texture = new ResourceLocation(Reference.MODID, "textures/gui/machines/chemicalReactor.png");
+	private ResourceLocation texture = new ResourceLocation(Reference.MODID, "textures/gui/machines/catalyticReactor.png");
     private InventoryPlayer inventory;
 	private TileCatalyticReactor tile;
     

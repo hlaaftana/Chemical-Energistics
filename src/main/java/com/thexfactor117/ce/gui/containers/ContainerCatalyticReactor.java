@@ -17,8 +17,8 @@ public class ContainerCatalyticReactor extends Container
     {
     	this.catalyticReactor = te;
  
-        this.addSlotToContainer(new Slot(catalyticReactor, 1, 81, 34));
-        this.addSlotToContainer(new Slot(catalyticReactor, 0, 41, 34));
+        this.addSlotToContainer(new Slot(catalyticReactor, 1, 97, 34));
+        this.addSlotToContainer(new Slot(catalyticReactor, 0, 63, 34));
         
         //Inventory
         for (int i = 0; i < 3; i++)
