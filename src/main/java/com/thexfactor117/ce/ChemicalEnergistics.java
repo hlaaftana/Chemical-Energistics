@@ -65,6 +65,7 @@ public class ChemicalEnergistics
 		
 		CEBlocks.registerBlocks();
 		CEItems.registerItems();
+		CEFluids.registerFluids();
 		
 		GameRegistry.registerWorldGenerator(worldGen, 0);
 	}
@@ -75,6 +76,10 @@ public class ChemicalEnergistics
 		CERecipes.registerRecipes();
 		CERecipes.registerItemsToOreDict();
 		proxy.registerTileEntities();
+		
+		BucketHandler.registerBuckets();
+		
+		GameRegistry.registerFuelHandler(new FuelHandler());
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(ChemicalEnergistics.instance, new GuiHandler());
 		MinecraftForge.EVENT_BUS.register(new CraftingHandler());
