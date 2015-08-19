@@ -60,9 +60,9 @@ public class ChemicalEnergistics
 		LogHelper.info("Initializing Chemical Energistics - creating items, warming up machines, readying the explosives...");
 		ConfigHandler.registerConfig(event.getModConfigurationDirectory());
 		
+		CEFluids.registerFluids();
 		CEBlocks.registerBlocks();
 		CEItems.registerItems();
-		CEFluids.registerFluids();
 		
 		GameRegistry.registerWorldGenerator(worldGen, 0);
 	}
