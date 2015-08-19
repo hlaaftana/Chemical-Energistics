@@ -50,7 +50,7 @@ public enum ElementEnum {
     public String name;
     public int atomicNumber;
     public boolean isRadioactive;
-    //If you want, I'll add melting, freezing and maybe boiling points. I'd prefer Kelvin though.
+    //If you want, I'll add melting, freezing and maybe boiling points. I'd prefer Kelvin.
     ElementEnum(String name, String stateAtRoomTemperature, String formula, int atomicNumber, boolean isRadioactive) {
         this.name = name;
         this.stateAtRoomTemperature = stateAtRoomTemperature;

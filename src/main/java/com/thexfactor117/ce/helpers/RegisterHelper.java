@@ -86,6 +86,7 @@ public class RegisterHelper
 	public static String blockToString(Block block){
 		return block.getUnlocalizedName().substring(5);
 	}
+	
 	public static String itemToString(Item item){
 		return item.getUnlocalizedName().substring(5);
 	}

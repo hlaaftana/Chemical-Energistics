@@ -121,4 +121,7 @@ public class CERecipes
 	protected static void registerFilledRecipe(Block item, Block output){
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(item), new Object[] {"AAA", "AAA", "AAA", 'A', output}));
 	}
+	protected static void registerFilledRecipe(ItemStack item, ItemStack output){
+		GameRegistry.addRecipe(new ShapedOreRecipe(item, new Object[] {"AAA", "AAA", "AAA", 'A', output}));
+	}
 }

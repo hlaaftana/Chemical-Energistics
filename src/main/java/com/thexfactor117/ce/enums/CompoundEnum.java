@@ -5,8 +5,8 @@ package com.thexfactor117.ce.enums;
  * I'm not putting anything here yet.
  * Can you merge the fluid pull request for next time? I'm gonna need it to implement some stuff.
  */
-public enum CompoundEnum {/*
-    public String stateAtRoomTemperature;
+public enum CompoundEnum {
+    /*public String stateAtRoomTemperature;
     public String formula;
     public String name;
     public int atomicNumber;

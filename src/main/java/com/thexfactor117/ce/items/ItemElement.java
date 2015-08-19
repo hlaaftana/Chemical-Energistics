@@ -14,7 +14,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 /**
  * @author Hlaaftana
  * THIS IS JUST A TEST FOR THE ELEMENT ENUMS
- * YOU CAN DELETE THIS LATER X
+ * YOU CAN DELETE THIS AFTER I FINISH THE FLUIDS
  */
 public class ItemElement extends ItemCE{
 	private ElementEnum element;
