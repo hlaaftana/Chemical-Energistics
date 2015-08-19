@@ -3,6 +3,7 @@ package com.thexfactor117.ce.world;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
@@ -32,22 +33,22 @@ public class CEWorldGeneration implements IWorldGenerator
 	{	
 		if (ConfigHandler.generateAluminum)
 		{
-			addOreSpawn(CEBlocks.oreAluminum, world, random, x, z, 16, 16, 2 + random.nextInt(6), 25, 0, 64);
+			addOreSpawn(CEBlocks.oreAluminum, world, random, x, z, 2 + random.nextInt(6), 25, 0, 64);
 		}
 		
 		if (ConfigHandler.generateSulfur)
 		{
-			addOreSpawn(CEBlocks.oreSulfur, world, random, x, z, 16, 16, 2 + random.nextInt(4), 20, 0, 48);
+			addOreSpawn(CEBlocks.oreSulfur, world, random, x, z,, 2 + random.nextInt(4), 20, 0, 48);
 		}
 		
 		if (ConfigHandler.generateUranium)
 		{
-			addOreSpawn(CEBlocks.oreUranium, world, random, x, z, 16, 16, 2 + random.nextInt(2), 15, 0, 16);
+			addOreSpawn(CEBlocks.oreUranium, world, random, x, z, 2 + random.nextInt(2), 15, 0, 16);
 		}
 		
 		if (ConfigHandler.generateIridium)
 		{
-			addOreSpawn(CEBlocks.oreIridium, world, random, x, z, 16, 16, 1, 10, 0, 64);
+			addOreSpawn(CEBlocks.oreIridium, world, random, x, z, 1, 10, 0, 64);
 		}
 	}
 	
@@ -55,14 +56,34 @@ public class CEWorldGeneration implements IWorldGenerator
 
 	private void generateEnd(World world, Random random, int x, int z) {}
 	
-	private void addOreSpawn(Block block, World world, Random random, int blockXPos, int blockZPos, int maxX, int maxZ, int maxVeinSize, int chanceToSpawn, int minY, int maxY)
+	private void addOreSpawn(Block block, World world, Random random, int blockXPos, int blockZPos, int maxVeinSize, int chanceToSpawn, int minY, int maxY)
 	{
 		for (int i = 0; i < chanceToSpawn; i++)
 		{
-			int posX = blockXPos + random.nextInt(maxX);
+			int posX = blockXPos + random.nextInt(16);
 			int posY = minY + random.nextInt(maxY - minY);
-			int posZ = blockZPos + random.nextInt(maxZ);
+			int posZ = blockZPos + random.nextInt(16);
 			new WorldGenMinable(block, maxVeinSize).generate(world, random, posX, posY, posZ);
+		}
+	}
+	private void addNetherOreSpawn(Block block, World world, Random random, int blockXPos, int blockZPos, int maxVeinSize, int chanceToSpawn, int minY, int maxY)
+	{
+		for (int i = 0; i < chanceToSpawn; i++)
+		{
+			int posX = blockXPos + random.nextInt(16);
+			int posY = minY + random.nextInt(maxY - minY);
+			int posZ = blockZPos + random.nextInt(16);
+			new WorldGenMinable(block, maxVeinSize, Blocks.netherrack).generate(world, random, posX, posY, posZ);
+		}
+	}
+	private void addEndOreSpawn(Block block, World world, Random random, int blockXPos, int blockZPos, int maxVeinSize, int chanceToSpawn, int minY, int maxY)
+	{
+		for (int i = 0; i < chanceToSpawn; i++)
+		{
+			int posX = blockXPos + random.nextInt(16);
+			int posY = minY + random.nextInt(maxY - minY);
+			int posZ = blockZPos + random.nextInt(16);
+			new WorldGenMinable(block, maxVeinSize, Blocks.end_stone).generate(world, random, posX, posY, posZ);
 		}
 	}
 }
