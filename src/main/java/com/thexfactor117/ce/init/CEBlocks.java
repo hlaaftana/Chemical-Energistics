@@ -29,7 +29,7 @@ public class CEBlocks
 	//public static Block elementOven = new BlockElementOven();
 	
 	// Fluids
-	public static Block blockFluidExample = new BlockFluidExample();
+	public static Block blockFluidExample;
 	
 	public static void registerBlocks()
 	{
@@ -50,6 +50,7 @@ public class CEBlocks
 		//RegisterHelper.registerBlock(elementFreezer);
 		//RegisterHelper.registerBlock(elementOven);
 		
+		blockFluidExample = new BlockFluidExample();
 		RegisterHelper.registerBlock(blockFluidExample);
 	}
 }
