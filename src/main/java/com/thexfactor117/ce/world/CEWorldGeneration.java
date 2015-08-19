@@ -38,7 +38,7 @@ public class CEWorldGeneration implements IWorldGenerator
 		
 		if (ConfigHandler.generateSulfur)
 		{
-			addOreSpawn(CEBlocks.oreSulfur, world, random, x, z,, 2 + random.nextInt(4), 20, 0, 48);
+			addOreSpawn(CEBlocks.oreSulfur, world, random, x, z, 2 + random.nextInt(4), 20, 0, 48);
 		}
 		
 		if (ConfigHandler.generateUranium)
