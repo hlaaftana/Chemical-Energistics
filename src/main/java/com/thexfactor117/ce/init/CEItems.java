@@ -4,6 +4,7 @@ import net.minecraft.item.Item;
 
 import com.thexfactor117.ce.helpers.RegisterHelper;
 import com.thexfactor117.ce.items.*;
+import com.thexfactor117.ce.enums.ElementEnum;
 
 public class CEItems 
 {
@@ -38,6 +39,9 @@ public class CEItems
 	public static Item ironHammer = new ItemIronHammer("ironHammer");
 	public static Item aluminaCatalyst = new ItemAluminaCatalyst("aluminaCatalyst");
 	
+	// Testing
+	public static Item iron = new ItemElement(ElementEnum.IRON);
+	
 	public static void registerItems()
 	{
 		// Valuables
@@ -60,6 +64,8 @@ public class CEItems
 		RegisterHelper.registerItem(gasCapsule);
 		RegisterHelper.registerItem(liquidCapsule);
 		
+		//RegisterHelper.registerFluidContainer(CEFluids.elementFluidOfMetadataOne, new ItemStack(gasCapsule, 1, metadata));
+		
 		// Machinery Parts
 		RegisterHelper.registerItem(ironPanel);
 		RegisterHelper.registerItem(aluminumPanel);
@@ -70,5 +76,8 @@ public class CEItems
 		// Miscellaneous Items
 		RegisterHelper.registerItem(ironHammer);
 		RegisterHelper.registerItem(aluminaCatalyst);
+		
+		// Testing
+		RegisterHelper.registerItem(iron),
 	}
 }

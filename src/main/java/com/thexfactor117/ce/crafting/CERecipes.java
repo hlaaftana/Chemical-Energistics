@@ -1,9 +1,12 @@
 package com.thexfactor117.ce.crafting;
 
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 import com.thexfactor117.ce.init.CEBlocks;
 import com.thexfactor117.ce.init.CEItems;
@@ -52,5 +55,70 @@ public class CERecipes
 		OreDictionary.registerOre("plateIron", new ItemStack(CEItems.ironPanel));
 		OreDictionary.registerOre("plateAluminum", new ItemStack(CEItems.aluminumPanel));
 		OreDictionary.registerOre("plateThermal", new ItemStack(CEItems.thermalPanel));
+	}
+	protected static void registerStairRecipes(Block stairs, ItemStack block){
+		GameRegistry.addShapedRecipe(new ItemStack(stairs, 8), new Object[] {"A  ", "AA ", "AAA", 'A', block});
+		GameRegistry.addShapedRecipe(new ItemStack(stairs, 8), new Object[] {"  A", " AA", "AAA", 'A', block});
+	}
+	protected static void registerStairRecipes(Block stairs, Block block){
+		GameRegistry.addShapedRecipe(new ItemStack(stairs, 8), new Object[] {"A  ", "AA ", "AAA", 'A', new ItemStack(block)});
+		GameRegistry.addShapedRecipe(new ItemStack(stairs, 8), new Object[] {"  A", " AA", "AAA", 'A', new ItemStack(block)});
+	}
+	protected static void addSmelting(Item input, Item output){
+		GameRegistry.addSmelting(new ItemStack(input), new ItemStack(output), 0F);
+	}
+	protected static void addSmelting(Item input, Block output){
+		GameRegistry.addSmelting(new ItemStack(input), new ItemStack(output), 0F);
+	}
+	protected static void addSmelting(Block input, Item output){
+		GameRegistry.addSmelting(new ItemStack(input), new ItemStack(output), 0F);
+	}
+	protected static void addSmelting(Block input, Block output){
+		GameRegistry.addSmelting(new ItemStack(input), new ItemStack(output), 0F);
+	}
+	protected static void addSmelting(ItemStack input, Item output){
+		GameRegistry.addSmelting(input, new ItemStack(output), 0F);
+	}
+	protected static void addSmelting(ItemStack input, Block output){
+		GameRegistry.addSmelting(input, new ItemStack(output), 0F);
+	}
+	protected static void addSmelting(Item input, ItemStack output){
+		GameRegistry.addSmelting(new ItemStack(input), output, 0F);
+	}
+	protected static void addSmelting(Block input, ItemStack output){
+		GameRegistry.addSmelting(new ItemStack(input), output, 0F);
+	}
+	protected static void addSmelting(ItemStack input, ItemStack output){
+		GameRegistry.addSmelting(input, output, 0F);
+	}
+	protected static void addSmelting(Item input, Item output, float xp){
+		GameRegistry.addSmelting(new ItemStack(input), new ItemStack(output), xp);
+	}
+	protected static void addSmelting(Item input, Block output, float xp){
+		GameRegistry.addSmelting(new ItemStack(input), new ItemStack(output), xp);
+	}
+	protected static void addSmelting(Block input, Item output, float xp){
+		GameRegistry.addSmelting(new ItemStack(input), new ItemStack(output), xp);
+	}
+	protected static void addSmelting(Block input, Block output, float xp){
+		GameRegistry.addSmelting(new ItemStack(input), new ItemStack(output), xp);
+	}
+	protected static void addSmelting(ItemStack input, Item output, float xp){
+		GameRegistry.addSmelting(input, new ItemStack(output), xp);
+	}
+	protected static void addSmelting(ItemStack input, Block output, float xp){
+		GameRegistry.addSmelting(input, new ItemStack(output), xp);
+	}
+	protected static void registerFilledRecipe(Item item, Item output){
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(item), new Object[] {"AAA", "AAA", "AAA", 'A', output}));
+	} 
+	protected static void registerFilledRecipe(Block item, Item output){
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(item), new Object[] {"AAA", "AAA", "AAA", 'A', output}));
+	}
+	protected static void registerFilledRecipe(Item item, Block output){
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(item), new Object[] {"AAA", "AAA", "AAA", 'A', output}));
+	}
+	protected static void registerFilledRecipe(Block item, Block output){
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(item), new Object[] {"AAA", "AAA", "AAA", 'A', output}));
 	}
 }
