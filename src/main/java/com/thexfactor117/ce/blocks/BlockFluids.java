@@ -12,9 +12,8 @@ import net.minecraftforge.fluids.Fluid;
  */
 public class BlockFluids {
 	public class BlockFluidExample extends BlockCEBaseFluid{
-		public BlockFluidExample(Fluid fluid, MapColor color) {
+		public BlockFluidExample() {
 			super(CEFluids.fluidExample, MapColor.yellowColor);
-			
 		}
 	}
 }
