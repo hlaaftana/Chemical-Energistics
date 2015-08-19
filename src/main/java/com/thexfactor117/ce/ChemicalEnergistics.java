@@ -65,6 +65,7 @@ public class ChemicalEnergistics
 		
 		CEBlocks.registerBlocks();
 		CEItems.registerItems();
+		CERecipes.registerItemsToOreDict();
 		
 		GameRegistry.registerWorldGenerator(worldGen, 0);
 	}
@@ -73,7 +74,6 @@ public class ChemicalEnergistics
 	public void init(FMLInitializationEvent event)
 	{
 		CERecipes.registerRecipes();
-		CERecipes.registerItemsToOreDict();
 		proxy.registerTileEntities();
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(ChemicalEnergistics.instance, new GuiHandler());
