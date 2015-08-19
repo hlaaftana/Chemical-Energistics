@@ -23,6 +23,7 @@ public class ItemGasCapsule extends Item
 		super();
 		this.setMaxDamage(0);
 		this.setHasSubtypes(true);
+		this.setContainerItem(ModItems.capsule);
 		this.setUnlocalizedName(name);
 		this.setTextureName(Reference.MODID + ":" + name);
 		this.setCreativeTab(CETabs.tabCE);
