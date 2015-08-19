@@ -28,6 +28,9 @@ public class CEBlocks
 	//public static Block elementFreezer = new BlockElementFreezer();
 	//public static Block elementOven = new BlockElementOven();
 	
+	// Fluids
+	public static Block blockFluidExample = new BlockFluidExample();
+	
 	public static void registerBlocks()
 	{
 		// Naturally Generating Blocks
@@ -46,5 +49,7 @@ public class CEBlocks
 		RegisterHelper.registerBlock(elementExtractor);
 		//RegisterHelper.registerBlock(elementFreezer);
 		//RegisterHelper.registerBlock(elementOven);
+		
+		RegisterHelper.registerBlock(blockFluidExample);
 	}
 }
