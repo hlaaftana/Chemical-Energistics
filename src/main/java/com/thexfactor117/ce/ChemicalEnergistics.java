@@ -3,12 +3,9 @@ package com.thexfactor117.ce;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.thexfactor117.ce.crafting.CERecipes;
-import com.thexfactor117.ce.handlers.ConfigHandler;
-import com.thexfactor117.ce.handlers.CraftingHandler;
-import com.thexfactor117.ce.handlers.GuiHandler;
-import com.thexfactor117.ce.helpers.LogHelper;
-import com.thexfactor117.ce.init.CEBlocks;
-import com.thexfactor117.ce.init.CEItems;
+import com.thexfactor117.ce.handlers.*;
+import com.thexfactor117.ce.helpers.*;
+import com.thexfactor117.ce.init.*;
 import com.thexfactor117.ce.proxies.CommonProxy;
 import com.thexfactor117.ce.world.CEWorldGeneration;
 
@@ -63,6 +60,7 @@ public class ChemicalEnergistics
 		LogHelper.info("Initializing Chemical Energistics - creating items, warming up machines, readying the explosives...");
 		ConfigHandler.registerConfig(event.getModConfigurationDirectory());
 		
+		CEFluids.registerFluids();
 		CEBlocks.registerBlocks();
 		CEItems.registerItems();
 		CERecipes.registerItemsToOreDict();
@@ -75,6 +73,10 @@ public class ChemicalEnergistics
 	{
 		CERecipes.registerRecipes();
 		proxy.registerTileEntities();
+		
+		BucketHandler.registerBuckets();
+		
+		GameRegistry.registerFuelHandler(new FuelHandler());
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(ChemicalEnergistics.instance, new GuiHandler());
 		MinecraftForge.EVENT_BUS.register(new CraftingHandler());
