@@ -100,3 +100,9 @@ tile.pressurizedTank.name=Pressurized Tank
 itemGroup.tabCE=Chemical Energistics
 itemGroup.tabCECapsules=Chemical Energistics Capsules
 itemGroup.tabCETest=Chemical Energistics Test Features
+
+######################
+### Death Messages ###
+######################
+
+death.attack.toxicity=%1$s was intoxicated
