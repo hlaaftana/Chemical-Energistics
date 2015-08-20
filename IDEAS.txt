@@ -1,1 +1,22 @@
-I'm going to be putting temporary tasks here for myself so I don't forget. I suggest you do the same too! - Hla
+I'm going to be putting ideas here for both of us so I don't forget. You can use it too! - Hla
+
+|POTENTIAL IDEA: Cryogenic Containers & Cryogenic Freezers
+|I need your approval for this. I don't know if you want this either. Since you're the one taking care of the GUIs, most of this
+|is work for you.
+|
+|Since you don't have liquid oxygen, hydrogen and nitrogen, you can have them in Cryogenic Containers. Cryogenic Containers are
+|either gonna be items like capsules or tile entities with NBT data. Personally I would like the first one, not only because it's
+|not going to tire you, but because it's easier. I'll be doing it anyways.
+|
+|The Cryogenic Freezer basically takes one of those three gases' fluids and turns it into a liquid fluid. Like the element 
+|freezer, but different because normal freezers cannot cool down to that level. "That level" being around 10 or 20 Kelvin in this 
+|case. This IS a machine, and a machine which includes fluids, which I'm guessing you cannot do. 
+|Here's another option in that case: There are 2 input slots, one is where you put the filled gas capsule, and the other is an 
+|empty cryogenic container. By the end of the process, the gas capsule will be empty, and the cryogenic container full. This migh
+|t not seem a feature needed to you, but here's 6 (4) reasons why you may need it: http://prntscr.com/86unmq
+|
+|It seems like the liquid oxygen and hydrogen fluids aren't needed, doesn't it? Well, they aren't. They aren't really used that m
+|uch in real life either. I just suggested them because it would be cool if they were added.
+|
+|If you do indeed like this idea (I'm guessing you won't), the only thing you would do (I could do it myself if you want, yet I
+|wouldn't do a great job) would be the GUIs. I'll deal with everything else.

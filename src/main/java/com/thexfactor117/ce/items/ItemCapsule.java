@@ -61,6 +61,15 @@ public class ItemCapsule extends Item
                         return new ItemStack(CEItems.liquidCapsule, 1, 12);
                     }
                 }
+                if (p_77659_2_.getBlock(i, j, k) == Blocks.water)
+                {
+                    --p_77659_1_.stackSize;
+                    p_77659_2_.setBlock(i, j, k, Blocks.air);
+                    if (p_77659_1_.stackSize <= 0)
+                    {
+                        return new ItemStack(CEItems.liquidCapsule, 1, 15);
+                    }
+                }
             }
 
             return p_77659_1_;
