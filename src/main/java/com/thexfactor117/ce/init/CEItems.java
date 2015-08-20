@@ -78,6 +78,6 @@ public class CEItems
 		RegisterHelper.registerItem(aluminaCatalyst);
 		
 		// Testing
-		RegisterHelper.registerItem(iron),
+		RegisterHelper.registerItem(iron);
 	}
 }

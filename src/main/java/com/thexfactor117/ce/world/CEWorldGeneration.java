@@ -56,6 +56,14 @@ public class CEWorldGeneration implements IWorldGenerator
 
 	private void generateEnd(World world, Random random, int x, int z) {}
 	
+	/**
+	 * Generates specified ore in the overworld.
+	 * @param block The ore.
+	 * @param maxVeinSize The amount of ores in one vein.
+	 * @param chanceToSpawn The ore's chance to spawn.
+	 * @param minY The minimum Y coordinate.
+	 * @param maxY The maximum Y coordinate.
+	 */
 	private void addOreSpawn(Block block, World world, Random random, int blockXPos, int blockZPos, int maxVeinSize, int chanceToSpawn, int minY, int maxY)
 	{
 		for (int i = 0; i < chanceToSpawn; i++)
@@ -66,6 +74,16 @@ public class CEWorldGeneration implements IWorldGenerator
 			new WorldGenMinable(block, maxVeinSize).generate(world, random, posX, posY, posZ);
 		}
 	}
+	
+	/**
+	 * Generates specified ore in the nether.
+	 * @param block The ore.
+	 * @param maxVeinSize The amount of ores in one vein.
+	 * @param chanceToSpawn The ore's chance to spawn.
+	 * @param minY The minimum Y coordinate.
+	 * @param maxY The maximum Y coordinate.
+	 */
+	@SuppressWarnings("unused")
 	private void addNetherOreSpawn(Block block, World world, Random random, int blockXPos, int blockZPos, int maxVeinSize, int chanceToSpawn, int minY, int maxY)
 	{
 		for (int i = 0; i < chanceToSpawn; i++)
@@ -76,6 +94,16 @@ public class CEWorldGeneration implements IWorldGenerator
 			new WorldGenMinable(block, maxVeinSize, Blocks.netherrack).generate(world, random, posX, posY, posZ);
 		}
 	}
+	
+	/**
+	 * Generates specified ore in the nether.
+	 * @param block The ore.
+	 * @param maxVeinSize The amount of ores in one vein.
+	 * @param chanceToSpawn The ore's chance to spawn.
+	 * @param minY The minimum Y coordinate.
+	 * @param maxY The maximum Y coordinate.
+	 */
+	@SuppressWarnings("unused")
 	private void addEndOreSpawn(Block block, World world, Random random, int blockXPos, int blockZPos, int maxVeinSize, int chanceToSpawn, int minY, int maxY)
 	{
 		for (int i = 0; i < chanceToSpawn; i++)
