@@ -8,3 +8,12 @@
 /gradlew
 /gradlew.bat
 /lib/sources
+/config
+/crash-reports
+/logs
+/mods
+/resourcepacks
+/saves
+/options.txt
+/usernamecache.json
+/asm
