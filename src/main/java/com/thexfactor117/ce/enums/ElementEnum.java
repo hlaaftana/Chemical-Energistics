@@ -13,6 +13,7 @@ public enum ElementEnum {
     SODIUM ("Sodium", "Solid", "Na", 11, false),
     ALUMINUM ("Aluminum", "Solid", "Al", 13, false),
     SILICON ("Silicon", "Solid", "Si", 14, false),
+    PHOSPHORUS ("Phosphorus", "Solid", "P", 15, false),
     SULFUR ("Sulfur", "Solid", "S", 16, false),
     IRON ("Iron", "Solid", "Fe", 26, false),
     COPPER ("Copper", "Solid", "Cu", 29, false),
@@ -43,7 +44,8 @@ public enum ElementEnum {
     OSMIUM ("Osmium", "Solid", "Os", 76, false),
     PLATINUM ("Platinum", "Solid", "Pt", 78, false),
     THORIUM ("Thorium", "Solid", "Th", 90, true),
-    PLUTONIUM ("Plutonium", "Solid", "Pu", 94, true);
+    PLUTONIUM ("Plutonium", "Solid", "Pu", 94, true),
+    EMPTY ("Notexistium", "Plasma", "Not", Integer.MAX_VALUE, false);
     
     public String stateAtRoomTemperature;
     public String formula;

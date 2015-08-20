@@ -14,7 +14,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 /**
  * @author Hlaaftana
  * THIS IS JUST A TEST FOR THE ELEMENT ENUMS
- * YOU CAN DELETE THIS AFTER I FINISH THE FLUIDS
  */
 public class ItemElement extends ItemCE{
 	private ElementEnum element;
@@ -27,7 +26,7 @@ public class ItemElement extends ItemCE{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean isHeld){
-		list.add(EnumChatFormatting.WHITE + element.name + ", " + element.formula + ", " + element.atomicNumber + "\n");
-		list.add(EnumChatFormatting.WHITE + element.stateAtRoomTemperature + "\n");
+		list.add(EnumChatFormatting.GRAY + element.name + ", " + element.formula + ", " + element.atomicNumber);
+		list.add(EnumChatFormatting.GRAY + element.stateAtRoomTemperature);
 	}
 }
