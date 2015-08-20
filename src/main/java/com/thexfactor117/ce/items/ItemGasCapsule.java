@@ -3,6 +3,7 @@ package com.thexfactor117.ce.items;
 import java.util.List;
 
 import com.thexfactor117.ce.Reference;
+import com.thexfactor117.ce.init.CEItems;
 import com.thexfactor117.ce.init.CETabs;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -23,7 +24,7 @@ public class ItemGasCapsule extends Item
 		super();
 		this.setMaxDamage(0);
 		this.setHasSubtypes(true);
-		this.setContainerItem(ModItems.capsule);
+		this.setContainerItem(CEItems.capsule);
 		this.setUnlocalizedName(name);
 		this.setTextureName(Reference.MODID + ":" + name);
 		this.setCreativeTab(CETabs.tabCE);

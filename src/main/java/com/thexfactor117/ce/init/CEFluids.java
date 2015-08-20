@@ -1,6 +1,7 @@
 package com.thexfactor117.ce.init;
 
 import com.thexfactor117.ce.fluids.*;
+import com.thexfactor117.ce.helpers.RegisterHelper;
 
 import net.minecraftforge.fluids.Fluid;
 

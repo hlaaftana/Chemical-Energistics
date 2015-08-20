@@ -1,7 +1,7 @@
 package com.thexfactor117.ce.blocks;
 
-import com.thexfactor117.ce.help.Reference;
-import com.thexfactor117.ce.tabs.ModTabs;
+import com.thexfactor117.ce.Reference;
+import com.thexfactor117.ce.init.CETabs;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -19,8 +19,13 @@ import net.minecraftforge.fluids.Fluid;
  * @author Hlaaftana
  *
  */
-public class BlockCEBaseFluid extends BlockFluidClassic{
-	public BlockCEBaseFluid(Fluid fluid, MapColor color) {
+public class BlockCEFluidBase extends BlockFluidClassic{
+	/**
+	 * 
+	 * @param fluid The fluid that the block is going to use.
+	 * @param color A color of type MapColor. Example: "MapColor.yellowColor"
+	 */
+	public BlockCEFluidBase(Fluid fluid, MapColor color) {
 		super(fluid, new MaterialLiquid(color));
 		setCreativeTab(CETabs.tabCE);
 	}

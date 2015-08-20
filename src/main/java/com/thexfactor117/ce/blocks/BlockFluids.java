@@ -3,7 +3,6 @@ package com.thexfactor117.ce.blocks;
 import com.thexfactor117.ce.init.CEFluids;
 
 import net.minecraft.block.material.MapColor;
-import net.minecraftforge.fluids.Fluid;
 
 /**
  *
@@ -11,7 +10,7 @@ import net.minecraftforge.fluids.Fluid;
  *
  */
 public class BlockFluids {
-	public class BlockFluidExample extends BlockCEBaseFluid{
+	public class BlockFluidExample extends BlockCEFluidBase{
 		public BlockFluidExample() {
 			super(CEFluids.fluidExample, MapColor.yellowColor);
 		}

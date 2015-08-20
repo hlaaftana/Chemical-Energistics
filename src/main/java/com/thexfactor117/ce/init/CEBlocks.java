@@ -2,7 +2,7 @@ package com.thexfactor117.ce.init;
 
 import net.minecraft.block.Block;
 
-import com.thexfactor117.ce.blocks.BlockCE;
+import com.thexfactor117.ce.blocks.*;
 import com.thexfactor117.ce.blocks.machines.BlockCatalyticReactor;
 import com.thexfactor117.ce.blocks.machines.BlockChemicalReactor;
 import com.thexfactor117.ce.blocks.machines.BlockElementDiffuser;
@@ -50,7 +50,7 @@ public class CEBlocks
 		//RegisterHelper.registerBlock(elementFreezer);
 		//RegisterHelper.registerBlock(elementOven);
 		
-		blockFluidExample = new BlockFluidExample();
+		blockFluidExample = new BlockFluids().new BlockFluidExample();
 		RegisterHelper.registerBlock(blockFluidExample);
 	}
 }

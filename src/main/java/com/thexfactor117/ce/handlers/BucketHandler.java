@@ -45,7 +45,8 @@ public class BucketHandler extends FuelHandler{
                         return null;
 
         }
-        private static void registerBucket(Block block, Item bucket){
+        @SuppressWarnings("unused")
+		private static void registerBucket(Block block, Item bucket){
         	BucketHandler.INSTANCE.buckets.put(block, bucket);
         }
         public static void registerBuckets(){

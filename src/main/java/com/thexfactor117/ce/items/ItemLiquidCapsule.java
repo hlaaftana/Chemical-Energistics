@@ -3,6 +3,7 @@ package com.thexfactor117.ce.items;
 import java.util.List;
 
 import com.thexfactor117.ce.Reference;
+import com.thexfactor117.ce.init.CEItems;
 import com.thexfactor117.ce.init.CETabs;
 
 import cpw.mods.fml.relauncher.Side;

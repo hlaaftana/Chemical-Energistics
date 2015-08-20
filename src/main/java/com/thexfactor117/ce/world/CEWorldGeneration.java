@@ -66,6 +66,7 @@ public class CEWorldGeneration implements IWorldGenerator
 			new WorldGenMinable(block, maxVeinSize).generate(world, random, posX, posY, posZ);
 		}
 	}
+	@SuppressWarnings("unused")
 	private void addNetherOreSpawn(Block block, World world, Random random, int blockXPos, int blockZPos, int maxVeinSize, int chanceToSpawn, int minY, int maxY)
 	{
 		for (int i = 0; i < chanceToSpawn; i++)
@@ -76,6 +77,7 @@ public class CEWorldGeneration implements IWorldGenerator
 			new WorldGenMinable(block, maxVeinSize, Blocks.netherrack).generate(world, random, posX, posY, posZ);
 		}
 	}
+	@SuppressWarnings("unused")
 	private void addEndOreSpawn(Block block, World world, Random random, int blockXPos, int blockZPos, int maxVeinSize, int chanceToSpawn, int minY, int maxY)
 	{
 		for (int i = 0; i < chanceToSpawn; i++)
