@@ -5,9 +5,8 @@ READ THIS IN ECLIPSE
 |I need your approval for this. I don't know if you want this either. Since you're the one taking care of the GUIs, most of this
 |is work for you.
 |
-|Since you don't have liquid oxygen, hydrogen and nitrogen, you can have them in Cryogenic Containers. Cryogenic Containers are
-|either gonna be items like capsules or tile entities with NBT data. Personally I would like the first one, not only because it's
-|not going to tire you, but because it's easier. I'll be doing it anyways.
+|Since you don't have liquid oxygen, hydrogen and nitrogen, I can have them in Cryogenic Containers. Cryogenic Containers shoul
+|d be items like capsules. I'll be the one preparing this, of course.
 |
 |The Cryogenic Freezer basically takes one of those three gases' fluids and turns it into a liquid fluid. Like the element 
 |freezer, but different because normal freezers cannot cool down to that level. "That level" being around 10 or 20 Kelvin in this 
