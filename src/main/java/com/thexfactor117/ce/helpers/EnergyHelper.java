@@ -4,6 +4,11 @@ import com.thexfactor117.ce.init.CEItems;
 
 import net.minecraft.item.ItemStack;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class EnergyHelper 
 {
 	// items

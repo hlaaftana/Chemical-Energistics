@@ -7,6 +7,11 @@ import com.thexfactor117.ce.init.CEItems;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class CraftingHandler 
 {
 	@SubscribeEvent

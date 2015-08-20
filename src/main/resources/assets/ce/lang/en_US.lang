@@ -17,11 +17,14 @@ item.ingotLithium.name=Lithium Ingot
 item.ingotSilicon.name=Silicon Ingot
 item.ingotIodine.name=Iodine Ingot
 item.ingotMercury.name=Mercury Ingot
+item.ingotSteel.name=Steel Ingot
 item.dustSulfur.name=Sulfur Dust
 item.dustAluminum.name=Aluminum Dust
 item.dustSodium.name=Sodium Dust
 item.dustPhosphorus.name=Phosphorus Dust
 item.carbonFiber.name=Carbon Fiber
+item.ironHammer.name=Iron Hammer
+item.aluminaCatalyst.name=Alumina Catalyst
 
 
 ### Machinery Parts
@@ -46,6 +49,7 @@ item.gasCapsule.sulfur.name=Sulfur Gas Capsule
 item.gasCapsule.iodine.name=Iodine Gas Capsule
 item.gasCapsule.mercury.name=Mercury Gas Capsule
 item.gasCapsule.radon.name=Radon Gas Capsule
+item.gasCapsule.water.name=Water Gas Capsule
 item.liquidCapsule.lithium.name=Lithium Liquid Capsule
 item.liquidCapsule.sodium.name=Sodium Liquid Capsule
 item.liquidCapsule.aluminum.name=Aluminum Liquid Capsule
@@ -61,6 +65,7 @@ item.liquidCapsule.gold.name=Gold Liquid Capsule
 item.liquidCapsule.mercury.name=Mercury Liquid Capsule
 item.liquidCapsule.lead.name=Lead Liquid Capsule
 item.liquidCapsule.uranium.name=Uranium Liquid Capsule
+item.liquidCapsule.water.name=Water Liquid Capsule
 
 
 
@@ -74,12 +79,16 @@ tile.oreAluminum.name=Aluminum Ore
 tile.oreSulfur.name=Sulfur Ore
 tile.oreIridium.name=Iridium Ore
 tile.oreUranium.name=Uranium Ore
+tile.mercury.name=Mercury
 
 
 ### Machines
 
 tile.machineFrame.name=Machine Frame
 tile.chemicalReactor.name=Chemical Reactor
+tile.catalyticReactor.name=Catalytic Reactor
+tile.elementDiffuser.name=Element Diffuser
+tile.elementExtractor.name=Element Extractor
 tile.pressurizedTank.name=Pressurized Tank
 
 
@@ -89,4 +98,5 @@ tile.pressurizedTank.name=Pressurized Tank
 ###################################
 
 itemGroup.tabCE=Chemical Energistics
+itemGroup.tabCECapsules=Chemical Energistics Capsules
 itemGroup.tabCETest=Chemical Energistics Test Features

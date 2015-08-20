@@ -5,6 +5,11 @@ import com.thexfactor117.ce.init.CETabs;
 
 import net.minecraft.item.Item;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class ItemIronHammer extends Item
 {
 	public ItemIronHammer(String name)

@@ -5,11 +5,11 @@ package com.thexfactor117.ce.enums;
  *
  */
 public enum ElementEnum {
-    HYDROGEN ("Hydrogen", "Gas", "H2", 1, false),
+    HYDROGEN ("Hydrogen", "Gas", "H", 1, false),
     LITHIUM ("Lithium", "Solid", "Li", 4, false),
     CARBON ("Carbon", "Solid", "C", 6, false),
-    NITROGEN ("Nitrogen", "Gas", "N2", 7, false),
-    OXYGEN ("Oxygen", "Gas", "O2", 8, false),
+    NITROGEN ("Nitrogen", "Gas", "N", 7, false),
+    OXYGEN ("Oxygen", "Gas", "O", 8, false),
     SODIUM ("Sodium", "Solid", "Na", 11, false),
     ALUMINUM ("Aluminum", "Solid", "Al", 13, false),
     SILICON ("Silicon", "Solid", "Si", 14, false),
@@ -19,7 +19,7 @@ public enum ElementEnum {
     COPPER ("Copper", "Solid", "Cu", 29, false),
     SILVER ("Silver", "Solid", "Ag", 47, false),
     TIN ("Tin", "Solid", "Sn", 50, false),
-    IODINE ("Iodine", "Solid", "I2", 53, false),
+    IODINE ("Iodine", "Solid", "I", 53, false),
     IRIDIUM ("Iridium", "Solid", "Ir", 77, false),
     GOLD ("Gold", "Solid", "Au", 79, false),
     MERCURY ("Mercury", "Liquid", "Hg", 80, false),
@@ -29,7 +29,7 @@ public enum ElementEnum {
     //I know these are potential, but I'm keeping these in
     HELIUM ("Helium", "Gas", "He", 2, false),
     BORON ("Boron", "Solid", "B", 5, false),
-    FLUORINE ("Fluorine", "Gas", "F2", 9, false),
+    FLUORINE ("Fluorine", "Gas", "F", 9, false),
     NEON ("Neon", "Gas", "Ne", 10, false),
     MAGNESIUM ("Magnesium", "Solid", "Mg", 12, false),
     CHLORINE ("Chlorine", "Gas", "Cl", 17, false),
@@ -52,7 +52,7 @@ public enum ElementEnum {
     public String name;
     public int atomicNumber;
     public boolean isRadioactive;
-    //If you want, I'll add melting, freezing and maybe boiling points. I'd prefer Kelvin.
+    //If you want, I'll add melting, freezing and maybe boiling points.
     ElementEnum(String name, String stateAtRoomTemperature, String formula, int atomicNumber, boolean isRadioactive) {
         this.name = name;
         this.stateAtRoomTemperature = stateAtRoomTemperature;

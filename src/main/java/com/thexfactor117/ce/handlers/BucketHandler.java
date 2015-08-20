@@ -13,7 +13,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
 
-
+/**
+ * 
+ * @author Hlaaftana
+ * 
+ */
 public class BucketHandler extends FuelHandler{
 
 	public static BucketHandler INSTANCE = new BucketHandler();

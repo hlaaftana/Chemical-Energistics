@@ -2,17 +2,19 @@
  
  import com.thexfactor117.ce.init.CEItems;
  
+
  import net.minecraft.block.Block;
- import net.minecraft.init.Items;
- import net.minecraft.item.Item;
- import net.minecraft.item.ItemStack;
- import net.minecraftforge.fluids.Fluid;
- import net.minecraftforge.fluids.FluidContainerRegistry;
- import net.minecraftforge.fluids.FluidRegistry;
- import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidContainerRegistry;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import cpw.mods.fml.common.registry.GameRegistry;
  
- public class RegisterHelper 
- {
+public class RegisterHelper 
+{
 	/**
 	 * @author TheXFactor117 
 	 * these 2 methods
@@ -144,8 +146,17 @@
  	 * @param fluid The fluid.
  	 * @param capsule The filled capsule item.
  	 */
- 	public static void registerFluidCapsule(Fluid fluid, Item capsule){
- 		FluidContainerRegistry.registerFluidContainer(fluid, new ItemStack(capsule), new ItemStack(CEItems.capsule));
+ 	public static void registerFluidCapsule(Fluid fluid, ItemStack capsule){
+ 		FluidContainerRegistry.registerFluidContainer(fluid, capsule, new ItemStack(CEItems.capsule));
+ 	}
+ 	
+ 	/**
+ 	 * Registers a capsule as a container for a fluid.
+ 	 * @param fluid The FluidStack type fluid.
+ 	 * @param capsule The filled capsule item.
+ 	 */
+ 	public static void registerFluidCapsule(FluidStack fluid, ItemStack capsule){
+ 		FluidContainerRegistry.registerFluidContainer(fluid, capsule, new ItemStack(CEItems.capsule));
  	}
  
  	/**

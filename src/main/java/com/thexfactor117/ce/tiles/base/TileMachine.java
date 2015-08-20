@@ -8,6 +8,11 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class TileMachine extends TileEntity implements IInventory
 {
 	protected String name;

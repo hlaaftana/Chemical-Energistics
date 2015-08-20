@@ -13,7 +13,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Hlaaftana
- * THIS IS JUST A TEST FOR THE ELEMENT ENUMS
+ * THIS IS JUST A TEST FOR THE ELEMENT ENUM
  */
 public class ItemElement extends ItemCE{
 	private ElementEnum element;

@@ -17,6 +17,11 @@ import com.thexfactor117.ce.Reference;
 import com.thexfactor117.ce.gui.containers.ContainerChemicalReactor;
 import com.thexfactor117.ce.tiles.machines.TileChemicalReactor;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class GuiChemicalReactor extends GuiContainer
 {
 	private ResourceLocation texture = new ResourceLocation(Reference.MODID, "textures/gui/machines/chemicalReactor.png");

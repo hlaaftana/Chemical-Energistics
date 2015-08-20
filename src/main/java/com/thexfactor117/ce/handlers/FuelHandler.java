@@ -3,6 +3,11 @@ package com.thexfactor117.ce.handlers;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.IFuelHandler;
 
+/**
+ * 
+ * @author Hlaaftana
+ * 
+ */
 public class FuelHandler implements IFuelHandler {
 	@Override
 	public int getBurnTime(ItemStack fuel) {

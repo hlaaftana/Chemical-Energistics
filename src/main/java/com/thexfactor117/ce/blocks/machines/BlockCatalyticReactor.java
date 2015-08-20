@@ -17,6 +17,11 @@ import com.thexfactor117.ce.ChemicalEnergistics;
 import com.thexfactor117.ce.init.CETabs;
 import com.thexfactor117.ce.tiles.machines.TileCatalyticReactor;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class BlockCatalyticReactor extends Block implements ITileEntityProvider
 {
 	public Random rand = new Random();

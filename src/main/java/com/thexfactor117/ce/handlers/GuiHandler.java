@@ -18,6 +18,11 @@ import com.thexfactor117.ce.tiles.machines.TileElementExtractor;
 
 import cpw.mods.fml.common.network.IGuiHandler;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class GuiHandler implements IGuiHandler
 {
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)

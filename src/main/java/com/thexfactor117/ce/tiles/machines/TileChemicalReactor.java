@@ -14,6 +14,11 @@ import cofh.api.energy.IEnergyReceiver;
 import com.thexfactor117.ce.helpers.EnergyHelper;
 import com.thexfactor117.ce.tiles.base.TileMachine;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class TileChemicalReactor extends TileMachine implements IEnergyProvider
 {
 	public EnergyStorage storage = new EnergyStorage(50000, 64);

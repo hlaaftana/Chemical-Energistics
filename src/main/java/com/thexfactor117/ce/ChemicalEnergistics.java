@@ -40,7 +40,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * 
- * @author TheXFactor117
+ * @author TheXFactor117 & Hlaaftana
  *
  */
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION)

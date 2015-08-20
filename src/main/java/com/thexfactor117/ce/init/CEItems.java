@@ -1,11 +1,18 @@
 package com.thexfactor117.ce.init;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 import com.thexfactor117.ce.helpers.RegisterHelper;
 import com.thexfactor117.ce.items.*;
+import com.thexfactor117.ce.enums.CompoundEnum;
 import com.thexfactor117.ce.enums.ElementEnum;
 
+/**
+ * 
+ * @author TheXFactor117
+ * 
+ */
 public class CEItems 
 {
 	// Valuables
@@ -24,7 +31,7 @@ public class CEItems
 	public static Item carbonFiber = new ItemCE("carbonFiber");
 	
 	// Capsules
-	public static Item capsule = new ItemCE("capsule");
+	public static Item capsule = new ItemCapsule("capsule");
 	public static Item gasCapsule = new ItemGasCapsule("gasCapsule");
 	public static Item liquidCapsule = new ItemLiquidCapsule("liquidCapsule");
 	
@@ -41,6 +48,7 @@ public class CEItems
 	
 	// Testing
 	public static Item iron = new ItemElement(ElementEnum.IRON);
+	public static Item water = new ItemCompound(CompoundEnum.WATER);
 	
 	public static void registerItems()
 	{
@@ -64,7 +72,9 @@ public class CEItems
 		RegisterHelper.registerItem(gasCapsule);
 		RegisterHelper.registerItem(liquidCapsule);
 		
-		//RegisterHelper.registerFluidContainer(CEFluids.elementFluidOfMetadataOne, new ItemStack(gasCapsule, 1, metadata));
+		RegisterHelper.registerFluidCapsule(CEFluids.mercury, new ItemStack(liquidCapsule, 1, 12));
+		// If you want it to register a specific amount of millibuckets for one capsule, do:
+		// RegisterHelper.registerFluidCapsule(new FluidStack(CEFluids.mercury, (Amount of millibuckets here)), new ItemStack(liquidCapsule, 1, 12));
 		
 		// Machinery Parts
 		RegisterHelper.registerItem(ironPanel);
@@ -79,5 +89,6 @@ public class CEItems
 		
 		// Testing
 		RegisterHelper.registerItem(iron);
+		RegisterHelper.registerItem(water);
 	}
 }

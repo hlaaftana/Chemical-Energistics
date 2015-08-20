@@ -7,6 +7,11 @@ import com.thexfactor117.ce.tiles.machines.TileElementExtractor;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class CommonProxy 
 {
 	public void registerTileEntities()

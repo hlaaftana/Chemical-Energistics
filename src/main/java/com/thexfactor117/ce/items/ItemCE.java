@@ -5,6 +5,11 @@ import com.thexfactor117.ce.init.CETabs;
 
 import net.minecraft.item.Item;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class ItemCE extends Item
 {
 	public ItemCE(String name)

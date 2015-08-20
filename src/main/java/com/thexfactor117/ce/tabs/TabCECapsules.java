@@ -9,14 +9,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * 
- * @author TheXFactor117
+ * @author Hlaaftana
  *
  */
-public class TabCE extends CreativeTabs
+public class TabCECapsules extends CreativeTabs
 {
 	public String name;
 	
-	public TabCE(int i, String name)
+	public TabCECapsules(int i, String name)
 	{
 		super(i, name);
 		this.name = name;
@@ -25,9 +25,9 @@ public class TabCE extends CreativeTabs
 	@SideOnly(Side.CLIENT)
 	public Item getTabIconItem()
 	{
-		if (this.name == "tabCE")
+		if (this.name == "tabCECapsules")
 		{
-			return CEItems.ingotUranium;
+			return CEItems.capsule;
 		} 
 			
 		return null;

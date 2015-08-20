@@ -8,6 +8,11 @@ import net.minecraft.item.ItemStack;
 
 import com.thexfactor117.ce.tiles.machines.TileElementDiffuser;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class ContainerElementDiffuser extends Container
 {
 	private TileElementDiffuser elementDiffuser;

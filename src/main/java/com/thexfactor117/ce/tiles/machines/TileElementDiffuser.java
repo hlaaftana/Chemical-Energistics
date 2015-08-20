@@ -13,6 +13,11 @@ import cofh.api.energy.IEnergyReceiver;
 import com.thexfactor117.ce.init.CEItems;
 import com.thexfactor117.ce.tiles.base.TileMachine;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class TileElementDiffuser extends TileMachine implements IEnergyReceiver, IInventory
 {
 	public EnergyStorage storage = new EnergyStorage(20000, 64);

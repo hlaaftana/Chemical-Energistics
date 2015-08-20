@@ -8,6 +8,11 @@ import net.minecraft.item.ItemStack;
 
 import com.thexfactor117.ce.tiles.machines.TileElementExtractor;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class ContainerElementExtractor extends Container
 {
 	private TileElementExtractor elementExtractor;

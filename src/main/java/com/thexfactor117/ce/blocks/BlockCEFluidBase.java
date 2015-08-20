@@ -42,8 +42,8 @@ public class BlockCEFluidBase extends BlockFluidClassic{
     @SideOnly(Side.CLIENT)
     @Override
     public void registerBlockIcons(IIconRegister register) {
-            stillIcon = register.registerIcon(Reference.MODID + ":" + getUnlocalizedName().substring(5) + "Still");
-            flowingIcon = register.registerIcon(Reference.MODID + ":" + getUnlocalizedName().substring(5) + "Flowing");
+            stillIcon = register.registerIcon(Reference.MODID + ":" + getUnlocalizedName().substring(5) + "_still");
+            flowingIcon = register.registerIcon(Reference.MODID + ":" + getUnlocalizedName().substring(5) + "_flowing");
     }
    
     @Override

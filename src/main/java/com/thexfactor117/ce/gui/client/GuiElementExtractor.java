@@ -17,6 +17,11 @@ import com.thexfactor117.ce.Reference;
 import com.thexfactor117.ce.gui.containers.ContainerElementExtractor;
 import com.thexfactor117.ce.tiles.machines.TileElementExtractor;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class GuiElementExtractor extends GuiContainer
 {
 	private ResourceLocation texture = new ResourceLocation(Reference.MODID, "textures/gui/machines/elementDiffuser.png");

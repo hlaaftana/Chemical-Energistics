@@ -17,6 +17,11 @@ import com.thexfactor117.ce.ChemicalEnergistics;
 import com.thexfactor117.ce.init.CETabs;
 import com.thexfactor117.ce.tiles.machines.TileElementExtractor;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class BlockElementExtractor extends Block implements ITileEntityProvider
 {
 	public Random rand = new Random();

@@ -6,6 +6,11 @@ import com.thexfactor117.ce.Reference;
 
 import cpw.mods.fml.common.FMLLog;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class LogHelper 
 {
 	public static void log(Level logLevel, Object object){FMLLog.log(Reference.NAME, logLevel, String.valueOf(object));} 

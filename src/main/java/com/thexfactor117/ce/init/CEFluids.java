@@ -5,9 +5,14 @@ import com.thexfactor117.ce.helpers.RegisterHelper;
 
 import net.minecraftforge.fluids.Fluid;
 
+/**
+ * 
+ * @author Hlaaftana
+ * 
+ */
 public class CEFluids{
-	public static Fluid fluidExample = new FluidExample();
+	public static Fluid mercury = new FluidMercury();
 	public static void registerFluids(){
-		RegisterHelper.registerFluid(fluidExample);
+		RegisterHelper.registerFluid(mercury);
 	}
 }

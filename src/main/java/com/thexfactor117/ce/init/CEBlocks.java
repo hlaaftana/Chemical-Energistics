@@ -9,6 +9,11 @@ import com.thexfactor117.ce.blocks.machines.BlockElementDiffuser;
 import com.thexfactor117.ce.blocks.machines.BlockElementExtractor;
 import com.thexfactor117.ce.helpers.RegisterHelper;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class CEBlocks 
 {
 	// Naturally Generating Blocks
@@ -29,7 +34,7 @@ public class CEBlocks
 	//public static Block elementOven = new BlockElementOven();
 	
 	// Fluids
-	public static Block blockFluidExample;
+	public static Block mercury;
 	
 	public static void registerBlocks()
 	{
@@ -50,7 +55,7 @@ public class CEBlocks
 		//RegisterHelper.registerBlock(elementFreezer);
 		//RegisterHelper.registerBlock(elementOven);
 		
-		blockFluidExample = new BlockFluids().new BlockFluidExample();
-		RegisterHelper.registerBlock(blockFluidExample);
+		mercury = new BlockFluids().new BlockFluidMercury();
+		RegisterHelper.registerBlock(mercury);
 	}
 }

@@ -13,6 +13,11 @@ import com.thexfactor117.ce.init.CEItems;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class CERecipes 
 {
 	public static void registerRecipes()

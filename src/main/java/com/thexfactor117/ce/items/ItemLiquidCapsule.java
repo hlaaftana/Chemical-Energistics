@@ -3,6 +3,7 @@ package com.thexfactor117.ce.items;
 import java.util.List;
 
 import com.thexfactor117.ce.Reference;
+import com.thexfactor117.ce.enums.CompoundEnum;
 import com.thexfactor117.ce.enums.ElementEnum;
 import com.thexfactor117.ce.init.CEItems;
 import com.thexfactor117.ce.init.CETabs;
@@ -17,11 +18,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class ItemLiquidCapsule extends Item 
 {
-	public static final String[] LIQUIDS = { "lithium", "sodium", "aluminum", "silicon", "phosphorus", "sulfur", "iron", "copper", "silver", "tin", "iodine", "gold", "mercury", "lead", "uranium" };
+	public static final String[] LIQUIDS = { "lithium", "sodium", "aluminum", "silicon", "phosphorus", "sulfur", "iron", "copper", "silver", "tin", "iodine", "gold", "mercury", "lead", "uranium", "water" };
 	protected IIcon[] icons = new IIcon[ItemLiquidCapsule.LIQUIDS.length];
 	private ElementEnum element;
+	protected CompoundEnum compound;
 	
 	public ItemLiquidCapsule(String name)
 	{
@@ -31,7 +38,7 @@ public class ItemLiquidCapsule extends Item
 		this.setContainerItem(CEItems.capsule);
 		this.setUnlocalizedName(name);
 		this.setTextureName(Reference.MODID + ":" + name);
-		this.setCreativeTab(CETabs.tabCE);
+		this.setCreativeTab(CETabs.tabCECapsules);
 	}
 	
 	@Override
@@ -78,43 +85,76 @@ public class ItemLiquidCapsule extends Item
     {
         return metadata;
     }
+    
+    /**
+     * 
+     * @author Hlaaftana
+     * 
+     */
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean isHeld){
     	for (int i = 0; i < ItemGasCapsule.GASES.length; i++)
         {
-    		if (stack.getItemDamage() == 0)
-    			element = ElementEnum.LITHIUM;
-    		if (stack.getItemDamage() == 1)
-    			element = ElementEnum.SODIUM;
-    		if (stack.getItemDamage() == 2) 
-    			element = ElementEnum.ALUMINUM;
-    		if (stack.getItemDamage() == 3)
-    			element = ElementEnum.SILICON;
-    		if (stack.getItemDamage() == 4)
-    			element = ElementEnum.PHOSPHORUS;
-    		if (stack.getItemDamage() == 5)
-    			element = ElementEnum.SULFUR;
-    		if (stack.getItemDamage() == 6)
-    			element = ElementEnum.IRON;
-    		if (stack.getItemDamage() == 7)
-    			element = ElementEnum.COPPER;
-	    	if (stack.getItemDamage() == 8)
-	    		element = ElementEnum.SILVER;
-	    	if (stack.getItemDamage() == 9)
-	    		element = ElementEnum.TIN;
-	    	if (stack.getItemDamage() == 10)
-	    		element = ElementEnum.IODINE;
-	    	if (stack.getItemDamage() == 11)
-	    		element = ElementEnum.GOLD;
-	    	if (stack.getItemDamage() == 12)
-	    		element = ElementEnum.MERCURY;
-	    	if (stack.getItemDamage() == 13)
-	    		element = ElementEnum.LEAD;
-	    	if (stack.getItemDamage() == 14)
-	    		element = ElementEnum.URANIUM;
-        	}
-		list.add(EnumChatFormatting.GRAY + element.name + ", " + element.formula + ", " + element.atomicNumber);
+    		switch (stack.getItemDamage()){
+        		case 0:
+    				element = ElementEnum.LITHIUM;
+    				break;
+    			case 1:
+    				element = ElementEnum.SODIUM;
+    				break;
+    			case 2: 
+    				element = ElementEnum.ALUMINUM;
+    				break;
+    			case 3:
+    				element = ElementEnum.SILICON;
+    				break;
+    			case 4:
+    				element = ElementEnum.PHOSPHORUS;
+    				break;
+    			case 5:
+    				element = ElementEnum.SULFUR;
+    				break;
+    			case 6:
+    				element = ElementEnum.IRON;
+    				break;
+    			case 7:
+    				element = ElementEnum.COPPER;
+    				break;
+	    		case 8:
+	    			element = ElementEnum.SILVER;
+    				break;
+	    		case 9:
+	    			element = ElementEnum.TIN;
+    				break;
+	    		case 10:
+	    			element = ElementEnum.IODINE;
+    				break;
+	    		case 11:
+	    			element = ElementEnum.GOLD;
+    				break;
+	    		case 12:
+	    			element = ElementEnum.MERCURY;
+    				break;
+	    		case 13:
+	    			element = ElementEnum.LEAD;
+    				break;
+	    		case 14:
+	    			element = ElementEnum.URANIUM;
+    				break;
+	    		case 15:
+	    			compound = CompoundEnum.WATER;
+	    			break;
+    			default:
+    				element = ElementEnum.EMPTY;
+    				break;
+    		}
+        }
+		if (!(stack.getItemDamage() == 15)){
+    		list.add(EnumChatFormatting.GRAY + element.name + ", " + element.formula + ", " + element.atomicNumber);
+		}else{
+			list.add(EnumChatFormatting.GRAY + compound.name + ", " + compound.formula);
+		}
     }
 }

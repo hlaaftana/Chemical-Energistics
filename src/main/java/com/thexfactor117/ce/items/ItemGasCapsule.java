@@ -5,6 +5,7 @@ import java.util.List;
 import com.thexfactor117.ce.Reference;
 import com.thexfactor117.ce.init.CEItems;
 import com.thexfactor117.ce.init.CETabs;
+import com.thexfactor117.ce.enums.CompoundEnum;
 import com.thexfactor117.ce.enums.ElementEnum;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -17,11 +18,17 @@ import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class ItemGasCapsule extends Item 
 {
-	public static final String[] GASES = { "hydrogen", "lithium", "nitrogen", "oxygen", "sodium", "phosphorus", "sulfur", "iodine", "mercury", "radon" };
+	public static final String[] GASES = { "hydrogen", "lithium", "nitrogen", "oxygen", "sodium", "phosphorus", "sulfur", "iodine", "mercury", "radon", "water" };
 	protected IIcon[] icons = new IIcon[ItemGasCapsule.GASES.length];
 	protected ElementEnum element;
+	protected CompoundEnum compound;
 	
 	//You can maybe use the ElementEnum to register icons
 	public ItemGasCapsule(String name){
@@ -31,8 +38,7 @@ public class ItemGasCapsule extends Item
 		this.setContainerItem(CEItems.capsule);
 		this.setUnlocalizedName(name);
 		this.setTextureName(Reference.MODID + ":" + name);
-		this.setCreativeTab(CETabs.tabCE);
-	    System.out.println(getUnlocalizedName().substring(5));
+		this.setCreativeTab(CETabs.tabCECapsules);
 	}
 	
 	@Override
@@ -79,33 +85,61 @@ public class ItemGasCapsule extends Item
     {
         return metadata;
     }
+    
+    /**
+     * 
+     * @author Hlaaftana
+     * 
+     */
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean isHeld){
     	for (int i = 0; i < ItemGasCapsule.GASES.length; i++)
         {
-    		if (stack.getItemDamage() == 0)
-    			element = ElementEnum.HYDROGEN;
-    		if (stack.getItemDamage() == 1)
-    			element = ElementEnum.LITHIUM;
-    		if (stack.getItemDamage() == 2) 
-    			element = ElementEnum.NITROGEN;
-    		if (stack.getItemDamage() == 3)
-    			element = ElementEnum.OXYGEN;
-    		if (stack.getItemDamage() == 4)
-    			element = ElementEnum.SODIUM;
-    		if (stack.getItemDamage() == 5)
-    			element = ElementEnum.PHOSPHORUS;
-    		if (stack.getItemDamage() == 6)
-    			element = ElementEnum.SULFUR;
-    		if (stack.getItemDamage() == 7)
-    			element = ElementEnum.IODINE;
-	    	if (stack.getItemDamage() == 8)
-	    		element = ElementEnum.MERCURY;
-	    	if (stack.getItemDamage() == 9)
-	    		element = ElementEnum.RADON;
+    		switch (stack.getItemDamage()){
+    			case 0:
+    				element = ElementEnum.HYDROGEN;
+    				break;
+    			case 1:
+    				element = ElementEnum.LITHIUM;
+    				break;
+    			case 2: 
+    				element = ElementEnum.NITROGEN;
+    				break;
+    			case 3:
+    				element = ElementEnum.OXYGEN;
+    				break;
+    			case 4:
+    				element = ElementEnum.SODIUM;
+    				break;
+    			case 5:
+    				element = ElementEnum.PHOSPHORUS;
+    				break;
+    			case 6:
+    				element = ElementEnum.SULFUR;
+    				break;
+    			case 7:
+    				element = ElementEnum.IODINE;
+    				break;
+    			case 8:
+    				element = ElementEnum.MERCURY;
+    				break;
+    			case 9:
+    				element = ElementEnum.RADON;
+    				break;
+    			case 10:
+    				compound = CompoundEnum.WATER;
+    				break;
+    			default:
+    				element = ElementEnum.EMPTY;
+    				break;
         	}
-		list.add(EnumChatFormatting.GRAY + element.name + ", " + element.formula + ", " + element.atomicNumber);
+        }
+    	if (!(stack.getItemDamage() == 10)){
+    		list.add(EnumChatFormatting.GRAY + element.name + ", " + element.formula + ", " + element.atomicNumber);
+		}else{
+			list.add(EnumChatFormatting.GRAY + compound.name + ", " + compound.formula);
+		}
     }
 }

@@ -13,6 +13,11 @@ import com.thexfactor117.ce.api.crafting.ElementExtractorRecipes;
 import com.thexfactor117.ce.helpers.LogHelper;
 import com.thexfactor117.ce.tiles.base.TileMachine;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class TileElementExtractor extends TileMachine implements IEnergyReceiver
 {
 	public EnergyStorage storage = new EnergyStorage(20000, 64);

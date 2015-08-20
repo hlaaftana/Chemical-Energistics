@@ -15,6 +15,11 @@ import com.thexfactor117.ce.helpers.EnergyHelper;
 import com.thexfactor117.ce.init.CEItems;
 import com.thexfactor117.ce.tiles.base.TileMachine;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class TileCatalyticReactor extends TileMachine implements IEnergyProvider
 {
 	public EnergyStorage storage = new EnergyStorage(100000, 128);

@@ -8,6 +8,11 @@ import net.minecraft.item.ItemStack;
 
 import com.thexfactor117.ce.tiles.machines.TileChemicalReactor;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class ContainerChemicalReactor extends Container
 {
 	private TileChemicalReactor chemicalReactor;

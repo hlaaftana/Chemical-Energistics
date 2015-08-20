@@ -17,6 +17,11 @@ import com.thexfactor117.ce.Reference;
 import com.thexfactor117.ce.gui.containers.ContainerElementDiffuser;
 import com.thexfactor117.ce.tiles.machines.TileElementDiffuser;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class GuiElementDiffuser extends GuiContainer
 {
 	private ResourceLocation texture = new ResourceLocation(Reference.MODID, "textures/gui/machines/elementDiffuser.png");

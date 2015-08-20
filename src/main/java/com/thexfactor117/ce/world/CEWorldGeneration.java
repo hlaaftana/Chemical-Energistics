@@ -13,6 +13,11 @@ import com.thexfactor117.ce.init.CEBlocks;
 
 import cpw.mods.fml.common.IWorldGenerator;
 
+/**
+ * 
+ * @author TheXFactor117
+ *
+ */
 public class CEWorldGeneration implements IWorldGenerator
 {	
 	@Override
@@ -49,6 +54,11 @@ public class CEWorldGeneration implements IWorldGenerator
 		if (ConfigHandler.generateIridium)
 		{
 			addOreSpawn(CEBlocks.oreIridium, world, random, x, z, 1, 10, 0, 64);
+		}
+		
+		if (ConfigHandler.generateMercuryLakes)
+		{
+			addLakeSpawn(CEBlocks.mercury, world, random, x, z, 2);
 		}
 	}
 	
@@ -112,6 +122,15 @@ public class CEWorldGeneration implements IWorldGenerator
 			int posY = minY + random.nextInt(maxY - minY);
 			int posZ = blockZPos + random.nextInt(16);
 			new WorldGenMinable(block, maxVeinSize, Blocks.end_stone).generate(world, random, posX, posY, posZ);
+		}
+	}
+	
+	private void addLakeSpawn(Block block, World world, Random random, int blockXPos, int blockZPos, int rarity){
+		if (random.nextInt(rarity) == 0){
+			int lakeX = blockXPos - 8 + random.nextInt(16);
+			int lakeY = random.nextInt(128);
+			int lakeZ = blockZPos - 8 + random.nextInt(16);
+			new WorldGenLakesUnderground(block).generate(world, random, lakeX, lakeY, lakeZ);
 		}
 	}
 }
