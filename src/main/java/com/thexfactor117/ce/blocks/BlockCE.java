@@ -2,19 +2,14 @@ package com.thexfactor117.ce.blocks;
 
 import com.thexfactor117.ce.Reference;
 import com.thexfactor117.ce.init.CETabs;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
 /**
- * 
  * @author TheXFactor117
- *
  */
-public class BlockCE extends Block
-{
-	public BlockCE(String name, float hardness, float resistance, int harvestLevel, float lightLevel)
-	{
+public class BlockCE extends Block {
+	public BlockCE(String name, float hardness, float resistance, int harvestLevel, float lightLevel) {
 		super(Material.rock);
 		this.setBlockName(name);
 		this.setBlockTextureName(Reference.MODID + ":" + name);

@@ -1,114 +1,19 @@
 package com.thexfactor117.ce.gui.containers;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ICrafting;
-import net.minecraft.inventory.Slot;
-import net.minecraft.item.ItemStack;
-
 import com.thexfactor117.ce.tiles.machines.TileElementExtractor;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Slot;
 
 /**
- * 
  * @author TheXFactor117
- *
  */
-public class ContainerElementExtractor extends Container
-{
-	private TileElementExtractor elementExtractor;
-	private int energyStored;
-    
-    public ContainerElementExtractor(EntityPlayer player, TileElementExtractor te)
-    {
-        this.elementExtractor = te;
- 
-        this.addSlotToContainer(new Slot(elementExtractor, 0, 62, 34));
-        this.addSlotToContainer(new Slot(elementExtractor, 1, 98, 34));
-        
-        //Inventory
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 9; j++)
-            {
-                addSlotToContainer(new Slot(player.inventory, j + i * 9 + 9, 8 + j * 18 + 1, 84 + i * 18));
-            }
-        }
-        
-        // Hotbar
-        for (int i = 0; i < 9; i++)
-        {
-            addSlotToContainer(new Slot(player.inventory, i, 8 + i * 18 + 1, 142));
-        }
-    }
-    
-    @Override
-    public void addCraftingToCrafters(ICrafting crafting)
-    {
-    	super.addCraftingToCrafters(crafting);
-    	
-    	crafting.sendProgressBarUpdate(this, 0, this.elementExtractor.storage.getEnergyStored());
-    }
-    
-    /**
-     * Looks for changes made in the container, sends them to every listener.
-     */
-    @Override
-    public void detectAndSendChanges()
-    {
-        super.detectAndSendChanges();
+public class ContainerElementExtractor extends ContainerMachine<TileElementExtractor> {
+	public ContainerElementExtractor(EntityPlayer player, TileElementExtractor te) {
+		super(player, te);
 
-        for (int i = 0; i < this.crafters.size(); ++i)
-        {
-            ICrafting crafting = (ICrafting)this.crafters.get(i);
+		this.addSlotToContainer(new Slot(machine, 0, 62, 34));
+		this.addSlotToContainer(new Slot(machine, 1, 98, 34));
 
-            if (this.energyStored != this.elementExtractor.storage.getEnergyStored())
-            {
-                crafting.sendProgressBarUpdate(this, 0, this.elementExtractor.storage.getEnergyStored());
-            }
-        }
-        
-        this.energyStored = this.elementExtractor.storage.getEnergyStored();
-    }
-    
-    @Override
-    public ItemStack transferStackInSlot(EntityPlayer player, int slotRaw)
-    {
-        ItemStack stack = null;
-        Slot slot = (Slot) inventorySlots.get(slotRaw);
- 
-        if (slot != null && slot.getHasStack())
-        {
-            ItemStack stackInSlot = slot.getStack();
-            stack = stackInSlot.copy();
- 
-            if (slotRaw < 3 * 9)
-            {
-                if (!mergeItemStack(stackInSlot, 3 * 9, inventorySlots.size(), true))
-                {
-                    return null;
-                }
-            }
-            else if (!mergeItemStack(stackInSlot, 0, 3 * 9, false))
-            {
-                return null;
-            }
- 
-            if (stackInSlot.stackSize == 0)
-            {
-                slot.putStack((ItemStack)null);
-            }
-            else
-            {
-                slot.onSlotChanged();
-            }
-        }
-        
-        return stack;
-    }
-    
-    @Override
-    public boolean canInteractWith(EntityPlayer player)
-    {
-        return elementExtractor.isUseableByPlayer(player);
-    }
+		super.addSlots();
+	}
 }

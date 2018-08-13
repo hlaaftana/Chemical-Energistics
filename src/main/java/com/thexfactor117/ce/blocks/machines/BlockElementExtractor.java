@@ -1,8 +1,8 @@
 package com.thexfactor117.ce.blocks.machines;
 
-import java.util.ArrayList;
-import java.util.Random;
-
+import com.thexfactor117.ce.ChemicalEnergistics;
+import com.thexfactor117.ce.init.CETabs;
+import com.thexfactor117.ce.tiles.machines.TileElementExtractor;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -13,22 +13,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-import com.thexfactor117.ce.ChemicalEnergistics;
-import com.thexfactor117.ce.init.CETabs;
-import com.thexfactor117.ce.tiles.machines.TileElementExtractor;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
- * 
  * @author TheXFactor117
- *
  */
-public class BlockElementExtractor extends Block implements ITileEntityProvider
-{
-	public Random rand = new Random();
+public class BlockElementExtractor extends Block implements ITileEntityProvider {
 	private static final String NAME = "elementExtractor";
-	
-	public BlockElementExtractor()
-	{
+	public Random rand = new Random();
+
+	public BlockElementExtractor() {
 		super(Material.iron);
 		this.setHardness(3.5F);
 		this.setStepSound(soundTypeMetal);
@@ -52,90 +47,77 @@ public class BlockElementExtractor extends Block implements ITileEntityProvider
     }*/
 
 	@Override
-    public TileEntity createNewTileEntity(World world, int meta) 
-    {
-        return new TileElementExtractor("Element Extractor");
-    }
-    
-    @Override
-    public boolean hasTileEntity(int metadata) 
-    {
-        return true;
-    }
-    
-    /**
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return new TileElementExtractor("Element Extractor");
+	}
+
+	@Override
+	public boolean hasTileEntity(int metadata) {
+		return true;
+	}
+
+	/**
 	 * Called upon block activation (right-click)
-	 * 
+	 * <p>
 	 * When right-clicked, open the specified GUI
 	 */
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float lx, float ly, float lz)
-	{
-		if (world.isRemote)
-		{
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float lx, float ly, float lz) {
+		if (world.isRemote) {
 			return true;
 		}
-		
+
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
-		
-		if (tileEntity != null && tileEntity instanceof TileElementExtractor)
-		{
+
+		if (tileEntity != null && tileEntity instanceof TileElementExtractor) {
 			// number indicates which GUI to open
 			player.openGui(ChemicalEnergistics.instance, 2, world, x, y, z);
-			
+
 			return true;
 		}
-		
+
 		return false;
 	}
-	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	@Override
-	public void breakBlock(World world, int x, int y, int z, Block block, int par6)
-	{
-		if (world.isRemote)
-		{
+	public void breakBlock(World world, int x, int y, int z, Block block, int par6) {
+		if (world.isRemote) {
 			return;
 		}
-		
+
 		ArrayList tankContents = new ArrayList();
-		
+
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
-		
-		if (tileEntity != null && tileEntity instanceof TileElementExtractor)
-		{
+
+		if (tileEntity != null && tileEntity instanceof TileElementExtractor) {
 			TileElementExtractor tile = (TileElementExtractor) tileEntity;
-			
-			for (int i = 0; i < tile.getSizeInventory(); i++)
-			{
+
+			for (int i = 0; i < tile.getSizeInventory(); i++) {
 				ItemStack stack = tile.getStackInSlot(i);
-				
-				if (stack != null)
-				{
+
+				if (stack != null) {
 					tankContents.add(stack.copy());
 				}
 			}
-			
-			for (int i = 0; i < tankContents.size(); i++)
-			{
+
+			for (int i = 0; i < tankContents.size(); i++) {
 				EntityItem item = new EntityItem(world, x + 0.5, y + 0.5, z + 0.5);
 				item.setVelocity((rand.nextDouble() - 0.5) * 0.25, rand.nextDouble() * 0.5 * 0.25, (rand.nextDouble() - 0.5) * 0.25);
 				world.spawnEntityInWorld(item);
 			}
 		}
 	}
-    
-    @Override
-    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack) 
-    {
-        // If the ItemBlock version has energy stored in it then give the newly
-        // created tile entity that energy
-        if(stack.stackTagCompound != null) 
-        {
-        	//TileEntityChemicalReactor tileEntity = (TileEntityChemicalReactor)world.getTileEntity(x, y, z);
-            //tileEntity.modifyEnergyStored(stack.stackTagCompound.getInteger(EnergyStorage.NBT_ENERGY));
-        }
-        
-        super.onBlockPlacedBy(world, x, y, z, entity, stack);
-    }
+
+	@Override
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack) {
+		// If the ItemBlock version has energy stored in it then give the newly
+		// created tile entity that energy
+		if (stack.stackTagCompound != null) {
+			//TileEntityChemicalReactor tileEntity = (TileEntityChemicalReactor)world.getTileEntity(x, y, z);
+			//tileEntity.modifyEnergyStored(stack.stackTagCompound.getInteger(EnergyStorage.NBT_ENERGY));
+		}
+
+		super.onBlockPlacedBy(world, x, y, z, entity, stack);
+	}
 }

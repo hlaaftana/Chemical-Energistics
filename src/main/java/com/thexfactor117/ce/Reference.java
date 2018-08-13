@@ -1,12 +1,9 @@
 package com.thexfactor117.ce;
 
 /**
- * 
  * @author TheXFactor117
- *
  */
-public class Reference 
-{
+public class Reference {
 	public static final String MODID = "ce";
 	public static final String NAME = "Chemical Energistics";
 	public static final String VERSION = "a1.0.0";
