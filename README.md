@@ -1,3 +1,14 @@
+# Disclaimer
+
+I am not the original creator of this, I was just a co-developer that asked to
+work on it after I had started learning programming and Minecraft mod development
+(my username was Hlaaftana at the time and I was 12). The original creator has since
+taken this down from their profile but I found a fork on an old account at some
+point and moved it here so it's not lost, I can take it down if anyone doesn't
+want it to be public.
+
+---
+
 # Chemical Energistics
 Harnessing the power of chemical energy!
 
